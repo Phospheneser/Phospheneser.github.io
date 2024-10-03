@@ -12,7 +12,7 @@ redirect_from:
 Education Experience
 ======
 | Year | Education | College | School |
-| ------ | ------------- | :-------------------------: | :-------------------------: |
+| --- | --- | :---: | :---: |
 | 2017 - 2020 | senior high school student | —————   |—————|
 | 2020 - 2024 | undergraduate student | College of Computer Science and Technology | Fudan University |  
 | 2024 - now | postgraduate student | College of Computer Science and Technology | Fudan University |  
