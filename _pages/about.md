@@ -17,6 +17,13 @@ Education Experience
 | 2020 - 2024 | undergraduate student | College of Computer Science and Technology | Fudan University |  
 | 2024 - now | postgraduate student | College of Computer Science and Technology | Fudan University |  
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('.align-left').style.textAlign = 'left';
+  document.querySelector('.align-center').style.textAlign = 'center';
+  document.querySelector('.align-right').style.textAlign = 'right';
+});
+</script>
 
 
 
