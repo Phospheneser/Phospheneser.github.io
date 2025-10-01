@@ -1,6 +1,27 @@
 {
   "publications": [
     {
+      "title": "MOSS-Speech: Towards True Speech-to-Speech Models Without Text Guidance",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>SLM Team</strong>",
+      "description": "我们的方法结合了 基于模态的层拆分架构 与 冻结预训练策略，在利用预训练文本大型语言模型的推理与知识能力的同时，扩展了原生语音处理能力。实验结果显示，该模型在语音问答任务上取得了最先进的性能，并在语音到语音生成任务中，相较于文本引导系统仍保持竞争力。",
+      "links": [
+        {
+          "type": "论文",
+          "url": "https://github.com/OpenMOSS/MOSS-Speech/blob/main/papers/MOSS-Speech%20Technical%20Report.pdf"
+        },
+        {
+          "type": "代码",
+          "url": "https://github.com/OpenMOSS/MOSS-Speech"
+        },
+        {
+          "type": "Hugging Face",
+          "url": "https://huggingface.co/OpenMoss/MOSS-Speech"
+        }
+      ],
+      "image": "./media/MOSS-Speech.png"
+    },
+    {
       "title": "SpeechGPT 2.0-预览版",
       "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>OpenMOSS Team</strong>",
@@ -35,8 +56,8 @@
       "description": "一个专门用于长上下文安全对齐的数据集（8 个任务，约 17K 样本，平均 40.9K 令牌）和对应的评测基准 LongSafetyBench，实验证明在长上下文中进行安全微调可提升模型的安全性而不损失其通用能力。",
       "links": [
         {"type": "论文", "url": "https://arxiv.org/abs/2411.06899v1"},
-        {"type": "Hugging Face", "url": "https://huggingface.co/datasets/LutherXD/LongSafetyBench"},
-        {"type": "代码", "url": "https://github.com/OpenMOSS/LongSafety"}
+        {"type": "代码", "url": "https://github.com/OpenMOSS/LongSafety"},
+        {"type": "Hugging Face", "url": "https://huggingface.co/datasets/LutherXD/LongSafetyBench"}
       ],
       "image": "./media/LSB.jpg"
     },

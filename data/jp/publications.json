@@ -1,8 +1,29 @@
 {
   "publications": [
     {
+      "title": "MOSS-Speech: テキストガイダンスなしの真の音声対話モデルを目指して",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>SLM Team</strong>",
+      "description": "当手法は、モダリティベースのレイヤ分割アーキテクチャと固定化事前学習戦略を組み合わせ、事前学習済みテキスト大規模言語モデルの推論能力と知識を活用しつつ、本来の音声処理能力を拡張します。実験結果から、本モデルは音声質問応答タスクにおいて最高の性能を達成し、音声対話生成タスクにおいてもテキスト誘導型システムと比較して遜色ない競争力を維持することが示されました。",
+      "links": [
+        {
+          "type": "論文",
+          "url": "https://github.com/OpenMOSS/MOSS-Speech/blob/main/papers/MOSS-Speech%20Technical%20Report.pdf"
+        },
+        {
+          "type": "コード",
+          "url": "https://github.com/OpenMOSS/MOSS-Speech"
+        },
+        {
+          "type": "Hugging Face",
+          "url": "https://huggingface.co/OpenMoss/MOSS-Speech"
+        }
+      ],
+      "image": "./media/MOSS-Speech.png"
+    },
+    {
       "title": "SpeechGPT 2.0 - プレビュー版",
-      "conference": "<a href='https://www.open-moss.com/jp/'>OpenMOSS</a>",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>OpenMOSS Team</strong>",
       "description": "SpeechGPT 2.0-previewは、コンテキストインテリジェンスに向けた最初の擬人化リアルタイム対話システムです。数百万時間の音声データで学習したエンドツーエンドの音声大規模モデルとして、擬人化された話し言葉表現と100ミリ秒未満の低遅延応答を特徴とし、自然で流暢なリアルタイム割り込み対話をサポートします。",
       "links": [
@@ -35,8 +56,8 @@
       "description": "本論文はLongSafetyを紹介する。これは長文脈LLM向けに設計された安全性アラインメントデータセット（8つのタスク、約17Kサンプル、平均40.9Kトークン）とベンチマークLongSafetyBenchを含み、これを用いたファインチューニングが汎用能力を損なうことなく長文脈での安全性を改善することを示す。",
       "links": [
         {"type": "論文", "url": "https://arxiv.org/abs/2411.06899v1"},
-        {"type": "Hugging Face", "url": "https://huggingface.co/datasets/LutherXD/LongSafetyBench"},
-        {"type": "コード", "url": "https://github.com/OpenMOSS/LongSafety"}
+        {"type": "コード", "url": "https://github.com/OpenMOSS/LongSafety"},
+        {"type": "Hugging Face", "url": "https://huggingface.co/datasets/LutherXD/LongSafetyBench"}
       ],
       "image": "./media/LSB.jpg"
     },

@@ -1,6 +1,10 @@
 {
   "news": [
     {
+      "date": "2026.10.01",
+      "content": "MOSS-Speech リリース！"
+    },
+    {
       "date": "2026.01.26",
       "content": "SpeechGPT-2-preview リリース！"
     },

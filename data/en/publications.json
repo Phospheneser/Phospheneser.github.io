@@ -1,8 +1,29 @@
 {
   "publications": [
     {
+      "title": "MOSS-Speech: Towards True Speech-to-Speech Models Without Text Guidance",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>SLM Team</strong>",
+      "description": "Our method combines a modality-based layer splitting architecture with a frozen pre-training strategy, leveraging the inference and knowledge capabilities of pre-trained text large language models while extending the native speech processing capabilities. Experimental results show that the model achieves the best performance on speech question-answering tasks and remains competitive in speech-to-speech generation tasks compared to text-guided systems.",
+      "links": [
+        {
+          "type": "Paper",
+          "url": "https://github.com/OpenMOSS/MOSS-Speech/blob/main/papers/MOSS-Speech%20Technical%20Report.pdf"
+        },
+        {
+          "type": "Code",
+          "url": "https://github.com/OpenMOSS/MOSS-Speech"
+        },
+        {
+          "type": "Hugging Face",
+          "url": "https://huggingface.co/OpenMoss/MOSS-Speech"
+        }
+      ],
+      "image": "./media/MOSS-Speech.png"
+    },
+    {
       "title": "SpeechGPT 2.0 - Preview Version",
-      "conference": "<a href='https://www.open-moss.com/en/'>OpenMOSS</a>",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>OpenMOSS Team</strong>",
       "description": "SpeechGPT 2.0-preview is the first anthropomorphic real-time interactive system we launched towards contextual intelligence. As an end-to-end speech large model trained on millions of hours of voice data, it features anthropomorphic spoken expression and sub-100ms low-latency response, supporting natural and fluent real-time interruption interaction.",
       "links": [
@@ -35,8 +56,8 @@
       "description": "This paper introduces LongSafety, a specialized safety alignment dataset for long-context LLMs (spanning 8 tasks, ~17K samples, ~40.9K tokens average) along with a benchmark LongSafetyBench, and shows that fine-tuning on it improves safety in long contexts without degrading general capabilities.",
       "links": [
         {"type": "Paper", "url": "https://arxiv.org/abs/2411.06899v1"},
-        {"type": "Hugging Face", "url": "https://huggingface.co/datasets/LutherXD/LongSafetyBench"},
-        {"type": "Code", "url": "https://github.com/OpenMOSS/LongSafety"}
+        {"type": "Code", "url": "https://github.com/OpenMOSS/LongSafety"},
+        {"type": "Hugging Face", "url": "https://huggingface.co/datasets/LutherXD/LongSafetyBench"}
       ],
       "image": "./media/LSB.jpg"
     },
