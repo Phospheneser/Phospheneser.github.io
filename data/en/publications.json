@@ -11,10 +11,14 @@
         {
           "type": "Paper",
 <<<<<<< HEAD
+<<<<<<< HEAD
           "url": "https://arxiv.org/abs/2510.00499",
 =======
           "url": "https://github.com/OpenMOSS/MOSS-Speech/blob/main/papers/MOSS-Speech%20Technical%20Report.pdf",
 >>>>>>> 2bde591 (feat: customization)
+=======
+          "url": "https://arxiv.org/abs/2510.00499",
+>>>>>>> 783747f (feat: update link of MOSS-Speech paper)
           "icon": "./media/link_icon/arxiv.svg"
         },
         {
