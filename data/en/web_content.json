@@ -1,8 +1,13 @@
 {
   "navbar_title": "Hello World!",
   "navbar_home": "Home",
+  "navbar_about": "About Me",
+  "navbar_news": "News",
+  "navbar_publications": "Publications",
+  "navbar_projects": "Projects",
+  "navbar_blogs": "Blogs",
   "language": "Language",
-  "title": "Add your homepage headline here.",
-  "subtitle": "Use this subtitle to share a short mission statement or tagline.",
+  "title": "Dream Big, Work Hard, Stay Humble.",
+  "subtitle": "——Be Versatile, Be Great.",
   "footer": "© 2024 Phospheneser. All rights reserved."
 }
