@@ -3,36 +3,118 @@
   "title": "📑 Publications",
   "publications": [
     {
-      "title": "Placeholder Title",
-      "conference": "Placeholder Venue",
-      "authors": "Author A, Author B",
-      "date": "2024",
-      "description": "Placeholder description for a publication.",
-      "highlights": [
-        "Key insight about the proposed method.",
-        "Benchmark improvement over prior art."
-      ],
-      "tags": [
-        "AI"
-      ],
+      "title": "MOSS-Speech: Towards True Speech-to-Speech Models Without Text Guidance",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>SLM Team</strong>",
+      "description": "Our method combines a modality-based layer splitting architecture with a frozen pre-training strategy, leveraging the inference and knowledge capabilities of pre-trained text large language models while extending the native speech processing capabilities. Experimental results show that the model achieves the best performance on speech question-answering tasks and remains competitive in speech-to-speech generation tasks compared to text-guided systems.",
       "links": [
         {
           "type": "Paper",
-          "url": "https://www.bilibili.com/",
-          "icon": "./media/link_icon/demo.svg"
+          "url": "https://github.com/OpenMOSS/MOSS-Speech/blob/main/papers/MOSS-Speech%20Technical%20Report.pdf",
+          "icon": "./media/link_icon/arxiv.svg"
         },
         {
-          "type": "arXiv",
-          "url": "https://arxiv.org/abs/1234.5678",
-          "icon": "./media/link_icon/demo.svg"
+          "type": "Code",
+          "url": "https://github.com/OpenMOSS/MOSS-Speech",
+          "icon": "./media/link_icon/github.svg"
         },
         {
-          "type": "Video",
-          "url": "https://youtube.com/watch?v=placeholder",
-          "icon": "./media/link_icon/demo.svg",
-          "dark_icon": "./media/link_icon/pdf.svg"
+          "type": "Hugging Face",
+          "url": "https://huggingface.co/OpenMoss/MOSS-Speech",
+          "icon": "./media/link_icon/hf.svg"
         }
-      ]
+      ],
+      "image": "./media/publications/moss-speech-model.png"
+    },
+    {
+      "title": "SpeechGPT 2.0 - Preview Version",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>OpenMOSS Team</strong>",
+      "description": "SpeechGPT 2.0-preview is the first anthropomorphic real-time interactive system we launched towards contextual intelligence. As an end-to-end speech large model trained on millions of hours of voice data, it features anthropomorphic spoken expression and sub-100ms low-latency response, supporting natural and fluent real-time interruption interaction.",
+      "links": [
+        {
+          "type": "Blog",
+          "url": "https://www.open-moss.com/en/speechgpt2-preview/",
+          "icon": "./media/link_icon/blog.svg"
+        },
+        {
+          "type": "Code",
+          "url": "https://github.com/OpenMOSS/SpeechGPT-2.0-preview",
+          "icon": "./media/link_icon/github.svg"
+        }
+      ],
+      "image": "./media/publications/speechgpt2-preview.png"
+    },
+    {
+      "title": "VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks",
+      "conference": "CVPR'25 (1 of 19), ICCV'25",
+      "authors": "Shiduo Zhang, <strong>Zhe Xu</strong>, Peiju Liu, Xiaopeng Yu, Yuan Li, Qinghui Gao, Zhaoye Fei, Zhangyue Yin, Zuxuan Wu, Yu-Gang Jiang & Xipeng Qiu",
+      "description": "\"First benchmark for VLA. Not only for evaluation, definition matters most.\"",
+      "links": [
+        {
+          "type": "Paper",
+          "url": "https://arxiv.org/abs/2412.18194",
+          "icon": "./media/link_icon/arxiv.svg"
+        },
+        {
+          "type": "Project Page",
+          "url": "https://vlabench.github.io/",
+          "icon": "./media/link_icon/project.svg"
+        },
+        {
+          "type": "Code",
+          "url": "https://github.com/OpenMOSS/VLABench",
+          "icon": "./media/link_icon/github.svg"
+        }
+      ],
+      "image": "./media/publications/vlabench-benchmark.jpg"
+    },
+    {
+      "title": "LongSafety: Enhance Safety for Long-Context LLMs",
+      "authors": "Mianqiu Huang, Xiaoran Liu, Shaojun Zhou, Mozhi Zhang, Chenkun Tan, Pengyu Wang, Qipeng Guo, <strong>Zhe Xu</strong>, Linyang Li, Zhikai Lei, Linlin Li, Qun Liu, Yaqian Zhou, Xipeng Qiu, Xuanjing Huang",
+      "description": "This paper introduces LongSafety, a specialized safety alignment dataset for long-context LLMs (spanning 8 tasks, ~17K samples, ~40.9K tokens average) along with a benchmark LongSafetyBench, and shows that fine-tuning on it improves safety in long contexts without degrading general capabilities.",
+      "links": [
+        {
+          "type": "Paper",
+          "url": "https://arxiv.org/abs/2411.06899v1",
+          "icon": "./media/link_icon/arxiv.svg"
+        },
+        {
+          "type": "Code",
+          "url": "https://github.com/OpenMOSS/LongSafety",
+          "icon": "./media/link_icon/github.svg"
+        },
+        {
+          "type": "Hugging Face",
+          "url": "https://huggingface.co/datasets/LutherXD/LongSafetyBench",
+          "icon": "./media/link_icon/hf.svg"
+        }
+      ],
+      "image": "./media/publications/longsafety-benchmark.jpg"
+    },
+    {
+      "title": "DetectiveQA: Evaluating Long-Context Reasoning on Detective Novels",
+      "conference": "ICLR2025",
+      "authors": "<strong>Zhe Xu</strong>, Jiasheng Ye, Xiaoran Liu, Xiangyang Liu, Tianxiang Sun, Zhigeng Liu, Qipeng Guo, Linlin Li, Qun Liu, Xuanjing Huang, Xipeng Qiu",
+      "description": "DetectiveQA is a narrative reasoning benchmark based on detective novels with very long contexts (on average over 100,000 tokens), offering 1,200 Chinese-English question-answer pairs with detailed reasoning chains, designed to test LLMs’ abilities in long-text comprehension, evidence retrieval, and reasoning, and demonstrating that current long-context LLMs still struggle significantly with dependency questions that truly require full context.",
+      "links": [
+        {
+          "type": "Paper",
+          "url": "https://arxiv.org/abs/2409.02465",
+          "icon": "./media/link_icon/arxiv.svg"
+        },
+        {
+          "type": "Code",
+          "url": "https://github.com/Phospheneser/DetectiveQA",
+          "icon": "./media/link_icon/github.svg"
+        },
+        {
+          "type": "Hugging Face",
+          "url": "https://huggingface.co/datasets/Phospheneser/DetectiveQA",
+          "icon": "./media/link_icon/hf.svg"
+        }
+      ],
+      "image": "./media/publications/detectiveqa-benchmark.jpg"
     }
   ]
 }

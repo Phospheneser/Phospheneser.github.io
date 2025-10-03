@@ -1,8 +1,13 @@
 {
   "navbar_title": "你好！世界！",
   "navbar_home": "首页",
+  "navbar_about": "关于我",
+  "navbar_news": "新闻",
+  "navbar_publications": "出版物",
+  "navbar_projects": "项目",
+  "navbar_blogs": "博客",
   "language": "语言",
-  "title": "在此填写你的主页标题。",
-  "subtitle": "这里可以写一句简短的介绍或口号。",
+  "title": "梦想远大，努力工作，保持谦逊。",
+  "subtitle": "——多才多艺，成就伟大。",
   "footer": "© 2024 Phospheneser。保留所有权利。"
 }
