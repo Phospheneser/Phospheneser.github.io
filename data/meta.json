@@ -45,9 +45,18 @@
             "templateOptions": {
                 "mediaField": "image",
                 "titleField": "title",
-                "subtitleFields": ["conference"],
-                "metaFields": ["authors", "date"],
-                "descriptionFields": ["description", "abstract", "content"],
+                "subtitleFields": [
+                    "conference"
+                ],
+                "metaFields": [
+                    "authors",
+                    "date"
+                ],
+                "descriptionFields": [
+                    "description",
+                    "abstract",
+                    "content"
+                ],
                 "detailsField": "highlights",
                 "tagsField": "tags",
                 "placeholderLabel": "Publication Preview"
@@ -66,9 +75,15 @@
             "templateOptions": {
                 "mediaField": "image",
                 "titleField": "title",
-                "subtitleFields": ["date"],
-                "metaFields": ["authors"],
-                "descriptionFields": ["description", "summary", "content"],
+                "badgeField": "date",
+                "metaFields": [
+                    "authors"
+                ],
+                "descriptionFields": [
+                    "description",
+                    "summary",
+                    "content"
+                ],
                 "detailsField": "stack",
                 "tagsField": "tags",
                 "placeholderLabel": "Project Preview"
@@ -86,14 +101,26 @@
             "templateOptions": {
                 "mediaField": "image",
                 "titleField": "title",
-                "subtitleFields": ["subtitle"],
-                "metaFields": ["post_time", "author"],
+                "subtitleFields": [
+                    "subtitle"
+                ],
+                "metaFields": [
+                    "post_time",
+                    "author"
+                ],
                 "badgeFields": [],
                 "badgeSeparator": " · ",
-                "descriptionFields": ["summary", "excerpt", "description", "content"],
+                "descriptionFields": [
+                    "summary",
+                    "excerpt",
+                    "description",
+                    "content"
+                ],
                 "tagsField": "tags",
                 "placeholderLabel": "Media Placeholder",
-                "primaryLink": { "type": "blogSlug" },
+                "primaryLink": {
+                    "type": "blogSlug"
+                },
                 "actions": [
                     {
                         "type": "readMore",
@@ -220,9 +247,9 @@
             }
         },
         {
-            "id": "academic-service",
+            "id": "education-experience",
             "enabled": true,
-            "dataSource": "academic_service",
+            "dataSource": "education_experience",
             "itemType": "timeline",
             "background": "default",
             "singlePage": {
@@ -292,7 +319,7 @@
         "publications": "No publications yet.",
         "projects": "No projects available.",
         "blogs": "No blog posts yet.",
-        "academic-service": "No academic service records yet."
+        "education-experience": "No education or internship records yet."
     },
     "themes": {
         "primary": "#3273dc",
