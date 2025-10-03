@@ -1,7 +1,15 @@
 {
   "navbar_title": "こんにちは、世界！",
   "navbar_home": "ホーム",
+  "navbar_about": "私について",
+  "navbar_news": "ニュース",
+  "navbar_publications": "出版物",
+  "navbar_projects": "プロジェクト",
+  "navbar_blogs": "ブログ",
   "language": "言語",
+  "english": "English",
+  "chinese": "中文",
+  "japanese": "日本語",
   "title": "大きな夢を持ち、懸命に働き、謙虚に。",
   "subtitle": "——多才多能で偉大になる。",
   "footer": "© 2024 Phospheneser. All rights reserved."
