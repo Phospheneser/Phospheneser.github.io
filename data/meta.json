@@ -75,7 +75,11 @@
             "templateOptions": {
                 "mediaField": "image",
                 "titleField": "title",
+<<<<<<< HEAD
                 "subtitleFields": "date",
+=======
+                "badgeField": "date",
+>>>>>>> 2bde591 (feat: customization)
                 "metaFields": [
                     "authors"
                 ],
