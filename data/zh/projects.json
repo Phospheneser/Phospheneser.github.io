@@ -65,8 +65,12 @@
         {
           "type": "代码",
           "url": "https://github.com/Fudan-EGA/DisPlay/tree/dev?tab=readme-ov-file",
+<<<<<<< HEAD
           "icon": "./media/link_icon/github.svg",
           "dark_icon": "./media/link_icon/github_dark.png"
+=======
+          "icon": "./media/link_icon/github.svg"
+>>>>>>> 3a22351 (feat: customization)
         }
       ]
     },
