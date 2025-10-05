@@ -10,15 +10,7 @@
       "links": [
         {
           "type": "Paper",
-<<<<<<< HEAD
-<<<<<<< HEAD
           "url": "https://arxiv.org/abs/2510.00499",
-=======
-          "url": "https://github.com/OpenMOSS/MOSS-Speech/blob/main/papers/MOSS-Speech%20Technical%20Report.pdf",
->>>>>>> 2bde591 (feat: customization)
-=======
-          "url": "https://arxiv.org/abs/2510.00499",
->>>>>>> 783747f (feat: update link of MOSS-Speech paper)
           "icon": "./media/link_icon/arxiv.svg"
         },
         {
@@ -30,7 +22,6 @@
           "type": "Hugging Face",
           "url": "https://huggingface.co/OpenMoss/MOSS-Speech",
           "icon": "./media/link_icon/hf.svg"
-<<<<<<< HEAD
         },
         {
           "type": "online demo",
@@ -41,8 +32,6 @@
           "type": "vedio demo",
           "url": "https://moss-speech.open-moss.com/",
           "icon": "./media/link_icon/vedio_demo.svg"
-=======
->>>>>>> 2bde591 (feat: customization)
         }
       ],
       "image": "./media/publications/moss-speech-model.png"
