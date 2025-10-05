@@ -2,11 +2,11 @@
   "nav_label": "Projects",
   "title": "⚙️ Projects",
   "projects": [
-      {
+    {
       "title": "Personal Academic Homepage Template",
       "date": "2025.9-2024.10",
       "authors": "<strong>Xu Zhe</strong>, codex",
-      "description": "Fudan University RM Team's EGA series auto-aiming code, including auto-aim, prediction, ballistic compensation, etc., developed based on the <a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a> framework. The team won the 1v1 championship at the Shanghai Station that year and received the first prize in the 3v3 competition (non-top-tier division) after a fierce battle against Jiao Long in the quarter-finals.",
+      "description": "An open-source personal academic homepage template built around configuration-first and modular design principles. It supports multilingual content, plugin extensions, and a unified rendering logic. By simply editing JSON configuration files, you can flexibly manage navigation, sections, and content without touching any HTML. Optimized for both desktop and mobile, this template is a powerful tool for creating clean, elegant, and highly extensible academic websites.",
       "image": "./media/projects/academic-homepage-template.jpg",
       "links": [
         {
