@@ -3,6 +3,25 @@
   "title": "⚙️ 项目",
   "projects": [
     {
+      "title": "个人学术网站模板",
+      "date": "2025.9-2024.10",
+      "authors": "<strong>徐哲</strong>，codex",
+      "description": "复旦大学RM战队EGA全系列自瞄代码，包括自瞄、预测、弹道补偿等，基于<a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a>框架开发,最终战队在当年上海站荣获1v1冠军，并在3v3八强血战交龙获得3v3对抗赛非甲级队伍一等奖",
+      "image": "./media/projects/academic-homepage-template.jpg",
+      "links": [
+        {
+          "type": "代码",
+          "url": "https://github.com/Phospheneser/Phospheneser-awesome-academic-template",
+          "icon": "./media/link_icon/github.svg"
+        },
+        {
+          "type": "演示网站",
+          "url": "https://phospheneser.github.io/Phospheneser-awesome-academic-template/",
+          "icon": "./media/link_icon/website.svg"
+        }
+      ]
+    },
+    {
       "title": "RM全系列自瞄代码",
       "date": "2024.10-2024.12",
       "authors": "<strong>徐哲</strong>, 石青云, 苏城",
