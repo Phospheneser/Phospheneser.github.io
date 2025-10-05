@@ -1,5 +1,60 @@
 {
   "nav_label": "Education & Internships",
-  "title": "Education & Internships",
-  "education_experience": []
+  "title": "Educational Background and Internship Experience",
+  "education_experience": [
+    {
+      "title": "Education"
+    },
+    {
+      "date": "Sep 2020 – Jun 2024",
+      "title": "Bachelor's Degree",
+      "org": "Fudan University",
+      "content": [
+        "Pursued a Bachelor's degree in the School of Computer Science, majoring in Artificial Intelligence."
+      ]
+    },
+    {
+      "date": "Sep 2024 – Present",
+      "title": "Master's Student",
+      "org": "Fudan University",
+      "content": [
+        "Pursuing a Master's degree with a research focus on Natural Language Processing and Artificial Intelligence."
+      ]
+    },
+    {
+      "title": "Internships"
+    },
+    {
+      "date": "Jul 2023 – Oct 2023",
+      "title": "Algorithm Intern",
+      "org": "No. 8 Institute of CNNC",
+      "content": [
+        "Participated in a clean-energy large model project, responsible for RLHF fine-tuning tasks."
+      ]
+    },
+    {
+      "date": "Jan 2024 – Mar 2024",
+      "title": "Algorithm Intern",
+      "org": "NetEase",
+      "content": [
+        "Developed an NPC interaction demo driven by large language models, exploring AI applications in gaming."
+      ]
+    },
+    {
+      "date": "Mar 2024 – Present",
+      "title": "Research Assistant",
+      "org": "FLNLP Lab",
+      "content": [
+        "Engaged in academic research projects focused on natural language generation and understanding."
+      ]
+    },
+    {
+      "date": "Apr 2025 – Present",
+      "title": "Algorithm Research Intern",
+      "org": "Moss Intelligence / SII",
+      "content": [
+        "Involved in large-scale speech-language model development and optimization."
+      ]
+    }
+  ]
 }

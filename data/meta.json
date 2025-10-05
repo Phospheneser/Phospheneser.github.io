@@ -141,6 +141,18 @@
                 "description"
             ],
             "template": "timeline"
+        },
+        "experience": {
+            "requiredKeys": [
+                "title"
+            ],
+            "optionalKeys": [
+                "date",
+                "org",
+                "description",
+                "content"
+            ],
+            "template": "experience"
         }
     },
     "sections": [
@@ -250,7 +262,7 @@
             "id": "education-experience",
             "enabled": true,
             "dataSource": "education_experience",
-            "itemType": "timeline",
+            "itemType": "experience",
             "background": "default",
             "singlePage": {
                 "enabled": true,
