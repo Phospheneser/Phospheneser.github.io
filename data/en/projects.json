@@ -12,26 +12,8 @@
         {
           "type": "Code",
           "url": "https://github.com/Phospheneser/Phospheneser-awesome-academic-template",
-          "icon": "./media/link_icon/github.svg"
-        },
-        {
-          "type": "Demo Page ",
-          "url": "https://phospheneser.github.io/Phospheneser-awesome-academic-template/",
-          "icon": "./media/link_icon/website.svg"
-        }
-      ]
-    },
-    {
-      "title": "Personal Academic Homepage Template",
-      "date": "2025.9-2024.10",
-      "authors": "<strong>Xu Zhe</strong>, codex",
-      "description": "Fudan University RM Team's EGA series auto-aiming code, including auto-aim, prediction, ballistic compensation, etc., developed based on the <a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a> framework. The team won the 1v1 championship at the Shanghai Station that year and received the first prize in the 3v3 competition (non-top-tier division) after a fierce battle against Jiao Long in the quarter-finals.",
-      "image": "./media/projects/academic-homepage-template.jpg",
-      "links": [
-        {
-          "type": "Code",
-          "url": "https://github.com/Phospheneser/Phospheneser-awesome-academic-template",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         },
         {
           "type": "Demo Page ",
@@ -83,7 +65,8 @@
         {
           "type": "Code",
           "url": "https://github.com/Fudan-EGA/DisPlay/tree/dev?tab=readme-ov-file",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         }
       ]
     },
