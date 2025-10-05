@@ -3,24 +3,40 @@
   "title": "🔥 ニュース",
   "news": [
     {
+      "date": "2026.10.04",
+      "content": "<a href=\"https://github.com/Phospheneser/Phospheneser-awesome-academic-template\">Phospheneser-awesome-academic-template</a> がリリースされました！"
+    },
+    {
       "date": "2026.10.01",
-      "content": "MOSS-Speech リリース！"
+      "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> がリリースされました！"
     },
     {
       "date": "2026.01.26",
-      "content": "SpeechGPT-2-preview リリース！"
+      "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> がリリースされました！"
     },
     {
       "date": "2025.06.26",
-      "content": "VLABench が ICCV 2025 に採択されました！"
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> が <a href=\"https://iccv.thecvf.com/\">ICCV 2025</a> に採択されました！"
     },
     {
       "date": "2025.03.05",
-      "content": "DetectiveQA が Reasoning and Planning for LLMs @ ICLR 2025 に採択されました！"
+      "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> が <a href=\"https://workshop-llm-reasoning-planning.github.io/\">Reasoning and Planning for LLMs</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a> に採択されました！"
+    },
+    {
+      "date": "2025.03.05",
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> が <a href=\"https://iclr.cc/virtual/2025/workshop/23977\">Generative Models for Robot Learning</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a> に採択されました！"
+    },
+    {
+      "date": "2025.02.26",
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> は <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> の PC によって、著者リストに含まれていたレビュワーがレビューを提出し忘れたため <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">デスクリジェクト</a> されました。しかし、PC に問い合わせたところ、本来の判定は <strong>採択（Accept）</strong> であることが判明しました！結果として、CVPR に採択された論文の中で、我々の論文は 19 本中唯一のデスクリジェクトとなりました（笑）。"
+    },
+    {
+      "date": "2025.01.13",
+      "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> がリリースされました！"
     },
     {
       "date": "2024.12.25",
-      "content": "VLABench プレビュー版がリリースされました！"
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> プレビュー版がリリースされました！"
     }
   ]
 }
