@@ -261,7 +261,11 @@
             "id": "education-experience",
             "enabled": true,
             "dataSource": "education_experience",
+<<<<<<< HEAD
             "itemType": "experience",
+=======
+            "itemType": "timeline",
+>>>>>>> 09d83257605aabdb123a33cfa8383109e3097407
             "background": "default",
             "singlePage": {
                 "enabled": true,
