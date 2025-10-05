@@ -22,6 +22,16 @@
           "type": "Hugging Face",
           "url": "https://huggingface.co/OpenMoss/MOSS-Speech",
           "icon": "./media/link_icon/hf.svg"
+        },
+        {
+          "type": "online demo",
+          "url": "https://huggingface.co/spaces/fnlp/MOSS-Speech",
+          "icon": "./media/link_icon/robot.svg"
+        },
+        {
+          "type": "vedio demo",
+          "url": "https://moss-speech.open-moss.com/",
+          "icon": "./media/link_icon/vedio_demo.svg"
         }
       ],
       "image": "./media/publications/moss-speech-model.png"
