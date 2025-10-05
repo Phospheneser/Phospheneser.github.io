@@ -8,15 +8,15 @@
         {
             "date": "2020.09 - 2024.06",
             "title": "本科",
-            "org": "复旦大学",
+            "org": "[复旦大学](https://www.fudan.edu.cn/)",
             "content": [
-                "攻读学士学位，于计算机科学与技术学院主修人工智能专业"
+                "攻读学士学位，于[计算机科学与技术学院](https://cs.fudan.edu.cn/)主修人工智能专业"
             ]
         },
         {
             "date": "2024.09 - 至今",
             "title": "硕士研究生",
-            "org": "复旦大学",
+            "org": "[复旦大学](https://www.fudan.edu.cn/)",
             "content": [
                 "攻读硕士学位，专注于自然语言处理与人工智能方向的研究"
             ]
@@ -27,15 +27,15 @@
         {
             "date": "2023.07 - 2023.10",
             "title": "算法实习生",
-            "org": "中核八所",
+            "org": "[核工业第八研究所](https://www.cnnpn.cn/article/21068.html)",
             "content": [
-                "参与清洁能源大模型项目，负责RLHF微调相关工作"
+                "参与清洁能源大模型项目，负责 [RLHF 微调](https://huggingface.co/docs/transformers/main/en/conceptual/rhlf) 相关工作"
             ]
         },
         {
             "date": "2024.01 - 2024.03",
             "title": "算法实习生",
-            "org": "网易雷火",
+            "org": "[网易雷火](https://leihuo.163.com/#/)",
             "content": [
                 "实现大语言模型驱动的NPC交互Demo，探索AI在游戏中的应用"
             ]
@@ -43,7 +43,7 @@
         {
             "date": "2024.03 - 至今",
             "title": "研究助理",
-            "org": "复旦大学自然语言处理实验室",
+            "org": "[复旦大学自然语言处理实验室（FNLP）](https://nlp.fudan.edu.cn/)",
             "content": [
                 "参与实验室科研项目，专注于自然语言生成与理解相关研究"
             ]
@@ -51,7 +51,7 @@
         {
             "date": "2025.04 - 至今",
             "title": "算法研究实习生",
-            "org": "模思智能 / SII",
+            "org": "[模思智能](http://mosi-ai.com/)([SII](https://www.sii.edu.cn/))",
             "content": [
                 "参与大规模语音语言模型的研发与优化工作"
             ]
