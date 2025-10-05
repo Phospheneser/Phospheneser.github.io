@@ -6,7 +6,7 @@
       "title": "个人学术网站模板",
       "date": "2025.9-2024.10",
       "authors": "<strong>徐哲</strong>，codex",
-      "description": "复旦大学RM战队EGA全系列自瞄代码，包括自瞄、预测、弹道补偿等，基于<a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a>框架开发,最终战队在当年上海站荣获1v1冠军，并在3v3八强血战交龙获得3v3对抗赛非甲级队伍一等奖",
+      "description": "一个开源的个人学术主页模板。它以配置优先、模块化设计为核心，支持多语言、插件扩展和统一的内容渲染逻辑。你只需通过修改 JSON 配置文件，就可以灵活管理导航、板块、内容，而无需直接编辑 HTML。模板对桌面／移动端均有良好适配，是构建简洁、高可扩展性学术主页的利器。",
       "image": "./media/projects/academic-homepage-template.jpg",
       "links": [
         {
