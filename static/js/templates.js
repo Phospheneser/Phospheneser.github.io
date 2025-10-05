@@ -301,17 +301,16 @@
             `;
 
                 header.innerHTML = `
-                <span class="exp-date" style="min-width:${maxDateWidth + 8}px; display:inline-block;">${date}</span>
-                <span class="exp-title" style="min-width:${maxTitleWidth + 8}px; display:inline-block;">${title}</span>
-                <span class="exp-org" style="min-width:${maxOrgWidth + 8}px; display:inline-block;">${org}</span>
+                <span class="exp-date" style="min-width:${maxDateWidth}px; display:inline-block;">${date}</span>
+                <span class="exp-title" style="min-width:${maxTitleWidth}px; display:inline-block;">${title}</span>
+                <span class="exp-org" style="min-width:${maxOrgWidth}px; display:inline-block;">${org}</span>
             `;
                 div.appendChild(header);
 
                 // -------- 内容部分 --------
                 if (Array.isArray(content) && content.length > 0) {
                     const totalOffset =
-                        2 * 16 + // margin-left: 2em ≈ 32px
-                        maxDateWidth + 20; // date列 + gap（轻度缩进）
+                        maxDateWidth * 0.6; // date列 + gap（轻度缩进）
 
                     const ul = document.createElement('ul');
                     ul.className = 'experience-content';
