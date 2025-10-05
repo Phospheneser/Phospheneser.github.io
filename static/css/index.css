@@ -139,6 +139,7 @@ html {
 }
 
 @media screen and (min-width: 1024px) {
+
   .navbar-menu #language-dropdown .navbar-dropdown .navbar-item,
   .navbar-menu.is-active #language-dropdown .navbar-dropdown .navbar-item {
     color: #363636 !important;
@@ -2150,4 +2151,32 @@ footer.footer {
   #language-dropdown .navbar-link #lang-label {
     margin-right: 20px !important;
   }
+}
+
+.text-homepage-1 a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+/* 悬停效果：蓝色文字 + 实线下划线 */
+.text-homepage-1 a:hover {
+  color: #007bff;
+  border-bottom: 1px solid #007bff;
+}
+
+/* 访问过的链接可选微弱淡化 */
+.text-homepage-1 a:visited {
+  opacity: 0.9;
+}
+
+/* 暗色模式适配 */
+body.dark-mode .text-homepage-1 a {
+  border-bottom: 1px dashed rgb(255, 255, 255, 0.4);
+}
+
+body.dark-mode .text-homepage-1 a:hover {
+  color: #66aaff;
+  border-bottom: 1px solid #66aaff;
 }
