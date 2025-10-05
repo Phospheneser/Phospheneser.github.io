@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "nav_label": "学歴・インターンシップ",
   "title": "学歴およびインターンシップ経験",
   "education_experience": [
@@ -59,9 +58,3 @@
     }
   ]
 }
-=======
-  "nav_label": "学歴・インターン",
-  "title": "学歴とインターンシップ",
-  "education_experience": []
-}
->>>>>>> 09d83257605aabdb123a33cfa8383109e3097407

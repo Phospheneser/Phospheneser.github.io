@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "nav_label": "教育与实习",
     "title": "教育背景与实习经历",
     "education_experience": [
@@ -59,9 +58,3 @@
         }
     ]
 }
-=======
-  "nav_label": "教育与实习",
-  "title": "教育背景与实习经历",
-  "education_experience": []
-}
->>>>>>> 09d83257605aabdb123a33cfa8383109e3097407

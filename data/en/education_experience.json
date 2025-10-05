@@ -1,6 +1,5 @@
 {
   "nav_label": "Education & Internships",
-<<<<<<< HEAD
   "title": "Educational Background and Internship Experience",
   "education_experience": [
     {
@@ -59,8 +58,3 @@
     }
   ]
 }
-=======
-  "title": "Education & Internships",
-  "education_experience": []
-}
->>>>>>> 09d83257605aabdb123a33cfa8383109e3097407
