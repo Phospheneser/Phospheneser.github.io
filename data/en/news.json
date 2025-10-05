@@ -3,24 +3,40 @@
   "title": "🔥 News",
   "news": [
     {
+      "date": "2026.10.04",
+      "content": "<a href=\"https://github.com/Phospheneser/Phospheneser-awesome-academic-template\">Phospheneser-awesome-academic-template</a> was released!"
+    },
+    {
       "date": "2026.10.01",
-      "content": "MOSS-Speech was released!"
+      "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> was released!"
     },
     {
       "date": "2026.01.26",
-      "content": "SpeechGPT-2-preview was released!"
+      "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> was released!"
     },
     {
       "date": "2025.06.26",
-      "content": "VLABench was accepted by ICCV 2025!"
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> was accepted by <a href=\"https://iccv.thecvf.com/\">ICCV 2025</a>!"
     },
     {
       "date": "2025.03.05",
-      "content": "DetectiveQA was accepted by Reasoning and Planning for LLMs @ ICLR 2025!"
+      "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> was accepted by <a href=\"https://workshop-llm-reasoning-planning.github.io/\">Reasoning and Planning for LLMs</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a>!"
+    },
+    {
+      "date": "2025.03.05",
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> was accepted by <a href=\"https://iclr.cc/virtual/2025/workshop/23977\">Generative Models for Robot Learning</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a>!"
+    },
+    {
+      "date": "2025.02.26",
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> was <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">desk-rejected</a> by the <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> PC because one of the reviewers on the author list forgot to submit their review. After we emailed the PC to inquire, we learned that our paper had actually been <strong>accepted</strong>! So, among all papers accepted to CVPR, ours was the one of nineteen that got desk-rejected, lol."
+    },
+    {
+      "date": "2025.01.13",
+      "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> was released!"
     },
     {
       "date": "2024.12.25",
-      "content": "VLABench Preview Version was released!"
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> Preview Version was released!"
     }
   ]
 }
