@@ -12,7 +12,8 @@
         {
           "type": "代码",
           "url": "https://github.com/Phospheneser/Phospheneser-awesome-academic-template",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         },
         {
           "type": "演示网站",
@@ -64,7 +65,8 @@
         {
           "type": "代码",
           "url": "https://github.com/Fudan-EGA/DisPlay/tree/dev?tab=readme-ov-file",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         }
       ]
     },

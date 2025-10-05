@@ -16,7 +16,8 @@
         {
           "type": "Code",
           "url": "https://github.com/OpenMOSS/MOSS-Speech",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         },
         {
           "type": "Hugging Face",
@@ -50,7 +51,8 @@
         {
           "type": "Code",
           "url": "https://github.com/OpenMOSS/SpeechGPT-2.0-preview",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         }
       ],
       "image": "./media/publications/speechgpt2-preview.png"
@@ -74,7 +76,8 @@
         {
           "type": "Code",
           "url": "https://github.com/OpenMOSS/VLABench",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         }
       ],
       "image": "./media/publications/vlabench-benchmark.jpg"
@@ -92,7 +95,8 @@
         {
           "type": "Code",
           "url": "https://github.com/OpenMOSS/LongSafety",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         },
         {
           "type": "Hugging Face",
@@ -116,7 +120,8 @@
         {
           "type": "Code",
           "url": "https://github.com/Phospheneser/DetectiveQA",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         },
         {
           "type": "Hugging Face",

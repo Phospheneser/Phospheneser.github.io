@@ -12,26 +12,8 @@
         {
           "type": "コード",
           "url": "https://github.com/Phospheneser/Phospheneser-awesome-academic-template",
-          "icon": "./media/link_icon/github.svg"
-        },
-        {
-          "type": "デモサイト",
-          "url": "https://phospheneser.github.io/Phospheneser-awesome-academic-template/",
-          "icon": "./media/link_icon/website.svg"
-        }
-      ]
-    },
-    {
-      "title": "個人学術ウェブサイトテンプレート",
-      "date": "2025.9-2024.10",
-      "authors": "<strong>徐哲（Xu Zhe）</strong>, codex",
-      "description": "復旦大学RMチームのEGAシリーズオートエイミングコード。自動照準、予測、弾道補正などを含み、<a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a>フレームワークを基に開発。チームは当年の上海ステーションで1対1の部で優勝し、3対3の部では交龍（Jiao Long）との激戦の末、準々決勝進出を果たし、非トップティア部門において一等賞を受賞。",
-      "image": "./media/projects/academic-homepage-template.jpg",
-      "links": [
-        {
-          "type": "コード",
-          "url": "https://github.com/Phospheneser/Phospheneser-awesome-academic-template",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         },
         {
           "type": "デモサイト",
@@ -83,7 +65,8 @@
         {
           "type": "コード",
           "url": "https://github.com/Fudan-EGA/DisPlay/tree/dev?tab=readme-ov-file",
-          "icon": "./media/link_icon/github.svg"
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
         }
       ]
     },
