@@ -3,24 +3,40 @@
   "title": "🔥 新闻",
   "news": [
     {
+      "date": "2026.10.04",
+      "content": "<a href=\"https://github.com/Phospheneser/Phospheneser-awesome-academic-template\">Phospheneser-awesome-academic-template</a> 已发布！"
+    },
+    {
       "date": "2026.10.01",
-      "content": "MOSS-Speech 发布！"
+      "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> 已发布！"
     },
     {
       "date": "2026.01.26",
-      "content": "SpeechGPT-2-preview 发布！"
+      "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> 已发布！"
     },
     {
       "date": "2025.06.26",
-      "content": "VLABench 被 ICCV 2025 录用！"
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> 被 <a href=\"https://iccv.thecvf.com/\">ICCV 2025</a> 录用！"
     },
     {
       "date": "2025.03.05",
-      "content": "DetectiveQA 被 Reasoning and Planning for LLMs @ ICLR 2025 录用！"
+      "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> 被 <a href=\"https://workshop-llm-reasoning-planning.github.io/\">Reasoning and Planning for LLMs</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a> 录用！"
+    },
+    {
+      "date": "2025.03.05",
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> 被 <a href=\"https://iclr.cc/virtual/2025/workshop/23977\">Generative Models for Robot Learning</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a> 录用！"
+    },
+    {
+      "date": "2025.02.26",
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> 因为作者列表中有评审忘记提交评审意见，被 <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> PC <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">desk reject</a>。但在我们邮件询问后，PC 告诉我们论文其实是 <strong>接收</strong> 的！也就是说，在所有被 CVPR 接收的论文中，我们成为了那 1/19 被 desk reject 的论文，lol。"
+    },
+    {
+      "date": "2025.01.13",
+      "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> 已发布！"
     },
     {
       "date": "2024.12.25",
-      "content": "VLABench 预览版本已发布！"
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> 预览版本已发布！"
     }
   ]
 }
