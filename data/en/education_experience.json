@@ -8,15 +8,15 @@
     {
       "date": "Sep 2020 – Jun 2024",
       "title": "Bachelor's Degree",
-      "org": "Fudan University",
+      "org": "[Fudan University](https://www.fudan.edu.cn/)",
       "content": [
-        "Pursued a Bachelor's degree in the School of Computer Science, majoring in Artificial Intelligence."
+        "Pursued a Bachelor's degree at the [School of Computer Science](https://cs.fudan.edu.cn/), majoring in Artificial Intelligence."
       ]
     },
     {
       "date": "Sep 2024 – Present",
       "title": "Master's Student",
-      "org": "Fudan University",
+      "org": "[Fudan University](https://www.fudan.edu.cn/)",
       "content": [
         "Pursuing a Master's degree with a research focus on Natural Language Processing and Artificial Intelligence."
       ]
@@ -27,15 +27,15 @@
     {
       "date": "Jul 2023 – Oct 2023",
       "title": "Algorithm Intern",
-      "org": "No. 8 Institute of CNNC",
+      "org": "[No. 8 Institute of CNNC](https://www.cnnpn.cn/article/21068.html)",
       "content": [
-        "Participated in a clean-energy large model project, responsible for RLHF fine-tuning tasks."
+        "Participated in a clean-energy large model project, responsible for [RLHF fine-tuning](https://huggingface.co/docs/transformers/main/en/conceptual/rhlf) tasks."
       ]
     },
     {
       "date": "Jan 2024 – Mar 2024",
       "title": "Algorithm Intern",
-      "org": "NetEase",
+      "org": "[NetEase Leihuo](https://leihuo.163.com/#/)",
       "content": [
         "Developed an NPC interaction demo driven by large language models, exploring AI applications in gaming."
       ]
@@ -43,7 +43,7 @@
     {
       "date": "Mar 2024 – Present",
       "title": "Research Assistant",
-      "org": "FLNLP Lab",
+      "org": "[Fudan Natural Language Processing Laboratory (FNLP)](https://nlp.fudan.edu.cn/)",
       "content": [
         "Engaged in academic research projects focused on natural language generation and understanding."
       ]
@@ -51,7 +51,7 @@
     {
       "date": "Apr 2025 – Present",
       "title": "Algorithm Research Intern",
-      "org": "Moss Intelligence / SII",
+      "org": "[Moss Intelligence](http://mosi-ai.com/) ([SII](https://www.sii.edu.cn/))",
       "content": [
         "Involved in large-scale speech-language model development and optimization."
       ]

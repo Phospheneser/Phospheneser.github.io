@@ -8,15 +8,15 @@
     {
       "date": "2020年9月 – 2024年6月",
       "title": "学士課程",
-      "org": "復旦大学",
+      "org": "[復旦大学](https://www.fudan.edu.cn/)",
       "content": [
-        "コンピュータ科学技術学院に所属し、人工知能専攻で学士号を取得。"
+        "[コンピュータ科学技術学院](https://cs.fudan.edu.cn/)に所属し、人工知能専攻で学士号を取得。"
       ]
     },
     {
       "date": "2024年9月 – 現在",
       "title": "修士課程",
-      "org": "復旦大学",
+      "org": "[復旦大学](https://www.fudan.edu.cn/)",
       "content": [
         "自然言語処理および人工知能分野の研究に専念し、修士号取得を目指している。"
       ]
@@ -27,15 +27,15 @@
     {
       "date": "2023年7月 – 2023年10月",
       "title": "アルゴリズムインターン",
-      "org": "中国核工業第八研究所",
+      "org": "[中国核工業第八研究所](https://www.cnnpn.cn/article/21068.html)",
       "content": [
-        "クリーンエネルギー大規模モデルプロジェクトに参加し、RLHF微調整関連のタスクを担当。"
+        "クリーンエネルギー大規模モデルプロジェクトに参加し、[RLHF微調整](https://huggingface.co/docs/transformers/main/en/conceptual/rhlf)関連のタスクを担当。"
       ]
     },
     {
       "date": "2024年1月 – 2024年3月",
       "title": "アルゴリズムインターン",
-      "org": "NetEase雷火スタジオ",
+      "org": "[NetEase雷火スタジオ](https://leihuo.163.com/#/)",
       "content": [
         "大規模言語モデルを活用したNPC対話デモを開発し、ゲーム分野におけるAI応用を探索。"
       ]
@@ -43,7 +43,7 @@
     {
       "date": "2024年3月 – 現在",
       "title": "研究助手",
-      "org": "復旦大学 自然言語処理研究室",
+      "org": "[復旦大学 自然言語処理研究室（FNLP）](https://nlp.fudan.edu.cn/)",
       "content": [
         "研究プロジェクトに参加し、自然言語生成および理解に関する研究に従事。"
       ]
@@ -51,7 +51,7 @@
     {
       "date": "2025年4月 – 現在",
       "title": "アルゴリズム研究インターン",
-      "org": "Moss Intelligence（模思智能）/ SII",
+      "org": "[模思智能](http://mosi-ai.com/)([SII](https://www.sii.edu.cn/))",
       "content": [
         "大規模音声言語モデルの開発および最適化に携わる。"
       ]
