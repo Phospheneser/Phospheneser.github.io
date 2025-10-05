@@ -184,18 +184,30 @@
             const style = document.createElement('style');
             style.id = styleTagId;
             style.textContent = `
+        /* ---------- 链接基础样式 ---------- */
         .experience-content a, .exp-org a {
             color: inherit; /* 继承正文颜色 */
             text-decoration: none;
             border-bottom: 1px dashed rgba(0, 0, 0, 0.4); /* 浅色虚线下划线 */
             transition: all 0.2s ease;
         }
-
         .experience-content a:hover, .exp-org a:hover {
             color: #007bff; /* 鼠标悬停时变蓝 */
             border-bottom: 1px solid #007bff; /* 实线下划线 */
         }
 
+        /* ---------- 暗色模式适配 ---------- */
+        body.dark-mode .experience-content a,
+        body.dark-mode .exp-org a {
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.4); /* 白色虚线下划线 */
+        }
+        body.dark-mode .experience-content a:hover,
+        body.dark-mode .exp-org a:hover {
+            color: #66aaff; /* 淡蓝色悬停 */
+            border-bottom: 1px solid #66aaff; /* 实线下划线 */
+        }
+
+        /* ---------- 窄屏适配 ---------- */
         @media (max-width: 768px) {
             .experience-header {
                 flex-direction: column !important;
@@ -208,6 +220,7 @@
                 padding-left: 1.2em !important;
             }
         }`;
+
             document.head.appendChild(style);
         }
     });
