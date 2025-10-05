@@ -16,7 +16,6 @@
             return renderer;
         }
     };
-
     TemplateRegistry.register('experience', function renderExperience(items, section, contentDiv) {
         if (!items || items.length === 0) {
             const emptyDiv = document.createElement('div');
@@ -27,14 +26,65 @@
             return;
         }
 
-        // ---------- 1️⃣ 预计算三列最大宽度 ----------
+        // ---------- 🔧 链接处理：Markdown + 纯URL + “文字：URL”，并避免破坏已有 <a> ----------
+        const linkify = (text) => {
+            if (!text) return '';
+
+            let html = String(text);
+
+            // ① 先把 Markdown 链接变成 <a>
+            html = html.replace(
+                /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+                (_, label, url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`
+            );
+
+            // ② 保护已有 <a>，避免后续替换命中其 href
+            const anchors = [];
+            html = html.replace(/<a\b[^>]*>.*?<\/a>/gi, (m) => {
+                const key = `__A${anchors.length}__`;
+                anchors.push(m);
+                return key;
+            });
+
+            // ③ “文字：URL”
+            html = html.replace(
+                /(\S+?)[:：]\s*(https?:\/\/[^\s<>"')\]]+)/g,
+                (_, label, url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`
+            );
+
+            // ④ 裸 URL
+            html = html.replace(
+                /(https?:\/\/[^\s<>"')\]]+)/g,
+                (_, url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+            );
+
+            // ⑤ 还原占位的 <a>
+            html = html.replace(/__A(\d+)__/g, (_, i) => anchors[Number(i)]);
+
+            return html;
+        };
+
+        // ---------- 🧹 纯文本提取：用于测量列宽 ----------
+        const stripForMeasure = (str) => {
+            if (!str) return '';
+            return String(str)
+                // 去掉 Markdown 链接，保留文字
+                .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '$1')
+                // 去掉 HTML 标签
+                .replace(/<[^>]*>/g, '')
+                // “文字：URL”只保留文字
+                .replace(/(\S+?)[:：]\s*(https?:\/\/[^\s<>"')\]]+)/g, '$1')
+                // 去掉裸 URL
+                .replace(/https?:\/\/[^\s<>"')\]]+/g, '');
+        };
+
+        // ---------- 1️⃣ 预计算列宽 ----------
         let maxDateWidth = 0, maxTitleWidth = 0, maxOrgWidth = 0;
         const temp = document.createElement('div');
         temp.style.cssText = 'position:absolute; visibility:hidden; white-space:nowrap; font-weight:bold; font-family:inherit;';
         document.body.appendChild(temp);
-
-        const measureText = text => {
-            temp.textContent = text || '';
+        const measureText = (text) => {
+            temp.textContent = stripForMeasure(text || '');
             return temp.getBoundingClientRect().width;
         };
 
@@ -48,8 +98,6 @@
         });
         document.body.removeChild(temp);
 
-        console.log(`Column widths => date:${maxDateWidth}px, title:${maxTitleWidth}px, org:${maxOrgWidth}px`);
-
         // ---------- 2️⃣ 渲染 ----------
         items.forEach(entry => {
             const div = document.createElement('div');
@@ -58,29 +106,23 @@
 
             const date = entry.date || '';
             const title = entry.title || '';
-            const org = entry.org || '';
+            const orgHTML = linkify(entry.org || '');
             const content = entry.content || [];
 
-            // -------- 子小结标题逻辑 --------
-            const isSubheadingOnly = (
-                title &&
-                !date && !org &&
-                (!content || content.length === 0)
-            );
+            const isSubheadingOnly = (title && !date && !orgHTML && (!content || content.length === 0));
 
             if (isSubheadingOnly) {
                 const heading = document.createElement('div');
                 heading.className = 'experience-subheading';
                 heading.style.cssText = `
-                font-weight: bold;
-                text-transform: uppercase;
-                font-size: 1.05em;
-                margin: 12px 0 4px 0;
+                font-weight:bold;
+                text-transform:uppercase;
+                font-size:1.05em;
+                margin:12px 0 4px 0;
             `;
                 heading.textContent = title;
                 div.appendChild(heading);
             } else {
-                // -------- 正常的三列条目 --------
                 const header = document.createElement('div');
                 header.className = 'experience-header';
                 header.style.cssText = `
@@ -92,18 +134,26 @@
                 align-items: baseline;
             `;
 
-                header.innerHTML = `
-                <span class="exp-date" style="min-width:${maxDateWidth}px; display:inline-block;">${date}</span>
-                <span class="exp-title" style="min-width:${maxTitleWidth}px; display:inline-block;">${title}</span>
-                <span class="exp-org" style="min-width:${maxOrgWidth}px; display:inline-block;">${org}</span>
-            `;
+                const dateSpan = document.createElement('span');
+                dateSpan.className = 'exp-date';
+                dateSpan.style.cssText = `min-width:${maxDateWidth}px; display:inline-block;`;
+                dateSpan.textContent = date;
+
+                const titleSpan = document.createElement('span');
+                titleSpan.className = 'exp-title';
+                titleSpan.style.cssText = `min-width:${maxTitleWidth}px; display:inline-block;`;
+                titleSpan.textContent = title;
+
+                const orgSpan = document.createElement('span');
+                orgSpan.className = 'exp-org';
+                orgSpan.style.cssText = `min-width:${maxOrgWidth}px; display:inline-block;`;
+                orgSpan.innerHTML = orgHTML; // ← 允许渲染成真正的链接
+
+                header.append(dateSpan, titleSpan, orgSpan);
                 div.appendChild(header);
 
-                // -------- 内容部分 --------
                 if (Array.isArray(content) && content.length > 0) {
-                    const totalOffset =
-                        maxDateWidth * 0.6; // date列 + gap（轻度缩进）
-
+                    const totalOffset = maxDateWidth * 0.6;
                     const ul = document.createElement('ul');
                     ul.className = 'experience-content';
                     ul.style.cssText = `
@@ -117,7 +167,7 @@
                 `;
                     content.forEach(point => {
                         const li = document.createElement('li');
-                        li.textContent = point;
+                        li.innerHTML = linkify(point);
                         li.style.cssText = 'margin-bottom: 4px;';
                         ul.appendChild(li);
                     });
@@ -128,18 +178,24 @@
             contentDiv.appendChild(div);
         });
 
-        // ---------- 3️⃣ 响应式 CSS ----------
+        // ---------- 3️⃣ 样式 ----------
         const styleTagId = 'experience-responsive-style';
         if (!document.getElementById(styleTagId)) {
             const style = document.createElement('style');
             style.id = styleTagId;
             style.textContent = `
-        /* ---------- 桌面端 ---------- */
-        .experience-header {
-            flex-direction: row;
+        .experience-content a, .exp-org a {
+            color: inherit; /* 继承正文颜色 */
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.4); /* 浅色虚线下划线 */
+            transition: all 0.2s ease;
         }
 
-        /* ---------- 窄屏模式 ---------- */
+        .experience-content a:hover, .exp-org a:hover {
+            color: #007bff; /* 鼠标悬停时变蓝 */
+            border-bottom: 1px solid #007bff; /* 实线下划线 */
+        }
+
         @media (max-width: 768px) {
             .experience-header {
                 flex-direction: column !important;
@@ -147,24 +203,11 @@
                 gap: 4px !important;
                 margin-left: 1em !important;
             }
-            .experience-header .exp-date {
-                font-weight: 600;
-                opacity: 0.9;
-            }
-            .experience-header .exp-title {
-                margin-left: 0;
-            }
-            .experience-header .exp-org {
-                margin-left: 0;
-                font-weight: normal;
-                opacity: 0.85;
-            }
             .experience-content {
                 margin-left: 2.5em !important;
                 padding-left: 1.2em !important;
             }
-        }
-        `;
+        }`;
             document.head.appendChild(style);
         }
     });
