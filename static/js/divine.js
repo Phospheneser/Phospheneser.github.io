@@ -91,7 +91,8 @@ class Diviner {
     this.divineWindow.style.bottom = '80px';
     this.divineWindow.style.right = '20px';
     this.divineWindow.style.width = '350px';
-    this.divineWindow.style.maxHeight = '600px';
+    this.divineWindow.style.maxHeight = '50vh'; // 最大高度为屏幕高度的50%，确保顶部不超过屏幕中央
+    this.divineWindow.style.maxWidth = '90vw'; // 确保在小屏幕上不会太宽
     // 设置基础样式，后续会根据暗色模式调整
     this.divineWindow.style.borderRadius = '10px';
     this.divineWindow.style.padding = '20px';
