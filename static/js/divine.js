@@ -371,13 +371,28 @@ class Diviner {
       const result = await this.getDivineResultFromServer();
       resultContainer.innerText = result;
     } catch (error) {
-      // 如果API调用失败，使用模拟结果作为备选
-      console.warn('API调用失败，使用模拟结果：', error);
+      // 记录错误信息
+      console.warn('API调用失败：', error);
+      
+      // 判断错误类型，提供更具体的用户提示
+      let errorType = '服务器连接问题';
+      let extraInfo = '';
+      
+      if (error.message.includes('500 Internal Server Error')) {
+        errorType = '服务器处理出错';
+        // 特别处理六爻起卦模式
+        if (this.divineMode === 'LiuYaoQiGua') {
+          extraInfo = '\n\n提示：当前服务器可能暂不支持六爻起卦模式，请尝试其他占卜方式。';
+        }
+      }
+      
       try {
+        // 使用模拟结果作为备选
         const mockResult = this.mockDivineResult();
-        resultContainer.innerText = `(使用模拟结果)\n${mockResult}`;
+        resultContainer.innerText = `(使用本地模拟结果 - ${errorType})\n${mockResult}${extraInfo}`;
       } catch (mockError) {
-        resultContainer.innerText = `占卜失败：${error.message}\n\n请确保Python服务器已启动。\n启动方法：cd static/python/diviner && python3 divine_server.py`;
+        console.error('模拟结果生成失败:', mockError);
+        resultContainer.innerText = `占卜失败：${error.message}\n\n请确保Python服务器已启动。\n启动方法：cd static/python/diviner && python3 divine_server.py${extraInfo}`;
       }
     }
   }
@@ -462,20 +477,31 @@ class Diviner {
         throw new Error(`服务器响应错误：${response.status}\n${errorText}`);
       }
 
-      // 解析JSON响应 - 添加安全检查
+      // 解析JSON响应 - 增强安全检查和错误处理
       let data;
+      let responseText = '';
       try {
         // 先获取文本内容，以便在JSON解析失败时能提供更多信息
-        const responseText = await response.text();
+        responseText = await response.text();
+        console.log(`服务器响应内容(${this.divineMode}模式):`, responseText.substring(0, 100) + (responseText.length > 100 ? '...' : ''));
+        
+        // 尝试解析JSON
         data = JSON.parse(responseText);
       } catch (parseError) {
-        // 如果JSON解析失败，抛出包含原始响应的错误
-        try {
-          const rawResponse = await response.clone().text();
-          throw new Error(`无效的JSON响应：${parseError.message}\n原始响应：${rawResponse}`);
-        } catch (textError) {
-          throw new Error(`无法解析服务器响应：${parseError.message}`);
+        console.error(`JSON解析错误(${this.divineMode}模式):`, parseError);
+        
+        // 处理服务器返回HTTP错误消息的特殊情况
+        if (responseText && (responseText.startsWith('HTTP/1.0') || responseText.startsWith('HTTP/1.1'))) {
+          const httpErrorMatch = responseText.match(/HTTP\/\d\.\d\s+(\d+)\s+([^\r\n]+)/);
+          if (httpErrorMatch) {
+            const statusCode = httpErrorMatch[1];
+            const statusText = httpErrorMatch[2];
+            throw new Error(`服务器返回HTTP错误：${statusCode} ${statusText}\n\n可能原因：\n1. 服务器可能未启动\n2. 服务器可能无法处理${this.divineMode}类型的请求\n3. 网络连接问题`);
+          }
         }
+        
+        // 提供更详细的错误信息
+        throw new Error(`无法解析服务器响应：${parseError.message}\n原始响应前100字符：${responseText ? responseText.substring(0, 100) + (responseText.length > 100 ? '...' : '') : '空响应'}`);
       }
 
       // 检查占卜是否成功
