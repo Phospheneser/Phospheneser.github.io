@@ -3,16 +3,12 @@
   "title": "🔥 新闻",
   "news": [
     {
-      "date": "2026.10.04",
+      "date": "2025.10.04",
       "content": "<a href=\"https://github.com/Phospheneser/Phospheneser-awesome-academic-template\">Phospheneser-awesome-academic-template</a> 已发布！"
     },
     {
-      "date": "2026.10.01",
+      "date": "2025.10.01",
       "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> 已发布！"
-    },
-    {
-      "date": "2026.01.26",
-      "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> 已发布！"
     },
     {
       "date": "2025.06.26",
@@ -29,6 +25,10 @@
     {
       "date": "2025.02.26",
       "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> 因为作者列表中有评审忘记提交评审意见，被 <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> PC <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">desk reject</a>。但在我们邮件询问后，PC 告诉我们论文其实是 <strong>接收</strong> 的！也就是说，在所有被 CVPR 接收的论文中，我们成为了那 1/19 被 desk reject 的论文，lol。"
+    },
+    {
+      "date": "2025.01.26",
+      "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> 已发布！"
     },
     {
       "date": "2025.01.13",

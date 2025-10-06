@@ -3,16 +3,12 @@
   "title": "🔥 News",
   "news": [
     {
-      "date": "2026.10.04",
+      "date": "2025.10.04",
       "content": "<a href=\"https://github.com/Phospheneser/Phospheneser-awesome-academic-template\">Phospheneser-awesome-academic-template</a> was released!"
     },
     {
-      "date": "2026.10.01",
+      "date": "2025.10.01",
       "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> was released!"
-    },
-    {
-      "date": "2026.01.26",
-      "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> was released!"
     },
     {
       "date": "2025.06.26",
@@ -29,6 +25,10 @@
     {
       "date": "2025.02.26",
       "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> was <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">desk-rejected</a> by the <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> PC because one of the reviewers on the author list forgot to submit their review. After we emailed the PC to inquire, we learned that our paper had actually been <strong>accepted</strong>! So, among all papers accepted to CVPR, ours was the one of nineteen that got desk-rejected, lol."
+    },
+    {
+      "date": "2025.01.26",
+      "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> was released!"
     },
     {
       "date": "2025.01.13",

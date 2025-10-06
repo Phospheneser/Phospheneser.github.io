@@ -3,16 +3,12 @@
   "title": "🔥 ニュース",
   "news": [
     {
-      "date": "2026.10.04",
+      "date": "2025.10.04",
       "content": "<a href=\"https://github.com/Phospheneser/Phospheneser-awesome-academic-template\">Phospheneser-awesome-academic-template</a> がリリースされました！"
     },
     {
-      "date": "2026.10.01",
+      "date": "2025.10.01",
       "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> がリリースされました！"
-    },
-    {
-      "date": "2026.01.26",
-      "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> がリリースされました！"
     },
     {
       "date": "2025.06.26",
@@ -29,6 +25,10 @@
     {
       "date": "2025.02.26",
       "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> は <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> の PC によって、著者リストに含まれていたレビュワーがレビューを提出し忘れたため <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">デスクリジェクト</a> されました。しかし、PC に問い合わせたところ、本来の判定は <strong>採択（Accept）</strong> であることが判明しました！結果として、CVPR に採択された論文の中で、我々の論文は 19 本中唯一のデスクリジェクトとなりました（笑）。"
+    },
+    {
+      "date": "2025.01.26",
+      "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> がリリースされました！"
     },
     {
       "date": "2025.01.13",
