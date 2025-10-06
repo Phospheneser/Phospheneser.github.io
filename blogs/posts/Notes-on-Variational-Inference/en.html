@@ -1,0 +1,101 @@
+<h2>Why Learn Variational Inference</h2>
+<p>In probabilistic modeling, we often face the following situation: given observed data <em>x</em>, we wish to infer
+    the posterior distribution of the latent variable <em>z</em>, written as <span class="math">\(p(z \mid x)\)</span>.
+    Unless the model is simple, this distribution is usually intractable because of the marginal likelihood in the
+    denominator:</p>
+
+<p class="math">
+    \[
+    p(x) = \int p(x, z)\,dz
+    \]
+</p>
+
+<p>In high-dimensional spaces, this integral becomes almost impossible to compute. Instead of insisting on the exact
+    posterior, we introduce an approximate distribution <span class="math">\(q_\phi(z)\)</span> that is easier to
+    handle, and try to make it close to the true <span class="math">\(p_\theta(z \mid x)\)</span>. Variational Inference
+    (VI) formalizes this idea.</p>
+
+<h2>From KL Divergence to the Lower Bound</h2>
+<p>We aim to find parameters <span class="math">\(\phi\)</span> that minimize the difference between these two
+    distributions, expressed as minimizing the Kullback–Leibler divergence:</p>
+
+<p class="math">
+    \[
+    \mathrm{KL}\bigl(q_\phi(z)\,\|\,p_\theta(z \mid x)\bigr)
+    = \mathbb{E}_{q_\phi(z)}\!\left[\log\frac{q_\phi(z)}{p_\theta(z\mid x)}\right].
+    \]
+</p>
+
+<p>Expanding the conditional probability <span class="math">\(p_\theta(z \mid x) = \frac{p_\theta(x,
+        z)}{p_\theta(x)}\)</span> gives:</p>
+
+<p class="math">
+    \[
+    \mathrm{KL}(q_\phi(z)\,\|\,p_\theta(z \mid x))
+    = \mathbb{E}_{q_\phi(z)}[\log q_\phi(z) - \log p_\theta(x, z)] + \log p_\theta(x).
+    \]
+</p>
+
+<p>Since the KL divergence is non-negative, we can rearrange terms and obtain:</p>
+
+<p class="math">
+    \[
+    \log p_\theta(x) \ge
+    \mathbb{E}_{q_\phi(z)}[\log p_\theta(x, z) - \log q_\phi(z)].
+    \]
+</p>
+
+<p>The right-hand side is the well-known <strong>Evidence Lower Bound (ELBO)</strong>:</p>
+
+<p class="math">
+    \[
+    \mathcal{L}(\theta,\phi; x)
+    = \mathbb{E}_{q_\phi(z)}[\log p_\theta(x\mid z)]
+    - \mathrm{KL}(q_\phi(z)\,\|\,p_\theta(z)).
+    \]
+</p>
+
+<p>Maximizing this lower bound is equivalent to minimizing the KL divergence between the approximate and the true
+    posterior. This is why the term “variational lower bound” exists.</p>
+
+<h2>Intuition: The Meaning of the Bound</h2>
+<p>From the perspective of graphical models, the ELBO can be viewed as an optimizable surrogate of the log-likelihood:
+</p>
+<ul>
+    <li><strong>The first term</strong> <span class="math">\(\mathbb{E}_{q_\phi}[\log p_\theta(x\mid z)]\)</span>
+        measures how well the model reconstructs the data;</li>
+    <li><strong>The second term</strong> <span class="math">\(-\mathrm{KL}(q_\phi\|p_\theta)\)</span> penalizes
+        approximations that deviate too far from the prior.</li>
+</ul>
+
+<p>In other words, it balances two forces: the ability to explain data and the discipline to stay close to prior
+    beliefs.</p>
+
+<p>In models like the Variational Autoencoder (VAE), both <span class="math">\(q_\phi(z\mid x)\)</span> and <span
+        class="math">\(p_\theta(x\mid z)\)</span> are represented by differentiable networks. Through the
+    reparameterization trick, sampling becomes differentiable, enabling gradient-based optimization of the ELBO:</p>
+
+<p class="math">
+    \[
+    z = \mu_\phi(x) + \sigma_\phi(x)\odot \epsilon, \quad \epsilon \sim \mathcal{N}(0, I).
+    \]
+</p>
+
+<h2>Approximation, Not Compromise</h2>
+<p>As the derivation shows, the ELBO is not an arbitrary surrogate; it is a mathematically exact lower
+    bound—representing the portion of the true likelihood that we can actually reach. It reminds me that inference is
+    not about chasing exactness, but about making an honest approximation within computational limits.</p>
+
+<p>Whenever we adjust the model, choose a variational family, or reformulate the bound, we are implicitly redefining how
+    much of the world our model is allowed to understand.</p>
+
+<h2>Looking Ahead</h2>
+<p>Next, I plan to organize a few related extensions—how hierarchical latent structures lead to stacked lower bounds,
+    and how dual forms like the Fenchel–Legendre variational principle can provide more flexible objectives.</p>
+
+<blockquote>
+    Beneath the bound lies what we can compute;<br>
+    Above it lies what remains to be understood.
+</blockquote>
+
+<p>Thanks for reading—may these notes make inference a bit less mysterious, and a bit more clear.</p>

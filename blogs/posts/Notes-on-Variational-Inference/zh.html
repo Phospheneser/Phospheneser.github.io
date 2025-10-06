@@ -1,0 +1,85 @@
+<h2>为什么要学习变分下界推断</h2>
+<p>在概率建模里，我们经常会面对一个形式：给定观测数据 <em>x</em>，希望求出隐变量 <em>z</em> 的后验分布 <span class="math">\(p(z \mid
+        x)\)</span>。但除非模型足够简单，这个分布往往难以直接计算，因为分母里的边缘似然：</p>
+
+<p class="math">
+    \[
+    p(x) = \int p(x, z)\,dz
+    \]
+</p>
+
+<p>在高维空间中几乎不可积。于是，我们不再执着于“求真后验”，而是去寻找一个更易处理的近似分布 <span class="math">\(q_\phi(z)\)</span>，让它尽可能接近真实的 <span
+        class="math">\(p_\theta(z \mid x)\)</span>。变分推断（Variational Inference, VI）正是这种思想的系统化表达。</p>
+
+<h2>从 KL 散度到下界</h2>
+<p>我们希望找到参数 <span class="math">\(\phi\)</span> 使得两个分布的差距最小，可以写为最小化 Kullback–Leibler 散度：</p>
+
+<p class="math">
+    \[
+    \mathrm{KL}\bigl(q_\phi(z)\,\|\,p_\theta(z \mid x)\bigr)
+    = \mathbb{E}_{q_\phi(z)}\!\left[\log\frac{q_\phi(z)}{p_\theta(z\mid x)}\right].
+    \]
+</p>
+
+<p>把条件概率展开为 <span class="math">\(p_\theta(z \mid x) = \frac{p_\theta(x, z)}{p_\theta(x)}\)</span>：</p>
+
+<p class="math">
+    \[
+    \mathrm{KL}(q_\phi(z)\,\|\,p_\theta(z \mid x))
+    = \mathbb{E}_{q_\phi(z)}[\log q_\phi(z) - \log p_\theta(x, z)] + \log p_\theta(x).
+    \]
+</p>
+
+<p>由于 KL 散度恒为非负，整理后得到：</p>
+
+<p class="math">
+    \[
+    \log p_\theta(x) \ge
+    \mathbb{E}_{q_\phi(z)}[\log p_\theta(x, z) - \log q_\phi(z)].
+    \]
+</p>
+
+<p>右侧这部分就是我们熟悉的 <strong>变分下界（Evidence Lower Bound, ELBO）</strong>：</p>
+
+<p class="math">
+    \[
+    \mathcal{L}(\theta,\phi; x)
+    = \mathbb{E}_{q_\phi(z)}[\log p_\theta(x\mid z)]
+    - \mathrm{KL}(q_\phi(z)\,\|\,p_\theta(z)).
+    \]
+</p>
+
+<p>因此，<em>最大化下界</em> 等价于 <em>最小化近似与真实后验之间的 KL 散度</em>。这也是「下界推断」名字的由来。</p>
+
+<h2>直觉：下界的意义</h2>
+<p>在图模型的角度，ELBO 可以被看作是对数似然的一个可优化近似：</p>
+<ul>
+    <li><strong>第一项</strong> <span class="math">\(\mathbb{E}_{q_\phi}[\log p_\theta(x\mid z)]\)</span> 衡量模型如何重构数据；</li>
+    <li><strong>第二项</strong> <span class="math">\(-\mathrm{KL}(q_\phi\|p_\theta)\)</span> 则惩罚过于偏离先验的近似分布。</li>
+</ul>
+
+<p>换句话说，它平衡了「解释数据的能力」与「保持合理先验」这两股力量。</p>
+
+<p>在变分自编码器（VAE）这样的神经网络模型中，我们把 <span class="math">\(q_\phi(z\mid x)\)</span> 和 <span class="math">\(p_\theta(x\mid
+        z)\)</span> 都用可微分的网络表示，然后通过重参数化技巧使采样可导，从而可以用梯度下降优化下界：</p>
+
+<p class="math">
+    \[
+    z = \mu_\phi(x) + \sigma_\phi(x)\odot \epsilon, \quad \epsilon \sim \mathcal{N}(0, I).
+    \]
+</p>
+
+<h2>理解“近似”而非“妥协”</h2>
+<p>从推导可见，ELBO 不是一个随意的代理目标，而是精确的下界——我们能触及到的那一部分真实似然。它的存在提醒我：推断并非求极限的数学游戏，而是一种在可计算性约束下的诚实近似。</p>
+
+<p>当我们调节模型、选择分布族、或改写下界时，实际上是在重新界定“能理解多少世界”的边界。</p>
+
+<h2>后续计划</h2>
+<p>接下来，我会继续整理几种常见的扩展形式，例如在隐变量层级化后如何推导层层下界，以及如何利用对偶形式（如 Fenchel–Legendre 变分）获得更灵活的优化目标。</p>
+
+<blockquote>
+    下界之下，是我们能计算的部分；<br>
+    下界之上，是仍然值得理解的世界。
+</blockquote>
+
+<p>感谢读到这里，愿这些笔记能让推断的过程少一些神秘，多一点清晰。</p>

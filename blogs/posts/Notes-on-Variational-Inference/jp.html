@@ -1,0 +1,89 @@
+<h2>変分推論の下界</h2>
+<p>確率モデルではしばしば、観測データ <em>x</em> が与えられたときに潜在変数 <em>z</em> の事後分布 <span class="math">\(p(z \mid x)\)</span>
+    を求めたいという課題に直面します。しかしモデルが単純でない限り、この分布を直接計算することは難しく、分母にある周辺尤度：</p>
+
+<p class="math">
+    \[
+    p(x) = \int p(x, z)\,dz
+    \]
+</p>
+
+<p>は高次元空間ではほとんど積分不可能です。そこで、真の事後分布 <span class="math">\(p_\theta(z \mid x)\)</span> にできるだけ近い扱いやすい近似分布 <span
+        class="math">\(q_\phi(z)\)</span> を導入します。変分推論（Variational Inference, VI）はこの考え方を体系化したものです。</p>
+
+<h2>KL ダイバージェンスから下界へ</h2>
+<p>二つの分布の差を最小化するために、パラメータ <span class="math">\(\phi\)</span> を求めたい。その差は Kullback–Leibler ダイバージェンスとして表されます：</p>
+
+<p class="math">
+    \[
+    \mathrm{KL}\bigl(q_\phi(z)\,\|\,p_\theta(z \mid x)\bigr)
+    = \mathbb{E}_{q_\phi(z)}\!\left[\log\frac{q_\phi(z)}{p_\theta(z\mid x)}\right].
+    \]
+</p>
+
+<p>条件付き確率 <span class="math">\(p_\theta(z \mid x) = \frac{p_\theta(x, z)}{p_\theta(x)}\)</span> を展開すると：</p>
+
+<p class="math">
+    \[
+    \mathrm{KL}(q_\phi(z)\,\|\,p_\theta(z \mid x))
+    = \mathbb{E}_{q_\phi(z)}[\log q_\phi(z) - \log p_\theta(x, z)] + \log p_\theta(x).
+    \]
+</p>
+
+<p>KL ダイバージェンスが常に非負であることから、次の不等式が得られます：</p>
+
+<p class="math">
+    \[
+    \log p_\theta(x) \ge
+    \mathbb{E}_{q_\phi(z)}[\log p_\theta(x, z) - \log q_\phi(z)].
+    \]
+</p>
+
+<p>右辺はよく知られた <strong>証拠下界（Evidence Lower Bound, ELBO）</strong> です：</p>
+
+<p class="math">
+    \[
+    \mathcal{L}(\theta,\phi; x)
+    = \mathbb{E}_{q_\phi(z)}[\log p_\theta(x\mid z)]
+    - \mathrm{KL}(q_\phi(z)\,\|\,p_\theta(z)).
+    \]
+</p>
+
+<p>この下界を最大化することは、近似分布と真の事後分布との KL ダイバージェンスを最小化することと等価です。これが「変分下界」と呼ばれる理由です。</p>
+
+<h2>直感：下界が示すもの</h2>
+<p>グラフィカルモデルの視点から見ると、ELBO は対数尤度の最適化可能な近似とみなせます：</p>
+<ul>
+    <li><strong>第一項</strong> <span class="math">\(\mathbb{E}_{q_\phi}[\log p_\theta(x\mid z)]\)</span> はデータ再構成の適合度を測り、
+    </li>
+    <li><strong>第二項</strong> <span class="math">\(-\mathrm{KL}(q_\phi\|p_\theta)\)</span> は近似分布が先験分布から逸脱しすぎることを抑えます。
+    </li>
+</ul>
+
+<p>つまり、データを説明する力と、先験にとどまる節度の間のバランスを取っているのです。</p>
+
+<p>変分オートエンコーダ（VAE）などのモデルでは、<span class="math">\(q_\phi(z\mid x)\)</span> と <span class="math">\(p_\theta(x\mid
+        z)\)</span> の両方を微分可能なネットワークで表現します。再パラメータ化トリックによってサンプリングを微分可能にし、勾配降下で ELBO を最適化できます：</p>
+
+<p class="math">
+    \[
+    z = \mu_\phi(x) + \sigma_\phi(x)\odot \epsilon, \quad \epsilon \sim \mathcal{N}(0, I).
+    \]
+</p>
+
+<h2>近似は妥協ではない</h2>
+<p>この導出が示すように、ELBO は単なる代理目的ではなく、厳密な下界です。つまり、私たちが実際に計算できる真の尤度の一部を表しています。推論とは極限を求めるゲームではなく、計算可能性という制約の中で誠実な近似を行う営みなのです。
+</p>
+
+<p>モデルを調整したり、分布族を選んだり、下界の形を変えたりするたびに、私たちは「モデルが理解できる世界の範囲」を再定義しているとも言えます。</p>
+
+<h2>これからの予定</h2>
+<p>今後は、潜在変数を階層化したときにどのように下界が層ごとに導かれるか、そして Fenchel–Legendre 変分のような双対形式を使ってより柔軟な目的関数を得る方法などを整理する予定です。</p>
+
+<blockquote>
+    下界の下には計算できる世界があり、<br>
+    下界の上にはまだ理解すべき世界がある。
+</blockquote>
+
+<p>ここまで読んでくださりありがとうございます。<br>
+    推論の過程が少しでも明るく、少しでも明瞭になりますように。</p>

@@ -25,25 +25,28 @@
   },
   "blogs": [
     {
+      "slug": "Notes-on-Variational-Inference",
+      "title": "Beneath the Bound: Notes on Variational Inference",
+      "summary": "A quiet note on understanding the Evidence Lower Bound (ELBO) — why inference becomes an optimization problem, and what the 'bound' truly means.",
+      "post_time": "2025-10-07 01:13",
+      "hero_image": "./posts/Notes-on-Variational-Inference/media/hero.png",
+      "author": "Joshua Xu",
+      "tags": [
+        "Machine Learning",
+        "Variational Inference",
+        "Theory"
+      ]
+    },
+    {
       "slug": "launching-the-research-blog",
       "title": "Why This Blog Exists",
-      "summary": "Setting the tone for longer-form updates and how they complement the rest of the site.",
-      "post_time": "2025-01-05 09:00",
+      "summary": "Keeping track of what I learn, not just to remember, but to revisit ideas and find new connections in hindsight.",
+      "post_time": "2025-10-02 09:00",
+      "hero_image": "./posts/launching-the-research-blog/media/hero.png",
       "author": "Joshua Xu",
       "tags": [
         "Meta",
         "Writing"
-      ]
-    },
-    {
-      "slug": "robotics-field-notes",
-      "title": "Field Notes: Indoor Avoidance Trials",
-      "summary": "Notes from week three inside the test arena, smoothing controllers and taming a moody GPU.",
-      "post_time": "2025-01-12 14:30",
-      "author": "Joshua Xu",
-      "tags": [
-        "Robotics",
-        "Field Notes"
       ]
     }
   ]

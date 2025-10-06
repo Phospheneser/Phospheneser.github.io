@@ -25,25 +25,28 @@
   },
   "blogs": [
     {
-      "slug": "launching-the-research-blog",
-      "title": "このブログを始めた理由",
-      "summary": "長めのアップデートがサイト全体をどう補完するかを紹介します。",
-      "post_time": "2025年01月05日 09:00 公開",
-      "author": "Joshua Xu",
+      "slug": "Notes-on-Variational-Inference",
+      "title": "下界の下で：変分推論ノート",
+      "summary": "証拠下界（ELBO）を理解するための静かなノート――なぜ推論が最適化問題として表されるのか、そして「下界」とは何を意味するのかを考える。",
+      "post_time": "2025-10-07 01:13",
+      "hero_image": "./posts/Notes-on-Variational-Inference/media/hero.png",
+      "author": "ジョシュア・シュウ",
       "tags": [
-        "メモ",
-        "ライティング"
+        "機械学習",
+        "変分推論",
+        "理論"
       ]
     },
     {
-      "slug": "robotics-field-notes",
-      "title": "フィールドノート：屋内回避テスト第3週",
-      "summary": "制御のスムージングやGPU調整など、テストアリーナでの気づきを記録。",
-      "post_time": "2025年01月12日 14:30 公開",
-      "author": "Joshua Xu",
+      "slug": "launching-the-research-blog",
+      "title": "なぜこのブログを書くのか",
+      "summary": "学んだことを記録するのは、忘れないためだけではなく、振り返ることで見落としていたつながりやひらめきを再び見つけるため。",
+      "post_time": "2025-10-02 09:00",
+      "hero_image": "./posts/launching-the-research-blog/media/hero.png",
+      "author": "ジョシュア・シュウ",
       "tags": [
-        "ロボティクス",
-        "フィールドノート"
+        "エッセイ",
+        "執筆"
       ]
     }
   ]

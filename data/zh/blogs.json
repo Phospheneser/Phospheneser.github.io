@@ -25,25 +25,28 @@
   },
   "blogs": [
     {
-      "slug": "launching-the-research-blog",
-      "title": "这个博客想做什么",
-      "summary": "写下创建博客的初衷，以及它如何补足主页上的其他板块。",
-      "post_time": "2025-01-05 09:00 发布",
+      "slug": "Notes-on-Variational-Inference",
+      "title": "下界之下：变分推断笔记",
+      "summary": "一篇关于理解证据下界（ELBO）的静心笔记——为何推断可以化为优化问题，以及“下界”真正意味着什么。",
+      "post_time": "2025-10-07 01:13",
+      "hero_image": "./posts/Notes-on-Variational-Inference/media/hero.png",
       "author": "Joshua Xu",
       "tags": [
-        "自述",
-        "写作"
+        "机器学习",
+        "变分推断",
+        "理论"
       ]
     },
     {
-      "slug": "robotics-field-notes",
-      "title": "现场笔记：室内避障第三周",
-      "summary": "记录平滑控制器、解决 GPU 降频，以及下一轮室外实验计划。",
-      "post_time": "2025-01-12 14:30 发布",
+      "slug": "launching-the-research-blog",
+      "title": "为什么要写这个博客",
+      "summary": "记录我学到的内容，不只是为了记住，更是为了回头重读、重新发现那些被忽略的灵感与联系。",
+      "post_time": "2025-10-02 09:00",
+      "hero_image": "./posts/launching-the-research-blog/media/hero.png",
       "author": "Joshua Xu",
       "tags": [
-        "机器人",
-        "现场笔记"
+        "随笔",
+        "写作"
       ]
     }
   ]
