@@ -26,10 +26,7 @@
     <script src="./static/js/plugins.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.0.6/wordcloud2.min.js"></script>
     <script src="https://www.goat1000.com/tagcanvas.min.js"></script>
-<<<<<<< HEAD
     <script src="./static/js/divine.js"></script>
-=======
->>>>>>> b4bdfcf4a3269cc32aa49752fe15f953c5d808e2
     <link rel="icon" type="image/png" sizes="32x32" href="./media/web_icon/academic32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./media/web_icon/academic16.png">
 
@@ -834,21 +831,21 @@
     }
 
     function renderMetaCard(block, entry, type) {
-    if (!entry) return;
-    const { data, options } = buildMetaCardData(entry, type);
-    block.classList.add('meta-card', `meta-card--${type}`);
+        if (!entry) return;
+        const { data, options } = buildMetaCardData(entry, type);
+        block.classList.add('meta-card', `meta-card--${type}`);
 
-    // 使用entry.image或entry.hero_image，优先使用hero_image
-    // 对于hero_image，需要添加blogs/前缀因为路径是相对于blogs目录的
-    let imageSrc = '';
-    if (entry.hero_image) {
-      // 处理hero_image路径，添加blogs/前缀
-      imageSrc = 'blogs/' + entry.hero_image.replace(/^\.\//, '');
-    } else {
-      imageSrc = data.image || '';
-    }
-    const media = createMediaSlot(imageSrc, data.title, options.placeholderLabel);
-    if (media) block.appendChild(media);
+        // 使用entry.image或entry.hero_image，优先使用hero_image
+        // 对于hero_image，需要添加blogs/前缀因为路径是相对于blogs目录的
+        let imageSrc = '';
+        if (entry.hero_image) {
+            // 处理hero_image路径，添加blogs/前缀
+            imageSrc = 'blogs/' + entry.hero_image.replace(/^\.\//, '');
+        } else {
+            imageSrc = data.image || '';
+        }
+        const media = createMediaSlot(imageSrc, data.title, options.placeholderLabel);
+        if (media) block.appendChild(media);
 
         const content = document.createElement('div');
         content.className = 'meta-card-content';
