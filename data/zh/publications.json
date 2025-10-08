@@ -20,8 +20,8 @@
           "dark_icon": "./media/link_icon/github_dark.png"
         },
         {
-          "type": "Hugging Face",
-          "url": "https://huggingface.co/OpenMoss/MOSS-Speech",
+          "type": "模型",
+          "url": "https://huggingface.co/collections/fnlp/moss-speech-68dbab23bc98501afede0cd3",
           "icon": "./media/link_icon/hf.svg"
         },
         {
@@ -78,6 +78,11 @@
           "url": "https://github.com/OpenMOSS/VLABench",
           "icon": "./media/link_icon/github.svg",
           "dark_icon": "./media/link_icon/github_dark.png"
+        },
+        {
+          "type": "数据集",
+          "url": "https://huggingface.co/VLABench",
+          "icon": "./media/link_icon/hf.svg"
         }
       ],
       "image": "./media/publications/vlabench-benchmark.jpg"
@@ -99,7 +104,7 @@
           "dark_icon": "./media/link_icon/github_dark.png"
         },
         {
-          "type": "Hugging Face",
+          "type": "数据集",
           "url": "https://huggingface.co/datasets/LutherXD/LongSafetyBench",
           "icon": "./media/link_icon/hf.svg"
         }
@@ -124,7 +129,7 @@
           "dark_icon": "./media/link_icon/github_dark.png"
         },
         {
-          "type": "Hugging Face",
+          "type": "数据集",
           "url": "https://huggingface.co/datasets/Phospheneser/DetectiveQA",
           "icon": "./media/link_icon/hf.svg"
         }
