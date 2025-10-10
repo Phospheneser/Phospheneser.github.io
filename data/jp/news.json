@@ -24,7 +24,7 @@
     },
     {
       "date": "2025.02.26",
-      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> は <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> の PC によって、著者リストに含まれていたレビュワーがレビューを提出し忘れたため <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">デスクリジェクト</a> されました。しかし、PC に問い合わせたところ、本来の判定は <strong>採択（Accept）</strong> であることが判明しました！結果として、CVPR に採択された論文の中で、我々の論文は 19 本中唯一のデスクリジェクトとなりました（笑）。"
+      "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> は <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> の PC によって、著者リストに含まれていたレビュワーがレビューを提出し忘れたため <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">デスクリジェクト</a> されました。しかし、PC に問い合わせたところ、本来の判定は <strong>採択（Accept）</strong> であることが判明しました！結果として、CVPR に採択された論文の中で、私たちの論文は、<i>accepted but desk-rejected</i> となった19本の論文のうちの1本となってしまいました。（笑）。"
     },
     {
       "date": "2025.01.26",
