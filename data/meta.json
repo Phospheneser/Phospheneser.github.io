@@ -311,19 +311,19 @@
     "socials": [
         {
             "icon": "fab fa-github",
-            "url": "#"
+            "url": "https://github.com/Phospheneser"
         },
         {
             "icon": "fas fa-graduation-cap",
-            "url": "#"
+            "url": "https://scholar.google.com/citations?user=TSUlagkAAAAJ&hl=zh-CN"
         },
         {
             "icon": "fab fa-twitter",
-            "url": "#"
+            "url": "https://x.com/PhospheneserXu"
         },
         {
             "icon": "fas fa-envelope",
-            "url": "#"
+            "url": "mailto:zxu24@m.fudan.edu.cn"
         }
     ],
     "emptyStates": {
