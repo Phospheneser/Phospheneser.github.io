@@ -48,6 +48,19 @@
         "Meta",
         "Writing"
       ]
+    },
+    {
+      "slug": "learning-the-japanese-kana",
+      "title": "Learning the Sounds: Notes on the Japanese Kana",
+      "summary": "A quiet log of rhythm and memory — from Hiragana to Katakana, tracing how sound becomes symbol and how repetition becomes understanding.",
+      "post_time": "2025-10-22 10:00",
+      "hero_image": "./posts/learning-the-japanese-kana/media/hero.png",
+      "author": "Joshua Xu",
+      "tags": [
+        "Japanese",
+        "Language Learning",
+        "Phonetics"
+      ]
     }
   ]
 }

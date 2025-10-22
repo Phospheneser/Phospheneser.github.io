@@ -48,6 +48,19 @@
         "エッセイ",
         "執筆"
       ]
+    },
+    {
+      "slug": "learning-the-japanese-kana",
+      "title": "音から始まる：五十音図の学習ノート",
+      "summary": "ひらがなからカタカナへ——音が文字になり、反復が理解に変わるまでの静かな記録。",
+      "post_time": "2025-10-22 10:00",
+      "hero_image": "./posts/learning-the-japanese-kana/media/hero.png",
+      "author": "Joshua Xu",
+      "tags": [
+        "日本語",
+        "言語学習",
+        "音声学"
+      ]
     }
   ]
 }

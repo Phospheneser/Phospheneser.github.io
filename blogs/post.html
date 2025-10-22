@@ -683,6 +683,11 @@
       postLabels = Object.assign({}, fallbackLabels, blogsData.post_labels || {});
       currentLang = activeLang;
       localStorage.setItem('lang', activeLang);
+      window.__currentPostLang = activeLang;
+      if (document && document.documentElement) {
+        document.documentElement.lang = activeLang;
+        document.documentElement.setAttribute('lang', activeLang);
+      }
       await updateFooter(activeLang);
       renderLanguageSwitcher(slug);
       renderNavigationLabels();
@@ -816,6 +821,7 @@
         }
         
         container.innerHTML = html;
+        executePostScripts(container, primaryPath);
         if (status) status.textContent = '';
         
         // 调试：检查设置后的内容
@@ -839,6 +845,48 @@
         if (status) {
           status.textContent = postLabels.missing || 'We could not find this article. Please check the URL or return to the blog index.';
         }
+      }
+    }
+
+    function executePostScripts(container, primaryPath) {
+      if (!container) return;
+      const scripts = Array.from(container.querySelectorAll('script'));
+      if (!scripts.length) return;
+
+      let baseURL = null;
+      try {
+        const primaryURL = new URL(primaryPath, window.location.href);
+        baseURL = new URL('./', primaryURL);
+      } catch (err) {
+        console.error('无法解析文章脚本基路径:', err);
+      }
+
+      scripts.forEach(original => {
+        const newScript = document.createElement('script');
+        if (original.type) newScript.type = original.type;
+        if (original.noModule) newScript.noModule = original.noModule;
+        if (original.crossOrigin) newScript.crossOrigin = original.crossOrigin;
+        if (original.referrerPolicy) newScript.referrerPolicy = original.referrerPolicy;
+        const srcAttr = original.getAttribute('src');
+
+        if (srcAttr) {
+          let resolvedSrc = srcAttr;
+          if (baseURL && !/^(?:https?:)?\/\//.test(srcAttr) && !srcAttr.startsWith('/')) {
+            resolvedSrc = new URL(srcAttr, baseURL).toString();
+          }
+          newScript.src = resolvedSrc;
+          newScript.async = false;
+        } else {
+          newScript.textContent = original.textContent;
+        }
+
+        original.parentNode.replaceChild(newScript, original);
+      });
+
+      if (baseURL) {
+        window.__currentPostBaseURL = baseURL.href || baseURL.toString();
+      } else {
+        window.__currentPostBaseURL = null;
       }
     }
 

@@ -48,6 +48,19 @@
         "随笔",
         "写作"
       ]
+    },
+    {
+      "slug": "learning-the-japanese-kana",
+      "title": "声音的起点：五十音图学习笔记",
+      "summary": "一次关于语言节奏的记录：从平假名到片假名，从发音的肌肉记忆到文字的视觉节奏。",
+      "post_time": "2025-10-22 10:00",
+      "hero_image": "./posts/learning-the-japanese-kana/media/hero.png",
+      "author": "Joshua Xu",
+      "tags": [
+        "日语",
+        "语言学习",
+        "Phonetics"
+      ]
     }
   ]
 }
