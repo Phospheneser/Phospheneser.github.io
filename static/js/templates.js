@@ -516,41 +516,32 @@
         contentDiv.appendChild(shell);
 
         const fallback = document.createElement('div');
-        fallback.className = 'visitor-fallback hidden';
+        fallback.className = 'visitor-fallback';
         fallback.innerHTML = '<a href="https://mapmyvisitors.com/web/1c0xc" title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=b_OHoWvAxY-kJ6edpa0-KhBTg_dqdL64_u2Z4vbecEc&cl=ffffff" alt="Visitor map"></a>';
         shell.appendChild(fallback);
 
+        // Live widget temporarily disabled due to background fetch issues.
+        // Keeping the fallback image only.
+        /*
         const scriptId = 'mapmyvisitors';
         const existing = document.getElementById(scriptId);
         if (existing) {
             shell.appendChild(existing);
-            console.log("find existing element, hide fallback")
             fallback.classList.add('hidden');
             return;
         }
-
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.id = scriptId;
-        script.src = 'https://mapmyvisitors.com/map.js?d=b_OHoWvAxY-kJ6edpa0-KhBTg_dqdL64_u2Z4vbecEc&cl=ffffff&w=a';
-        script.onload = () => {
-            console.log("loading element, hide fallback")
-            fallback.classList.add('hidden');
-        };
-        script.onerror = () => {
-            console.log("loading element error , displeyh fallback")
-            fallback.classList.remove('hidden');
-        };
-        // If nothing renders after a delay, surface fallback; hide it if widget exists.
+        script.src = 'https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=n&d=b_OHoWvAxY-kJ6edpa0-KhBTg_dqdL64_u2Z4vbecEc';
+        script.onload = () => { fallback.classList.add('hidden'); };
+        script.onerror = () => { fallback.classList.remove('hidden'); };
         setTimeout(() => {
             const hasWidget = shell.querySelector('.mapmyvisitors-map') || shell.querySelector('#mapmyvisitors-widget');
-            if (hasWidget) {
-                fallback.classList.add('hidden');
-            } else {
-                fallback.classList.remove('hidden');
-            }
+            if (hasWidget) fallback.classList.add('hidden'); else fallback.classList.remove('hidden');
         }, 6000);
         shell.appendChild(script);
+        */
     });
 
 

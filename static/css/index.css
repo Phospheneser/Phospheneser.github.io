@@ -2266,10 +2266,24 @@ body.dark-mode .text-homepage-1 a:hover {
 .visitor-fallback {
   margin-top: 10px;
   display: inline-block;
+  width: 100%;
 }
 
 .visitor-fallback.hidden {
   display: none;
+}
+
+.visitor-fallback a {
+  display: block;
+  width: 100%;
+}
+
+.visitor-fallback img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* .mapmyvisitors-map {
