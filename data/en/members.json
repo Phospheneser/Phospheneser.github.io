@@ -1,0 +1,29 @@
+{
+  "nav_label": "Members",
+  "title": "🧑‍💼 Members (Intern Cohort)",
+  "intro": "We keep a tongue-in-cheek intern cohort staffed by my two cats to ensure the lab stays humane. Their titles sound formal; their deliverables revolve around purr-driven QA, desk logistics, and morale boosts. The roster is deliberately lightweight so future \"fellows\" can hop in when needed.",
+  "members": [
+    {
+      "name": "Huangdou",
+      "role": "Operations Intern (Sunbeam Allocation)",
+      "image": "./media/member/huangdou.jpg",
+      "focus": "Audits every keyboard and laptop lid for thermal stability; enforces daylight resource fairness across desks.",
+      "responsibilities": [
+        "Runs continuous lap-temperature QA during long reading sessions.",
+        "Conducts nap-cycle experiments on soft materials in the workspace.",
+        "Escalates incidents involving unguarded snacks with silent-but-firm stare reviews."
+      ]
+    },
+    {
+      "name": "Xiao Ju",
+      "role": "People & Culture Intern (Night Shift)",
+      "image": "./media/member/xiaoju.jpg",
+      "focus": "Provides late-night morale support and enforces regular stretch breaks with head-bump reminders.",
+      "responsibilities": [
+        "Supervises keyboard ergonomics by occupying prime typing real estate.",
+        "Leads purr-based feedback loops during sprint retros.",
+        "Maintains hallway patrols to reduce toy-related security incidents."
+      ]
+    }
+  ]
+}

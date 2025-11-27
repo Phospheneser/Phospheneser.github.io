@@ -1,0 +1,11 @@
+{
+  "nav_label": "Visitors",
+  "title": "🌐 Browsing Log",
+  "intro": "A live visitor globe tracks who has dropped by recently. Data is rendered via mapmyvisitors and loads on demand.",
+  "visitors": [
+    {
+      "type": "globe",
+      "label": "Live Visitor Globe"
+    }
+  ]
+}

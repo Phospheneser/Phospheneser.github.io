@@ -2180,3 +2180,125 @@ body.dark-mode .text-homepage-1 a:hover {
   color: #66aaff;
   border-bottom: 1px solid #66aaff;
 }
+
+.member-intro,
+.visitor-intro {
+  margin-bottom: 12px;
+}
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.member-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.member-avatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px;
+  border: 2px solid #e5e7eb;
+}
+
+.member-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.member-role {
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+.member-focus {
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+.member-resp {
+  margin: 0;
+  padding-left: 18px;
+  color: #4b5563;
+  list-style-type: disc;
+}
+
+.member-resp li {
+  margin-bottom: 4px;
+}
+
+.visitor-globe-shell {
+  margin-top: 12px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  color: #1f2937;
+  min-height: 320px;
+  position: relative;
+  overflow: hidden;
+}
+
+.visitor-label {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.visitor-fallback {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.visitor-fallback.hidden {
+  display: none;
+}
+
+/* .mapmyvisitors-map {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+} */
+
+body.dark-mode .member-card {
+  background: #1f2937;
+  border-color: #334155;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .member-avatar {
+  border-color: #334155;
+}
+
+body.dark-mode .member-role {
+  color: #93c5fd;
+}
+
+body.dark-mode .member-focus,
+body.dark-mode .member-resp {
+  color: #e5e7eb;
+}
+
+body.dark-mode .visitor-globe-shell {
+  background: #111827;
+  border-color: #374151;
+  color: #e5e7eb;
+}

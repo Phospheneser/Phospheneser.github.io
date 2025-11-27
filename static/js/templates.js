@@ -433,6 +433,126 @@
         }
     });
 
+    TemplateRegistry.register('member-card', function renderMembers(items, section, contentDiv) {
+        if (!contentDiv) return;
+        contentDiv.innerHTML = '';
+        const intro = contentDiv.dataset.sectionIntro || '';
+        if (intro) {
+            const introP = document.createElement('p');
+            introP.className = 'text-homepage-1 member-intro';
+            introP.textContent = intro;
+            contentDiv.appendChild(introP);
+        }
+
+        if (!items || items.length === 0) {
+            const emptyDiv = document.createElement('div');
+            emptyDiv.className = 'empty-state';
+            emptyDiv.textContent = 'No interns on duty (yet).';
+            contentDiv.appendChild(emptyDiv);
+            return;
+        }
+
+        const grid = document.createElement('div');
+        grid.className = 'member-grid';
+
+        items.forEach(member => {
+            const card = document.createElement('div');
+            card.className = 'member-card';
+
+            if (member.image) {
+                const avatar = document.createElement('div');
+                avatar.className = 'member-avatar';
+                avatar.style.backgroundImage = `url('${member.image}')`;
+                card.appendChild(avatar);
+            }
+
+            const name = document.createElement('div');
+            name.className = 'member-name';
+            name.textContent = member.name || 'Unnamed';
+
+            const role = document.createElement('div');
+            role.className = 'member-role';
+            role.textContent = member.role || '';
+
+            const focus = document.createElement('p');
+            focus.className = 'member-focus';
+            focus.textContent = member.focus || '';
+
+            card.append(name, role);
+            if (member.focus) card.appendChild(focus);
+
+            if (Array.isArray(member.responsibilities) && member.responsibilities.length > 0) {
+                const ul = document.createElement('ul');
+                ul.className = 'member-resp';
+                member.responsibilities.forEach(task => {
+                    const li = document.createElement('li');
+                    li.textContent = task;
+                    ul.appendChild(li);
+                });
+                card.appendChild(ul);
+            }
+
+            grid.appendChild(card);
+        });
+
+        contentDiv.appendChild(grid);
+    });
+
+    TemplateRegistry.register('visitor-globe', function renderVisitorGlobe(items, section, contentDiv) {
+        if (!contentDiv) return;
+        while (contentDiv.firstChild) contentDiv.removeChild(contentDiv.firstChild);
+
+        const intro = contentDiv.dataset.sectionIntro || '';
+        if (intro) {
+            const introP = document.createElement('p');
+            introP.className = 'text-homepage-1 visitor-intro';
+            introP.textContent = intro;
+            contentDiv.appendChild(introP);
+        }
+
+        const shell = document.createElement('div');
+        shell.className = 'visitor-globe-shell';
+        shell.setAttribute('aria-live', 'polite');
+        contentDiv.appendChild(shell);
+
+        const fallback = document.createElement('div');
+        fallback.className = 'visitor-fallback hidden';
+        fallback.innerHTML = '<a href="https://mapmyvisitors.com/web/1c0xc" title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=b_OHoWvAxY-kJ6edpa0-KhBTg_dqdL64_u2Z4vbecEc&cl=ffffff" alt="Visitor map"></a>';
+        shell.appendChild(fallback);
+
+        const scriptId = 'mapmyvisitors';
+        const existing = document.getElementById(scriptId);
+        if (existing) {
+            shell.appendChild(existing);
+            console.log("find existing element, hide fallback")
+            fallback.classList.add('hidden');
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.id = scriptId;
+        script.src = 'https://mapmyvisitors.com/map.js?d=b_OHoWvAxY-kJ6edpa0-KhBTg_dqdL64_u2Z4vbecEc&cl=ffffff&w=a';
+        script.onload = () => {
+            console.log("loading element, hide fallback")
+            fallback.classList.add('hidden');
+        };
+        script.onerror = () => {
+            console.log("loading element error , displeyh fallback")
+            fallback.classList.remove('hidden');
+        };
+        // If nothing renders after a delay, surface fallback; hide it if widget exists.
+        setTimeout(() => {
+            const hasWidget = shell.querySelector('.mapmyvisitors-map') || shell.querySelector('#mapmyvisitors-widget');
+            if (hasWidget) {
+                fallback.classList.add('hidden');
+            } else {
+                fallback.classList.remove('hidden');
+            }
+        }, 6000);
+        shell.appendChild(script);
+    });
+
 
 
     global.TemplateRegistry = TemplateRegistry;

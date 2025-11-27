@@ -380,6 +380,7 @@
       if (!container) return;
       const contentDiv = container.querySelector('.about-texts');
       if (!contentDiv) return;
+      contentDiv.dataset.sectionIntro = data.intro || '';
 
       updateElement(`#${section.id}-title`, data.title || section.id);
 

@@ -1,0 +1,11 @@
+{
+  "nav_label": "浏览记录",
+  "title": "🌐 浏览记录",
+  "intro": "一个实时访客地球展示近期的访问足迹，由 mapmyvisitors 提供并按需加载。",
+  "visitors": [
+    {
+      "type": "globe",
+      "label": "实时访客地球"
+    }
+  ]
+}

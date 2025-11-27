@@ -1,0 +1,11 @@
+{
+  "nav_label": "閲覧記録",
+  "title": "🌐 閲覧記録",
+  "intro": "mapmyvisitors によるライブ地球が最近の訪問を可視化します。必要なときにのみ読み込みます。",
+  "visitors": [
+    {
+      "type": "globe",
+      "label": "ライブ訪問者グローブ"
+    }
+  ]
+}

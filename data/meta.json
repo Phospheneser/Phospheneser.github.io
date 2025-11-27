@@ -153,6 +153,24 @@
                 "content"
             ],
             "template": "experience"
+        },
+        "member": {
+            "requiredKeys": [
+                "name",
+                "role"
+            ],
+            "optionalKeys": [
+                "focus",
+                "responsibilities",
+                "image"
+            ],
+            "template": "member-card"
+        },
+        "visitor": {
+            "requiredKeys": [
+                "type"
+            ],
+            "template": "visitor-globe"
         }
     },
     "sections": [
@@ -282,6 +300,52 @@
             }
         },
         {
+            "id": "members",
+            "enabled": true,
+            "itemType": "member",
+            "dataSource": "members",
+            "background": "default",
+            "singlePage": {
+                "enabled": true,
+                "layout": "list",
+                "options": {
+                    "columns": 1,
+                    "gap": "normal"
+                }
+            },
+            "multiPage": {
+                "enabled": true,
+                "layout": "list",
+                "options": {
+                    "columns": 1,
+                    "gap": "normal"
+                }
+            }
+        },
+        {
+            "id": "visitor-map",
+            "enabled": true,
+            "itemType": "visitor",
+            "dataSource": "visitors",
+            "background": "default",
+            "singlePage": {
+                "enabled": true,
+                "layout": "list",
+                "options": {
+                    "columns": 1,
+                    "gap": "normal"
+                }
+            },
+            "multiPage": {
+                "enabled": true,
+                "layout": "list",
+                "options": {
+                    "columns": 1,
+                    "gap": "normal"
+                }
+            }
+        },
+        {
             "id": "blogs",
             "enabled": true,
             "itemType": "blog",
@@ -331,7 +395,9 @@
         "publications": "No publications yet.",
         "projects": "No projects available.",
         "blogs": "No blog posts yet.",
-        "education-experience": "No education or internship records yet."
+        "education-experience": "No education or internship records yet.",
+        "members": "No interns on duty (yet).",
+        "visitor-map": "No visitor data available."
     },
     "themes": {
         "primary": "#3273dc",

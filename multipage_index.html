@@ -558,6 +558,7 @@
             console.warn(`Missing content container for section ${page}`);
             return;
         }
+        contentDiv.dataset.sectionIntro = data.intro || '';
 
         if (window.PluginRegistry && multiPageConfig.plugins) {
             window.PluginRegistry.applyPlugins({
