@@ -1,28 +1,28 @@
 {
   "nav_label": "Members",
-  "title": "🧑‍💼 Members (Intern Cohort)",
-  "intro": "We keep a tongue-in-cheek intern cohort staffed by my two cats to ensure the lab stays humane. Their titles sound formal; their deliverables revolve around purr-driven QA, desk logistics, and morale boosts. The roster is deliberately lightweight so future \"fellows\" can hop in when needed.",
+  "title": "🧑‍💼 Members (Cat Interns)",
+  "intro": "We have formed a small team of “Cat Interns” — two cats dedicated to ensuring humanity and ceremony in our lab. Their main output includes purring, workstation logistics, and morale maintenance.",
   "members": [
     {
-      "name": "Huangdou",
-      "role": "Operations Intern (Sunbeam Allocation)",
+      "name": "Huang Dou",
+      "role": "Engineering Intern (Robustness Maintenance)",
       "image": "./media/member/huangdou.jpg",
-      "focus": "Audits every keyboard and laptop lid for thermal stability; enforces daylight resource fairness across desks.",
+      "focus": "Regular robustness inspections of keyboards, desks, and laptop lids; ensuring the stability of the workspace.",
       "responsibilities": [
-        "Runs continuous lap-temperature QA during long reading sessions.",
-        "Conducts nap-cycle experiments on soft materials in the workspace.",
-        "Escalates incidents involving unguarded snacks with silent-but-firm stare reviews."
+        "Responsible for robustness testing of the workstation structure.",
+        "Responsible for stability maintenance of workstation equipment.",
+        "Responsible for maintaining the mental well-being of team members."
       ]
     },
     {
       "name": "Xiao Ju",
-      "role": "People & Culture Intern (Night Shift)",
+      "role": "Productivity & Culture Intern",
       "image": "./media/member/xiaoju.jpg",
-      "focus": "Provides late-night morale support and enforces regular stretch breaks with head-bump reminders.",
+      "focus": "Maintaining and supervising the office atmosphere.",
       "responsibilities": [
-        "Supervises keyboard ergonomics by occupying prime typing real estate.",
-        "Leads purr-based feedback loops during sprint retros.",
-        "Maintains hallway patrols to reduce toy-related security incidents."
+        "Supervising ergonomic keyboard usage by occupying key areas.",
+        "Providing purring feedback loops during working hours.",
+        "Night-time patrols to reduce safety incidents."
       ]
     }
   ]
