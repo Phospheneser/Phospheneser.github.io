@@ -3,6 +3,31 @@
   "title": "📑 出版物",
   "publications": [
     {
+      "title": "MOSS Transcribe Diarize: 正確な音声トランスクリプトと話者分離",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>MOSI AI Team</strong>",
+      "description": "この論文では、端対端の多モーダル大言語モデル MOSS Transcribe Diarize を紹介します。このモデルは、音声内容のトランスクリプト、話者のラベル付け、および時間スタンプの出力を同時に行うことができます。従来の音声認識と話者分離を別々に処理する方法と比較して、このモデルは長文対話（約90分）を処理し、話者の一貫性を維持することができ、複数の評価セットで既存の商用システムを上回ります。",
+      "links": [
+        {
+          "type": "論文",
+          "url": "https://arxiv.org/abs/2601.01554",
+          "icon": "./media/link_icon/arxiv.svg"
+        },
+        {
+          "type": "ホームページ",
+          "url": "https://mosi.cn/models/moss-transcribe-diarize",
+          "icon": "./media/link_icon/website.svg",
+          "dark_icon": "./media/link_icon/website_dark.png"
+        },
+        {
+          "type": "オンラインデモ",
+          "url": "https://moss-transcribe-diarize-demo.mosi.cn",
+          "icon": "./media/link_icon/robot.svg"
+        }
+      ],
+      "image": "./media/publications/moss-transcribe-diarize.jpg"
+    },
+    {
       "title": "MOSS-Speech: テキストガイダンスなしの真の音声対話モデルを目指して",
       "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>SLM Team</strong>",

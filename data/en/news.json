@@ -3,6 +3,10 @@
   "title": "🔥 News",
   "news": [
     {
+      "date": "2026.01.01",
+      "content": "<a href=\"https://mosi.cn/models/moss-transcribe-diarize\">MOSS Transcribe Diarize</a> was released!"
+    },
+    {
       "date": "2025.10.04",
       "content": "<a href=\"https://github.com/Phospheneser/Phospheneser-awesome-academic-template\">Phospheneser-awesome-academic-template</a> was released!"
     },

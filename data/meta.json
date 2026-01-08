@@ -388,6 +388,11 @@
         {
             "icon": "fas fa-envelope",
             "url": "mailto:zxu24@m.fudan.edu.cn"
+        },
+        {
+            "icon": "fas fa-file-pdf",
+            "url": "./media/assets/my_resume.pdf",
+            "download": true
         }
     ],
     "emptyStates": {

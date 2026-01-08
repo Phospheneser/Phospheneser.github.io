@@ -3,6 +3,31 @@
   "title": "📑 出版物",
   "publications": [
     {
+      "title": "MOSS Transcribe Diarize: Accurate Transcription with Speaker Diarization",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>MOSI AI Team</strong>",
+      "description": "这篇论文提出了一个 端对端的多模态大语言模型 MOSS Transcribe Diarize，可同时完成语音内容转写、说话人标注与时间戳输出。与传统把语音识别与说话人分离分开处理相比，该模型可在 单一模型中处理长对话（约 90 分钟）并维持说话人一致性，在多个评测集上优于现有商用系统。",
+      "links": [
+        {
+          "type": "论文",
+          "url": "https://arxiv.org/abs/2601.01554",
+          "icon": "./media/link_icon/arxiv.svg"
+        },
+        {
+          "type": "主页",
+          "url": "https://mosi.cn/models/moss-transcribe-diarize",
+          "icon": "./media/link_icon/website.svg",
+          "dark_icon": "./media/link_icon/website_dark.png"
+        },
+        {
+          "type": "在线演示",
+          "url": "https://moss-transcribe-diarize-demo.mosi.cn",
+          "icon": "./media/link_icon/robot.svg"
+        }
+      ],
+      "image": "./media/publications/moss-transcribe-diarize.jpg"
+    },
+    {
       "title": "MOSS-Speech: Towards True Speech-to-Speech Models Without Text Guidance",
       "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>SLM Team</strong>",

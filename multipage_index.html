@@ -136,6 +136,9 @@
             const a = document.createElement('a');
             a.href = s.url || '#';
             a.target = '_blank';
+            if (s.download) {
+                a.download = '';
+            }
             const i = document.createElement('i');
             i.className = s.icon || 'fas fa-link';
             a.appendChild(i);

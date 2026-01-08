@@ -3,6 +3,31 @@
   "title": "📑 Publications",
   "publications": [
     {
+      "title": "MOSS Transcribe Diarize: Accurate Transcription with Speaker Diarization",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>MOSI AI Team</strong>",
+      "description": "This paper introduces a multi-modal large language model MOSS Transcribe Diarize, which can perform transcription, speaker diarization, and timestamp output simultaneously. Compared to the traditional method of separating speech recognition and speaker diarization, this model can process long conversations (about 90 minutes) in a single model and maintain speaker consistency on multiple evaluation sets, outperforming existing commercial systems.",
+      "links": [
+        {
+          "type": "Paper",
+          "url": "https://arxiv.org/abs/2601.01554",
+          "icon": "./media/link_icon/arxiv.svg"
+        },
+        {
+          "type": "Homepage",
+          "url": "https://mosi.cn/models/moss-transcribe-diarize",
+          "icon": "./media/link_icon/website.svg",
+          "dark_icon": "./media/link_icon/website_dark.png"
+        },
+        {
+          "type": "Online Demo",
+          "url": "https://moss-transcribe-diarize-demo.mosi.cn",
+          "icon": "./media/link_icon/robot.svg"
+        }
+      ],
+      "image": "./media/publications/moss-transcribe-diarize.jpg"
+    },
+    {
       "title": "MOSS-Speech: Towards True Speech-to-Speech Models Without Text Guidance",
       "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>SLM Team</strong>",
