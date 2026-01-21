@@ -53,6 +53,31 @@
       "image": "./media/publications/moss-speech-model.png"
     },
     {
+      "title": "MOSS-TTSD: Text to Spoken Dialogue Generation",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>OpenMOSS Team</strong>",
+      "description": "MOSS-TTSD は OpenMOSS チームによって開発されたオープンソースの バイリンガル対話型音声合成モデル（Text to Spoken Dialogue） です。複数話者による対話テキストから、自然で表現力豊かな音声を直接生成することができます。本モデルは Qwen3-1.7B-base アーキテクチャを基盤としており、大規模な単一話者および対話音声データを用いて学習されています。中国語・英語のバイリンガル対応、長文音声生成、ゼロショットによる二人対話音声クローニングなどの高度な機能を備え、ポッドキャスト、インタビュー、音声アシスタントなどの対話型音声生成シーンに適しています。MOSS-TTSD のモデル重み、推論コード、API はすべてオープンソースとして公開されており、商用利用にも対応しています。 ",
+      "links": [
+        {
+          "type": "ブログ",
+          "url": "https://openmoss.ai/en/moss-ttsd/",
+          "icon": "./media/link_icon/blog.svg"
+        },
+        {
+          "type": "コード",
+          "url": "https://github.com/OpenMOSS/MOSS-TTSD",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
+        },
+        {
+          "type": "オンラインデモ",
+          "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTSD",
+          "icon": "./media/link_icon/robot.svg"
+        }
+      ],
+      "image": "./media/publications/moss-ttsd.jpg"
+    },
+    {
       "title": "SpeechGPT 2.0 - プレビュー版",
       "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>OpenMOSS Team</strong>",

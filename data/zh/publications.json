@@ -63,6 +63,31 @@
       "image": "./media/publications/moss-speech-model.png"
     },
     {
+      "title": "MOSS-TTSD: Text to Spoken Dialogue Generation",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>OpenMOSS Team</strong>",
+      "description": "MOSS-TTSD 是双语对话语音合成模型（Text to Spoken Dialogue），能够直接从多说话人的对话文本生成自然、富有表现力的语音。该模型基于 Qwen3-1.7B-base 架构，通过海量单人及对话语音数据训练，实现中英文双语支持、长文本语音生成和零样本双人语音克隆等能力，适用于播客、访谈、智能交互等对话场景的高质量语音合成。MOSS-TTSD 的模型权重、推理代码和 API 都已开源，支持商业使用",
+      "links": [
+        {
+          "type": "博客",
+          "url": "https://openmoss.ai/en/moss-ttsd/",
+          "icon": "./media/link_icon/blog.svg"
+        },
+        {
+          "type": "代码",
+          "url": "https://github.com/OpenMOSS/MOSS-TTSD",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
+        },
+        {
+          "type": "在线演示",
+          "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTSD",
+          "icon": "./media/link_icon/robot.svg"
+        }
+      ],
+      "image": "./media/publications/moss-ttsd.jpg"
+    },
+    {
       "title": "SpeechGPT 2.0-预览版",
       "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>OpenMOSS Team</strong>",

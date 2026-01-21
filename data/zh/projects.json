@@ -3,6 +3,36 @@
   "title": "⚙️ 项目",
   "projects": [
     {
+      "title": "基于STM32的车载智能助手",
+      "date": "2025.12-2026.1",
+      "authors": "<strong>徐哲</strong>, 赵老板,Adam,天一,大卫,stella",
+      "description": "我们的项目旨在构建新一代车内智能助手系统，通过多模态感知与自动意图识别技术，实时理解驾乘人员状态与行为意图，并自主联动车辆功能，实现安全、舒适且高度智能化的座舱交互体验。",
+      "image": "./media/projects/academic-homepage-template.jpg",
+      "links": [
+        {
+          "type": "活动回顾",
+          "url": "https://lepetitjournal.com/shanghai/la-french-tech-lance-le-premier-hackathon-international-de-shanghai-431905",
+          "icon": "./media/link_icon/blog.svg"
+        },
+        {
+          "type": "视频演示",
+          "url": "./media/assets/video_demo.mp4",
+          "icon": "./media/link_icon/vedio_demo.svg"
+        },
+        {
+          "type": "项目文档",
+          "url": "./media/assets/INTU-The-Invisible-Co-Pilot.pdf",
+          "icon": "./media/link_icon/ppt.svg"
+        },
+        {
+          "type": "代码",
+          "url": "https://github.com/Phospheneser/INTU-code-backend",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
+        }
+      ]
+    },
+    {
       "title": "个人学术网站模板",
       "date": "2025.9-2024.10",
       "authors": "<strong>徐哲</strong>，codex",

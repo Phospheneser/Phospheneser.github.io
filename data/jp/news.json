@@ -3,6 +3,10 @@
   "title": "🔥 ニュース",
   "news": [
     {
+      "date": "2026.01.17",
+      "content": "Soma Robotics チームが <a href=\"https://www.frenchtechshanghai.com/upcoming-events/grow-ft-hackathon-2026/\">2026 AI Hackathon</a> で Forvia トラックチャンピオンとチャンピオンを獲得しました！"
+    },
+    {
       "date": "2026.01.01",
       "content": "<a href=\"https://mosi.cn/models/moss-transcribe-diarize\">MOSS Transcribe Diarize</a> がリリースされました！"
     },
@@ -17,6 +21,10 @@
     {
       "date": "2025.06.26",
       "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> が <a href=\"https://iccv.thecvf.com/\">ICCV 2025</a> に採択されました！"
+    },
+    {
+      "date": "2025.06.20",
+      "content": "<a href=\"https://github.com/OpenMOSS/MOSS-TTSD\">MOSS-TTSD</a> がリリースされました！"
     },
     {
       "date": "2025.03.05",

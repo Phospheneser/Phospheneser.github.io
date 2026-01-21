@@ -63,6 +63,31 @@
       "image": "./media/publications/moss-speech-model.png"
     },
     {
+      "title": "MOSS-TTSD: Text to Spoken Dialogue Generation",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>OpenMOSS Team</strong>",
+      "description": "MOSS-TTSD is a bilingual dialogue speech synthesis model (Text to Spoken Dialogue) that can directly generate natural and expressive speech from multi-speaker dialogue text. The model is based on the Qwen3-1.7B-base architecture and trained on massive single-speaker and dialogue speech data to achieve bilingual support, long text speech generation, and zero-shot dual-speaker speech cloning capabilities, suitable for high-quality speech synthesis in podcast, interview, intelligent interaction, and other dialogue scenarios.",
+      "links": [
+        {
+          "type": "Blog",
+          "url": "https://openmoss.ai/en/moss-ttsd/",
+          "icon": "./media/link_icon/blog.svg"
+        },
+        {
+          "type": "Code",
+          "url": "https://github.com/OpenMOSS/MOSS-TTSD",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
+        },
+        {
+          "type": "Online Demo",
+          "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTSD",
+          "icon": "./media/link_icon/robot.svg"
+        }
+      ],
+      "image": "./media/publications/moss-ttsd.jpg"
+    },
+    {
       "title": "SpeechGPT 2.0 - Preview Version",
       "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>OpenMOSS Team</strong>",

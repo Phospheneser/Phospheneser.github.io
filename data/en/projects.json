@@ -3,6 +3,36 @@
   "title": "⚙️ Projects",
   "projects": [
     {
+      "title": "Car-Mounted Smart Assistant System",
+      "date": "2025.12-2026.1",
+      "authors": "<strong>Xu Zhe</strong>, Zhao Laoban, Adam, Tianyi, David, Stella",
+      "description": "Our project aims to build a new generation of in-car smart assistant system, using multi-modal perception and automatic intent recognition technology to understand the state and behavior intention of drivers and passengers in real time, and to coordinate vehicle functions autonomously, to achieve safe, comfortable, and highly intelligent cabin interaction experience.",
+      "image": "./media/projects/academic-homepage-template.jpg",
+      "links": [
+        {
+          "type": "Activity Review",
+          "url": "https://lepetitjournal.com/shanghai/la-french-tech-lance-le-premier-hackathon-international-de-shanghai-431905",
+          "icon": "./media/link_icon/blog.svg"
+        },
+        {
+          "type": "Video Demo",
+          "url": "./media/assets/video_demo.mp4",
+          "icon": "./media/link_icon/vedio_demo.svg"
+        },
+        {
+          "type": "Project Document",
+          "url": "./media/assets/INTU-The-Invisible-Co-Pilot.pdf",
+          "icon": "./media/link_icon/ppt.svg"
+        },
+        {
+          "type": "Code",
+          "url": "https://github.com/Phospheneser/INTU-code-backend",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
+        }
+      ]
+    },
+    {
       "title": "Personal Academic Homepage Template",
       "date": "2025.9-2024.10",
       "authors": "<strong>Xu Zhe</strong>, codex",
