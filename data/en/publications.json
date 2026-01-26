@@ -29,7 +29,7 @@
     },
     {
       "title": "MOSS-Speech: Towards True Speech-to-Speech Models Without Text Guidance",
-      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>, <a href='https://iclr.cc/Conferences/2026'>ICLR 2026</a>",
       "authors": "<strong>SLM Team</strong>",
       "description": "Our method combines a modality-based layer splitting architecture with a frozen pre-training strategy, leveraging the inference and knowledge capabilities of pre-trained text large language models while extending the native speech processing capabilities. Experimental results show that the model achieves the best performance on speech question-answering tasks and remains competitive in speech-to-speech generation tasks compared to text-guided systems.",
       "links": [

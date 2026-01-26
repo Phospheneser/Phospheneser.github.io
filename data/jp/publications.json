@@ -29,7 +29,7 @@
     },
     {
       "title": "MOSS-Speech: テキストガイダンスなしの真の音声対話モデルを目指して",
-      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>, <a href='https://iclr.cc/Conferences/2026'>ICLR 2026</a>",
       "authors": "<strong>SLM Team</strong>",
       "description": "当手法は、モダリティベースのレイヤ分割アーキテクチャと固定化事前学習戦略を組み合わせ、事前学習済みテキスト大規模言語モデルの推論能力と知識を活用しつつ、本来の音声処理能力を拡張します。実験結果から、本モデルは音声質問応答タスクにおいて最高の性能を達成し、音声対話生成タスクにおいてもテキスト誘導型システムと比較して遜色ない競争力を維持することが示されました。",
       "links": [

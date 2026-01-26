@@ -3,6 +3,10 @@
   "title": "🔥 News",
   "news": [
     {
+      "date": "2026.01.26",
+      "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> was accepted by <a href=\"https://iclr.cc/Conferences/2026\">ICLR 2026</a>!"
+    },
+    {
       "date": "2026.01.18",
       "content": "Soma Robotics team won the Forvia Track Champion and Overall Champion in the <a href=\"https://www.frenchtechshanghai.com/upcoming-events/grow-ft-hackathon-2026/\">AI Hackathon 2026</a>!"
     },

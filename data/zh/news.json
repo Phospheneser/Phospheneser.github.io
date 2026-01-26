@@ -3,6 +3,10 @@
   "title": "🔥 新闻",
   "news": [
     {
+      "date": "2026.01.26",
+      "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> 已被<a href=\"https://iclr.cc/Conferences/2026\">ICLR 2026</a>录用！"
+    },
+    {
       "date": "2026.01.17",
       "content": "Soma Robotics小组在<a href=\"https://www.frenchtechshanghai.com/upcoming-events/grow-ft-hackathon-2026/\">2026 AI Hackathon</a>中获得了Forvia赛道冠军和总冠军！"
     },

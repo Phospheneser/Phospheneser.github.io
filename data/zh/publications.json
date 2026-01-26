@@ -29,7 +29,7 @@
     },
     {
       "title": "MOSS-Speech: Towards True Speech-to-Speech Models Without Text Guidance",
-      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>, <a href='https://iclr.cc/Conferences/2026'>ICLR 2026</a>",
       "authors": "<strong>SLM Team</strong>",
       "description": "我们的方法结合了 基于模态的层拆分架构 与 冻结预训练策略，在利用预训练文本大型语言模型的推理与知识能力的同时，扩展了原生语音处理能力。实验结果显示，该模型在语音问答任务上取得了最先进的性能，并在语音到语音生成任务中，相较于文本引导系统仍保持竞争力。",
       "links": [
