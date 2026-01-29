@@ -3,6 +3,37 @@
   "title": "📑 Publications",
   "publications": [
     {
+      "title": "MOVA: Towards Scalable and Synchronized Video–Audio Generation",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>SII-OpenMOSS Team</strong>",
+      "description": "MOVA (MOSS Video and Audio) is an open-source video and audio generation model that aims to achieve high-quality, synchronized video and audio content generation. The model is based on a 32B parameter Mixture-of-Experts architecture and activates 18B parameters during inference, supporting IT2VA (Image to Video Audio) and T2VA (Text to Video Audio) tasks. It can generate naturally synchronized lip-synced speech, environment-aware audio effects, and content-aligned background music. The project provides a complete toolchain for efficient inference, LoRA fine-tuning, and prompt enhancement.",
+      "links": [
+        {
+          "type": "Paper",
+          "url": "coming soon",
+          "icon": "./media/link_icon/arxiv.svg"
+        },
+        {
+          "type": "Code",
+          "url": "https://github.com/OpenMOSS/MOVA",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
+        },
+        {
+          "type": "Homepage",
+          "url": "https://mosi.cn/models/mova",
+          "icon": "./media/link_icon/website.svg",
+          "dark_icon": "./media/link_icon/website_dark.png"
+        },
+        {
+          "type": "Model",
+          "url": "https://huggingface.co/collections/OpenMOSS-Team/mova",
+          "icon": "./media/link_icon/hf.svg"
+        }
+      ],
+      "image": "./media/publications/mova.jpg"
+    },
+    {
       "title": "MOSS Transcribe Diarize: Accurate Transcription with Speaker Diarization",
       "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>MOSI AI Team</strong>",
@@ -119,11 +150,6 @@
           "icon": "./media/link_icon/arxiv.svg"
         },
         {
-          "type": "Project Page",
-          "url": "https://vlabench.github.io/",
-          "icon": "./media/link_icon/project.svg"
-        },
-        {
           "type": "Code",
           "url": "https://github.com/OpenMOSS/VLABench",
           "icon": "./media/link_icon/github.svg",
@@ -133,6 +159,11 @@
           "type": "Dataset",
           "url": "https://huggingface.co/VLABench",
           "icon": "./media/link_icon/hf.svg"
+        },
+        {
+          "type": "Project Page",
+          "url": "https://vlabench.github.io/",
+          "icon": "./media/link_icon/project.svg"
         }
       ],
       "image": "./media/publications/vlabench-benchmark.jpg"

@@ -3,6 +3,37 @@
   "title": "📑 出版物",
   "publications": [
     {
+      "title": "MOVA: スケーラブルかつ同期化されたビデオ音声生成",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>SII-OpenMOSS Team</strong>",
+      "description": "MOVA（MOSS Video and Audio） は、高品質で同期性の高いビデオ音声生成を実現するためのオープンソースモデルです。モデルは 32B パラメータの Mixture-of-Experts アーキテクチャを基にし、推論時には 18B パラメータを有効化し、IT2VA（Image to Video Audio）と T2VA（Text to Video Audio）のタスクをサポートします。モデルは、自然な口型同期音声、環境感知音効、コンテンツに対応した背景音楽を生成することができます。また、効率的な推論、LoRA ファインチューニング、プロンプトエンハンスメントなどの完全なツールチェインを提供します。",
+      "links": [
+        {
+          "type": "論文",
+          "url": "coming soon",
+          "icon": "./media/link_icon/arxiv.svg"
+        },
+        {
+          "type": "コード",
+          "url": "https://github.com/OpenMOSS/MOVA",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png"
+        },
+        {
+          "type": "ホームページ",
+          "url": "https://mosi.cn/models/mova",
+          "icon": "./media/link_icon/website.svg",
+          "dark_icon": "./media/link_icon/website_dark.png"
+        },
+        {
+          "type": "モデル",
+          "url": "https://huggingface.co/collections/OpenMOSS-Team/mova",
+          "icon": "./media/link_icon/hf.svg"
+        }
+      ],
+      "image": "./media/publications/mova.jpg"
+    },
+    {
       "title": "MOSS Transcribe Diarize: 正確な音声トランスクリプトと話者分離",
       "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
       "authors": "<strong>MOSI AI Team</strong>",
@@ -109,11 +140,6 @@
           "icon": "./media/link_icon/arxiv.svg"
         },
         {
-          "type": "プロジェクトページ",
-          "url": "https://vlabench.github.io/",
-          "icon": "./media/link_icon/project.svg"
-        },
-        {
           "type": "コード",
           "url": "https://github.com/OpenMOSS/VLABench",
           "icon": "./media/link_icon/github.svg",
@@ -123,6 +149,11 @@
           "type": "データセット",
           "url": "https://huggingface.co/VLABench",
           "icon": "./media/link_icon/hf.svg"
+        },
+        {
+          "type": "プロジェクトページ",
+          "url": "https://vlabench.github.io/",
+          "icon": "./media/link_icon/project.svg"
         }
       ],
       "image": "./media/publications/vlabench-benchmark.jpg"

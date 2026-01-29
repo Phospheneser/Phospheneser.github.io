@@ -3,6 +3,10 @@
   "title": "🔥 新闻",
   "news": [
     {
+      "date": "2026.01.29",
+      "content": "<a href=\"https://mosi.cn/models/mova\">MOVA</a> 已发布！"
+    },
+    {
       "date": "2026.01.26",
       "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> 已被<a href=\"https://iclr.cc/Conferences/2026\">ICLR 2026</a>录用！"
     },
