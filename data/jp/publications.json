@@ -22,7 +22,7 @@
         {
           "type": "ホームページ",
           "url": "https://mosi.cn/models/mova",
-          "icon": "./media/link_icon/website.svg",
+          "icon": "./media/link_icon/website.svg"
         },
         {
           "type": "モデル",
@@ -46,7 +46,7 @@
         {
           "type": "ホームページ",
           "url": "https://mosi.cn/models/moss-transcribe-diarize",
-          "icon": "./media/link_icon/website.svg",
+          "icon": "./media/link_icon/website.svg"
         },
         {
           "type": "オンラインデモ",
