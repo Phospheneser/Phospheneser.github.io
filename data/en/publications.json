@@ -23,7 +23,6 @@
           "type": "Homepage",
           "url": "https://mosi.cn/models/mova",
           "icon": "./media/link_icon/website.svg",
-          "dark_icon": "./media/link_icon/website_dark.png"
         },
         {
           "type": "Model",
@@ -48,7 +47,6 @@
           "type": "Homepage",
           "url": "https://mosi.cn/models/moss-transcribe-diarize",
           "icon": "./media/link_icon/website.svg",
-          "dark_icon": "./media/link_icon/website_dark.png"
         },
         {
           "type": "Online Demo",
