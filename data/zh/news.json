@@ -3,6 +3,10 @@
   "title": "🔥 新闻",
   "news": [
     {
+      "date": "2026.02.10",
+      "content": "<a href=\"https://arxiv.org/abs/2602.08794\">MOVA 技术报告</a>已发布！此外<a href=\"https://mosi.cn/#models\">MOSS TTS Family</a> 在同一天发布！"
+    },
+    {
       "date": "2026.01.29",
       "content": "<a href=\"https://mosi.cn/models/mova\">MOVA</a> 已发布！"
     },
