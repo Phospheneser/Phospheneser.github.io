@@ -1,0 +1,201 @@
+{
+  "page_labels": {
+    "translations": {
+      "en": {
+        "back": "Back to site",
+        "search": "Search posts...",
+        "allTags": "All topics",
+        "empty": "No posts published yet.",
+        "darkToLight": "Switch to light mode",
+        "lightToDark": "Switch to dark mode"
+      },
+      "zh": {
+        "back": "返回主页",
+        "search": "搜索文章…",
+        "allTags": "全部主题",
+        "empty": "暂时还没有发布文章。",
+        "darkToLight": "切换为浅色模式",
+        "lightToDark": "切换为深色模式"
+      },
+      "jp": {
+        "back": "サイトに戻る",
+        "search": "記事を検索…",
+        "allTags": "すべてのトピック",
+        "empty": "まだ記事が公開されていません。",
+        "darkToLight": "ライトモードへ切り替える",
+        "lightToDark": "ダークモードへ切り替える"
+      }
+    }
+  },
+  "post_labels": {
+    "translations": {
+      "en": {
+        "backBlog": "Back to blog",
+        "backHome": "Home",
+        "bottomBackBlog": "Back to blog index",
+        "bottomBackHome": "Return to homepage",
+        "darkToLight": "Switch to light mode",
+        "lightToDark": "Switch to dark mode",
+        "updated": "Updated",
+        "reading": "read",
+        "missing": "We could not find this article. Please check the URL or return to the blog index."
+      },
+      "zh": {
+        "backBlog": "返回博客",
+        "backHome": "主页",
+        "bottomBackBlog": "返回博客列表",
+        "bottomBackHome": "回到主页",
+        "darkToLight": "切换为浅色模式",
+        "lightToDark": "切换为深色模式",
+        "updated": "更新于",
+        "reading": "阅读",
+        "missing": "未找到对应文章，请检查链接或返回博客列表。"
+      },
+      "jp": {
+        "backBlog": "ブログに戻る",
+        "backHome": "ホーム",
+        "bottomBackBlog": "ブログ一覧へ戻る",
+        "bottomBackHome": "ホームページへ戻る",
+        "darkToLight": "ライトモードへ切り替える",
+        "lightToDark": "ダークモードへ切り替える",
+        "updated": "更新日",
+        "reading": "読む",
+        "missing": "該当の記事が見つかりませんでした。リンクをご確認いただくか、ブログ一覧に戻ってください。"
+      }
+    }
+  },
+  "translations": {
+    "en": {
+      "nav_label": "Blog",
+      "title": "🔬 Research Log",
+      "subtitle": "Stories, experiments, and longer reflections from ongoing projects.",
+      "kicker": "Lab notebook",
+      "archive_label": "View all posts"
+    },
+    "zh": {
+      "nav_label": "博客",
+      "title": "🔬 研究博客",
+      "subtitle": "记录项目进展、实验体会以及更长的思考。",
+      "kicker": "实验室手记",
+      "archive_label": "查看全部文章"
+    },
+    "jp": {
+      "nav_label": "ブログ",
+      "title": "🔬 リサーチログ",
+      "subtitle": "進行中のプロジェクトや実験から得た学びを綴ります。",
+      "kicker": "Lab Notebook",
+      "archive_label": "すべての記事を見る"
+    }
+  },
+  "items": [
+    {
+      "id": "notes-on-variational-inference",
+      "slug": "Notes-on-Variational-Inference",
+      "post_time": "2025-10-07 01:13",
+      "hero_image": "./posts/Notes-on-Variational-Inference/media/hero.png",
+      "translations": {
+        "en": {
+          "title": "Beneath the Bound: Notes on Variational Inference",
+          "summary": "A quiet note on understanding the Evidence Lower Bound (ELBO) — why inference becomes an optimization problem, and what the 'bound' truly means.",
+          "author": "Joshua Xu",
+          "tags": [
+            "Machine Learning",
+            "Variational Inference",
+            "Theory"
+          ]
+        },
+        "zh": {
+          "title": "下界之下：变分推断笔记",
+          "summary": "一篇关于理解证据下界（ELBO）的静心笔记——为何推断可以化为优化问题，以及“下界”真正意味着什么。",
+          "author": "Joshua Xu",
+          "tags": [
+            "机器学习",
+            "变分推断",
+            "理论"
+          ]
+        },
+        "jp": {
+          "title": "下界の下で：変分推論ノート",
+          "summary": "証拠下界（ELBO）を理解するための静かなノート――なぜ推論が最適化問題として表されるのか、そして「下界」とは何を意味するのかを考える。",
+          "author": "ジョシュア・シュウ",
+          "tags": [
+            "機械学習",
+            "変分推論",
+            "理論"
+          ]
+        }
+      }
+    },
+    {
+      "id": "launching-the-research-blog",
+      "slug": "launching-the-research-blog",
+      "post_time": "2025-10-02 09:00",
+      "hero_image": "./posts/launching-the-research-blog/media/hero.png",
+      "translations": {
+        "en": {
+          "title": "Why This Blog Exists",
+          "summary": "Keeping track of what I learn, not just to remember, but to revisit ideas and find new connections in hindsight.",
+          "author": "Joshua Xu",
+          "tags": [
+            "Meta",
+            "Writing"
+          ]
+        },
+        "zh": {
+          "title": "为什么要写这个博客",
+          "summary": "记录我学到的内容，不只是为了记住，更是为了回头重读、重新发现那些被忽略的灵感与联系。",
+          "author": "Joshua Xu",
+          "tags": [
+            "随笔",
+            "写作"
+          ]
+        },
+        "jp": {
+          "title": "なぜこのブログを書くのか",
+          "summary": "学んだことを記録するのは、忘れないためだけではなく、振り返ることで見落としていたつながりやひらめきを再び見つけるため。",
+          "author": "ジョシュア・シュウ",
+          "tags": [
+            "エッセイ",
+            "執筆"
+          ]
+        }
+      }
+    },
+    {
+      "id": "learning-the-japanese-kana",
+      "slug": "learning-the-japanese-kana",
+      "post_time": "2025-10-22 10:00",
+      "hero_image": "./posts/learning-the-japanese-kana/media/hero.png",
+      "author": "Joshua Xu",
+      "translations": {
+        "en": {
+          "title": "Learning the Sounds: Notes on the Japanese Kana",
+          "summary": "A quiet log of rhythm and memory — from Hiragana to Katakana, tracing how sound becomes symbol and how repetition becomes understanding.",
+          "tags": [
+            "Japanese",
+            "Language Learning",
+            "Phonetics"
+          ]
+        },
+        "zh": {
+          "title": "声音的起点：五十音图学习笔记",
+          "summary": "一次关于语言节奏的记录：从平假名到片假名，从发音的肌肉记忆到文字的视觉节奏。",
+          "tags": [
+            "日语",
+            "语言学习",
+            "Phonetics"
+          ]
+        },
+        "jp": {
+          "title": "音から始まる：五十音図の学習ノート",
+          "summary": "ひらがなからカタカナへ——音が文字になり、反復が理解に変わるまでの静かな記録。",
+          "tags": [
+            "日本語",
+            "言語学習",
+            "音声学"
+          ]
+        }
+      }
+    }
+  ]
+}

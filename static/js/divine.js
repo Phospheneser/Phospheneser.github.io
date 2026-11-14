@@ -1,6 +1,13 @@
+import { createScope } from './core/lifecycle.js';
+import { siteURL } from './core/data.js';
+import { requestDivination, resolveDivineServer } from './core/divination.js';
+import { serviceWarmup } from './core/service-warmup.js';
+
 // 占卜小人功能实现
-class Diviner {
-  constructor() {
+export class Diviner {
+  constructor(meta = {}) {
+    this.meta = meta;
+    this.lifecycle = createScope();
     this.container = null;
     this.divineWindow = null;
     this.divineMode = 'JiuGongLiuRen'; // 默认占卜模式
@@ -13,7 +20,13 @@ class Diviner {
   // 初始化占卜小人
   init() {
     // 创建占卜小人容器
-    this.container = document.createElement('div');
+    this.container = document.createElement('button');
+    this.container.type = 'button';
+    this.container.setAttribute('aria-label', '打开占卜');
+    this.container.style.border = '0';
+    this.container.style.padding = '0';
+    this.container.style.background = 'transparent';
+    this.container.style.touchAction = 'none';
     this.container.id = 'diviner-container';
     this.container.className = 'diviner-container';
     this.container.style.position = 'fixed';
@@ -25,8 +38,9 @@ class Diviner {
 
     // 添加占卜小人图标
     const divinerIcon = document.createElement('img');
-    divinerIcon.src = './media/divine/fortuneteller.svg';
-    divinerIcon.alt = 'Fortuneteller';
+    divinerIcon.src = siteURL('media/divine/fortuneteller.svg');
+    divinerIcon.alt = '';
+    divinerIcon.draggable = false;
     divinerIcon.style.width = '60px';
     divinerIcon.style.height = '60px';
     this.container.appendChild(divinerIcon);
@@ -41,37 +55,37 @@ class Diviner {
 
     // 添加点击事件，打开占卜窗口
     this.container.addEventListener('click', () => {
-      this.openDivineWindow();
+      if (Date.now() >= (this.suppressClickUntil || 0)) this.openDivineWindow();
     });
 
-    // 添加拖拽功能
-    this.container.addEventListener('mousedown', (e) => {
-      this.isDragging = true;
+    // A small pointer movement is still a click; actual dragging must not open
+    // the panel. Pointer capture supports mouse, touch and pen consistently.
+    this.lifecycle.on(this.container, 'pointerdown', event => {
+      if (event.button !== 0 || event.isPrimary === false) return;
       const rect = this.container.getBoundingClientRect();
-      this.offsetX = e.clientX - rect.left;
-      this.offsetY = e.clientY - rect.top;
+      this.drag = { id: event.pointerId, x: event.clientX, y: event.clientY,
+        left: rect.left, top: rect.top, width: rect.width, height: rect.height, moved: false };
+      this.suppressClickUntil = 0;
+      this.container.setPointerCapture?.(event.pointerId);
     });
-
-    document.addEventListener('mousemove', (e) => {
-      if (this.isDragging) {
-        e.preventDefault();
-        const x = e.clientX - this.offsetX;
-        const y = e.clientY - this.offsetY;
-
-        // 确保不超出窗口边界
-        const maxX = window.innerWidth - this.container.offsetWidth;
-        const maxY = window.innerHeight - this.container.offsetHeight;
-
-        this.container.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
-        this.container.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
-        this.container.style.bottom = 'auto';
-        this.container.style.right = 'auto';
-      }
+    this.lifecycle.on(this.container, 'pointermove', event => {
+      const drag = this.drag;
+      if (!drag || event.pointerId !== drag.id) return;
+      const dx = event.clientX - drag.x, dy = event.clientY - drag.y;
+      if (!drag.moved && Math.hypot(dx, dy) < 6) return;
+      drag.moved = true;
+      this.container.style.left = Math.max(0, Math.min(drag.left + dx, window.innerWidth - drag.width)) + 'px';
+      this.container.style.top = Math.max(0, Math.min(drag.top + dy, window.innerHeight - drag.height)) + 'px';
+      this.container.style.bottom = 'auto'; this.container.style.right = 'auto';
     });
-
-    document.addEventListener('mouseup', () => {
-      this.isDragging = false;
-    });
+    const endDrag = event => {
+      if (!this.drag || event.pointerId !== this.drag.id) return;
+      if (this.drag.moved || event.type === 'pointercancel') this.suppressClickUntil = Date.now() + 300;
+      this.drag = null;
+    };
+    this.lifecycle.on(this.container, 'pointerup', endDrag);
+    this.lifecycle.on(this.container, 'pointercancel', endDrag);
+    this.lifecycle.on(this.container, 'lostpointercapture', endDrag);
 
     // 添加到页面
     document.body.appendChild(this.container);
@@ -144,6 +158,20 @@ class Diviner {
     title.style.fontSize = '24px';
     this.divineWindow.appendChild(title);
 
+    const serviceStatus = document.createElement('p');
+    serviceStatus.id = 'divine-service-status';
+    serviceStatus.setAttribute('role', 'status');
+    serviceStatus.style.fontSize = '13px';
+    serviceStatus.style.marginBottom = '12px';
+    this.divineWindow.appendChild(serviceStatus);
+    if (this.meta.divine?.prewarm !== false) {
+      const serverUrl = resolveDivineServer(this.meta);
+      serviceStatus.textContent = serviceWarmup.isReady(serverUrl) ? '占卜服务已就绪' : '正在提前唤醒占卜服务，你可以先输入问题…';
+      void serviceWarmup.ensure(serverUrl).then(ready => {
+        if (serviceStatus.isConnected) serviceStatus.textContent = ready ? '占卜服务已就绪' : '暂未确认服务就绪，可以点击开始占卜重试。';
+      });
+    }
+
     // 添加查询输入
     const queryLabel = document.createElement('label');
     queryLabel.innerText = '请输入您的问题：';
@@ -154,6 +182,7 @@ class Diviner {
 
     const queryInput = document.createElement('input');
     queryInput.type = 'text';
+    queryInput.maxLength = 1000;
     queryInput.id = 'divine-query';
     queryInput.value = this.query;
     queryInput.style.width = '100%';
@@ -214,8 +243,17 @@ class Diviner {
 
     this.divineWindow.appendChild(modeContainer);
 
+    const llmLabel = document.createElement('label');
+    const llmInput = document.createElement('input');
+    llmInput.type = 'checkbox'; llmInput.id = 'divine-use-llm';
+    llmInput.checked = this.meta.divine?.useLLM === true;
+    llmLabel.append(llmInput, document.createTextNode(' 附加 AI 解读（较慢）'));
+    llmLabel.style.display = 'block'; llmLabel.style.marginBottom = '15px';
+    this.divineWindow.appendChild(llmLabel);
+
     // 添加占卜按钮
     const divineBtn = document.createElement('button');
+    divineBtn.id = 'divine-submit';
     divineBtn.innerText = '开始占卜';
     divineBtn.style.width = '100%';
     divineBtn.style.padding = '10px';
@@ -240,6 +278,8 @@ class Diviner {
     // 添加结果区域
     const resultContainer = document.createElement('div');
     resultContainer.id = 'divine-result';
+    resultContainer.setAttribute('role', 'status');
+    resultContainer.setAttribute('aria-live', 'polite');
     resultContainer.style.marginTop = '20px';
     resultContainer.style.padding = '15px';
     resultContainer.style.backgroundColor = document.body.classList.contains('dark-mode') ? 'rgba(50, 50, 50, 0.9)' : '#f9f9f9';
@@ -260,7 +300,8 @@ class Diviner {
     document.body.appendChild(this.divineWindow);
     
     // 触发重排后执行动画
-    setTimeout(() => {
+    this.windowTimer = setTimeout(() => {
+      if (!this.divineWindow) return;
       this.divineWindow.style.opacity = '1';
       this.divineWindow.style.transform = 'scale(1)';
     }, 10);
@@ -271,7 +312,8 @@ class Diviner {
   
   // 设置暗色模式监听器
   setupDarkModeListener() {
-    const observer = new MutationObserver((mutations) => {
+    this.themeObserver?.disconnect();
+    const observer = this.themeObserver = new MutationObserver((mutations) => {
       mutations.forEach(mutation => {
         if (mutation.attributeName === 'class' && document.body.classList.contains('dark-mode') !== this.wasDarkMode) {
           this.updateDarkModeStyles();
@@ -289,28 +331,27 @@ class Diviner {
     });
     
     // 当窗口关闭时断开观察器
-    this.divineWindow.addEventListener('DOMNodeRemoved', () => {
-      observer.disconnect();
-    });
+
   }
 
   // 关闭占卜窗口
   closeDivineWindow() {
-    if (this.divineWindow) {
-      // 添加入场动画
-      this.divineWindow.style.opacity = '0';
-      this.divineWindow.style.transform = 'scale(0.9)';
-      this.divineWindow.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-      
-      // 等待动画完成后移除
-      setTimeout(() => {
-        document.body.removeChild(this.divineWindow);
-        this.divineWindow = null;
-      }, 300);
-    }
+    this.requestController?.abort();
+    this.requestController = null;
+    clearTimeout(this.slowTimer);
+    this.themeObserver?.disconnect();
+    clearTimeout(this.windowTimer);
+    this.divineWindow?.remove();
+    this.divineWindow = null;
   }
-  
-  // 更新暗色模式样式
+
+  destroy() {
+    this.closeDivineWindow();
+    this.lifecycle.destroy();
+    this.requestController?.abort();
+    this.container?.remove();
+  }
+
   updateDarkModeStyles() {
     const isDarkMode = document.body.classList.contains('dark-mode');
     
@@ -361,271 +402,47 @@ class Diviner {
     }
   }
 
-  // 开始占卜
   async startDivination() {
-    const resultContainer = document.getElementById('divine-result');
-    resultContainer.innerText = '占卜中...';
-
+    const panel = this.divineWindow;
+    if (!panel || this.requestController) return;
+    const result = panel.querySelector('#divine-result');
+    const query = panel.querySelector('#divine-query').value.trim();
+    if (!query) { result.textContent = '请先输入您的问题。'; return; }
+    const button = panel.querySelector('#divine-submit');
+    const controller = this.requestController = new AbortController();
+    const current = () => this.requestController === controller && this.divineWindow === panel;
+    button.disabled = true; button.textContent = '占卜中…';
+    result.textContent = '正在连接占卜服务…';
+    result.setAttribute('aria-busy', 'true');
+    this.slowTimer = setTimeout(() => {
+      if (current()) result.textContent = '服务响应较慢，可能正在唤醒或生成解读，请稍候。可以关闭窗口取消等待。';
+    }, 8000);
     try {
-      // 调用Python服务器获取真实的占卜结果
-      const result = await this.getDivineResultFromServer();
-      resultContainer.innerText = result;
-    } catch (error) {
-      // 记录错误信息
-      console.warn('API调用失败：', error);
-      
-      // 判断错误类型，提供更具体的用户提示
-      let errorType = '服务器连接问题';
-      let extraInfo = '';
-      
-      if (error.message.includes('500 Internal Server Error')) {
-        errorType = '服务器处理出错';
-        // 特别处理六爻起卦模式
-        if (this.divineMode === 'LiuYaoQiGua') {
-          extraInfo = '\n\n提示：当前服务器可能暂不支持六爻起卦模式，请尝试其他占卜方式。';
-        }
-      }
-      
-      try {
-        // 使用模拟结果作为备选
-        const mockResult = this.mockDivineResult();
-        resultContainer.innerText = `(使用本地模拟结果 - ${errorType})\n${mockResult}${extraInfo}`;
-      } catch (mockError) {
-        console.error('模拟结果生成失败:', mockError);
-        resultContainer.innerText = `占卜失败：${error.message}\n\n请确保Python服务器已启动。\n启动方法：cd static/python/diviner && python3 divine_server.py${extraInfo}`;
-      }
-    }
-  }
-
-  // 从服务器获取占卜结果 - 重写版本以解决URL问题
-  async getDivineResultFromServer() {
-    // 获取服务器地址的优先级：
-    // 服务器地址获取优先级：
-    // 1. URL参数 (用于临时测试)
-    // 2. localStorage (用于持久化设置)
-    // 3. meta配置
-    // 4. 默认值（当前网页域名，避免硬编码具体地址）
-    let serverUrl = '';
-
-    // 检查URL参数
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('serverUrl')) {
-      serverUrl = urlParams.get('serverUrl');
-      console.log('从URL参数获取服务器地址:', serverUrl);
-    }
-    // 检查localStorage
-    else if (localStorage.getItem('divineServerUrl')) {
-      serverUrl = localStorage.getItem('divineServerUrl');
-      console.log('从localStorage获取服务器地址:', serverUrl);
-    }
-    // 检查meta配置
-    else if (window.metaConfig?.divine?.serverUrl) {
-      serverUrl = window.metaConfig.divine.serverUrl;
-      console.log('从meta配置获取服务器地址:', serverUrl);
-    }
-    // 默认使用Render服务器地址
-    else {
-      serverUrl = 'https://phospheneser-awesome-academic-template.onrender.com';
-      console.log('使用默认Render服务器地址:', serverUrl);
-    }
-
-    // 确保serverUrl格式正确，没有尾部斜杠
-    serverUrl = serverUrl.replace(/\/$/, '');
-
-    // 构造正确的API请求URL，使用/divine路径
-    const divinePath = 'divine';
-    const queryParams = new URLSearchParams();
-    queryParams.append('type', this.divineMode);
-    queryParams.append('query', this.query);
-    // 添加use_llm参数以启用LLM哲理回复功能
-    queryParams.append('use_llm', 'true');
-    const apiUrl = `${serverUrl}/${divinePath}?${queryParams.toString()}`;
-
-    // 添加详细的调试日志，确认构造的URL
-    console.log('构造的API请求URL:', apiUrl);
-
-    // 设置超时处理
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒超时
-
-    try {
-      // 发送GET请求到Python服务器
-      console.log('准备发送请求到:', apiUrl);
-      const response = await fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        signal: controller.signal
-      });
-
-      // 清除超时计时器
-      clearTimeout(timeoutId);
-
-      // 记录响应状态
-      console.log('服务器响应状态:', response.status);
-
-      // 检查响应状态
-      if (!response.ok) {
-        // 尝试获取错误响应内容
-        let errorText = '';
-        try {
-          errorText = await response.text();
-        } catch (e) {
-          errorText = `HTTP错误: ${response.status} ${response.statusText}`;
-        }
-        throw new Error(`服务器响应错误：${response.status}\n${errorText}`);
-      }
-
-      // 解析JSON响应 - 增强安全检查和错误处理
-      let data;
-      let responseText = '';
-      try {
-        // 先获取文本内容，以便在JSON解析失败时能提供更多信息
-        responseText = await response.text();
-        console.log(`服务器响应内容(${this.divineMode}模式):`, responseText.substring(0, 100) + (responseText.length > 100 ? '...' : ''));
-        
-        // 尝试解析JSON
-        data = JSON.parse(responseText);
-      } catch (parseError) {
-        console.error(`JSON解析错误(${this.divineMode}模式):`, parseError);
-        
-        // 处理服务器返回HTTP错误消息的特殊情况
-        if (responseText && (responseText.startsWith('HTTP/1.0') || responseText.startsWith('HTTP/1.1'))) {
-          const httpErrorMatch = responseText.match(/HTTP\/\d\.\d\s+(\d+)\s+([^\r\n]+)/);
-          if (httpErrorMatch) {
-            const statusCode = httpErrorMatch[1];
-            const statusText = httpErrorMatch[2];
-            throw new Error(`服务器返回HTTP错误：${statusCode} ${statusText}\n\n可能原因：\n1. 服务器可能未启动\n2. 服务器可能无法处理${this.divineMode}类型的请求\n3. 网络连接问题`);
-          }
-        }
-        
-        // 提供更详细的错误信息
-        throw new Error(`无法解析服务器响应：${parseError.message}\n原始响应前100字符：${responseText ? responseText.substring(0, 100) + (responseText.length > 100 ? '...' : '') : '空响应'}`);
-      }
-
-      // 检查占卜是否成功
-      if (!data.success) {
-        throw new Error(data.error || '占卜过程中发生错误');
-      }
-
-      // 如果服务器返回了哲理回复，则将其添加到结果中
-      if (data.philosophical_reply) {
-        return `${data.result}\n\n--- 卦象解读 ---\n${data.philosophical_reply}`;
-      } else {
-        // 否则只返回基本占卜结果
-        return data.result;
+      const serverUrl = resolveDivineServer(this.meta);
+      const output = await requestDivination({ serverUrl, type: this.divineMode, query,
+        useLLM: panel.querySelector('#divine-use-llm').checked, signal: controller.signal });
+      serviceWarmup.noteReady(serverUrl);
+      if (current()) {
+        result.textContent = output;
+        panel.querySelector('#divine-service-status').textContent = '占卜服务已就绪';
       }
     } catch (error) {
-      // 统一错误处理
-      console.error('API调用错误:', error);
-      if (error.name === 'AbortError') {
-        throw new Error('服务器响应超时，请检查服务器是否正常运行');
-      } else if (error.message.includes('Failed to fetch')) {
-        throw new Error('无法连接到占卜服务器，请确保服务器已启动\n提示：请尝试清除浏览器缓存（Ctrl+F5）后重试');
+      if (current() && error.name !== 'AbortError') result.textContent = error.message;
+    } finally {
+      if (current()) {
+        clearTimeout(this.slowTimer);
+        this.requestController = null;
+        button.disabled = false; button.textContent = '开始占卜';
+        result.removeAttribute('aria-busy');
       }
-      throw error;
-    }
-  }
-
-  // 模拟占卜结果（作为备选）
-  mockDivineResult() {
-    const baseResult = `对于您的问题：【${this.query}】\n\n`;
-
-    switch (this.divineMode) {
-      case 'JiuGongLiuRen':
-        const jiuGongResults = [
-          '【大安（震）（木）：平安吉祥，诸事顺遂】->【速喜（离）（火）：喜事临门，好消息快来】->【小吉（巽）（木）：小有收获，平稳略好】',
-          '【留连（坎）（水）：事情拖延，难以决断】->【小吉（巽）（木）：小有收获，平稳略好】->【大安（震）（木）：平安吉祥，诸事顺遂】',
-          '【速喜（离）（火）：喜事临门，好消息快来】->【大安（震）（木）：平安吉祥，诸事顺遂】->【桃花（艮）（土）：姻缘桃花，人际和谐】',
-          '【赤口（兑）（金）：口舌是非，易生争执】->【留连（坎）（水）：事情拖延，难以决断】->【天德（乾）（金）：吉祥如意，贵人相助】',
-          '【小吉（巽）（木）：小有收获，平稳略好】->【天德（乾）（金）：吉祥如意，贵人相助】->【速喜（离）（火）：喜事临门，好消息快来】'
-        ];
-        return baseResult + jiuGongResults[Math.floor(Math.random() * jiuGongResults.length)];
-
-      case 'LiuYaoQiGua':
-        const liuYaoResults = [
-          '得到的是【乾卦(刚健中正)】\n卦辞为：【元亨利贞】\n解释为：大吉大利，亨通顺利，坚守正道。\n性质是：【大吉】',
-          '得到的是【坤卦(柔顺厚德)】\n卦辞为：【元亨利牝马之贞】\n解释为：大吉大利，像母马一样坚守正道。\n性质是：【吉】',
-          '得到的是【屯卦(始生难)】\n初爻爻变，爻辞为：【磐桓，利居贞，利建侯】\n解释为：徘徊不前，利于守正，利于建立诸侯。\n吉凶：【吉】',
-          '得到的是【蒙卦(启蒙)】\n二爻爻变，爻辞为：【包蒙，吉。纳妇，吉。子克家】\n解释为：包容蒙昧，吉祥。迎娶妻子，吉祥。儿子能够治家。\n吉凶：【吉】',
-          '得到的是【需卦(等待)】\n上爻爻变，爻辞为：【入于穴，有不速之客三人来，敬之终吉】\n解释为：进入洞穴，有不请自来的三位客人，恭敬对待他们最终吉祥。\n吉凶：【吉】'
-        ];
-        return baseResult + liuYaoResults[Math.floor(Math.random() * liuYaoResults.length)];
-
-      case 'Tarot':
-        const tarotResults = [
-          '过去 :【正位 魔术师 : 创造与自信】\n现在 :【正位 恋人 : 选择与和谐】\n未来 :【正位 太阳 : 成功与快乐】',
-          '过去 :【逆位 月亮 : 困惑与恐惧】\n现在 :【正位 星星 : 希望与信念】\n未来 :【正位 审判 : 重生与觉醒】',
-          '过去 :【正位 女祭司 : 智慧与直觉】\n现在 :【正位 皇帝 : 权威与控制】\n未来 :【逆位 战车 : 冲突与挫折】',
-          '过去 :【正位 愚人 : 冒险与新开始】\n现在 :【逆位 隐士 : 孤独与内省】\n未来 :【正位 世界 : 完成与圆满】',
-          '过去 :【逆位 命运之轮 : 停滞与挑战】\n现在 :【正位 力量 : 勇气与耐心】\n未来 :【正位 节制 : 平衡与和谐】'
-        ];
-        return baseResult + tarotResults[Math.floor(Math.random() * tarotResults.length)];
-
-      default:
-        return baseResult + '未知的占卜方式';
     }
   }
 }
 
-// 初始化占卜小人
-function initDiviner() {
-  try {
-    // 检查是否存在全局metaConfig对象并且明确禁用了占卜小人
-    if (typeof window !== 'undefined' && window.metaConfig && window.metaConfig.add_diviner === false) {
-      return;
-    }
-
-    // 检查是否存在全局meta_config对象并且明确禁用了占卜小人
-    if (typeof window !== 'undefined' && window.meta_config && window.meta_config.add_diviner === false) {
-      return;
-    }
-
-    // 检查是否存在局部metaConfig变量并且明确禁用了占卜小人
-    if (typeof metaConfig !== 'undefined' && metaConfig && metaConfig.add_diviner === false) {
-      return;
-    }
-
-    // 默认情况下初始化占卜小人（除非明确禁用）
-    const diviner = new Diviner();
-    diviner.init();
-  } catch (error) {
-    console.warn('初始化占卜小人时发生错误:', error);
-    // 即使出错，也尝试初始化占卜小人
-    try {
-      const diviner = new Diviner();
-      diviner.init();
-    } catch (innerError) {
-      console.error('无法初始化占卜小人:', innerError);
-    }
-  }
+// The caller awaits config before initializing this optional feature.
+export function initDiviner(meta) {
+  if (meta.add_diviner === false) return null;
+  const diviner = new Diviner(meta);
+  diviner.init();
+  return diviner;
 }
-
-/**
- * 全局帮助函数：设置或清除服务器地址
- * 使用方法：
- * - 设置服务器地址: setDivineServerUrl('https://your-server-url.com')
- * - 清除服务器地址设置: setDivineServerUrl(null)
- * @param {string|null} url - 服务器地址，为null时清除设置
- */
-window.setDivineServerUrl = function (url) {
-  if (url) {
-    // 确保URL格式正确，添加http或https协议
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      console.warn('警告：URL应包含协议(http://或https://)，已自动添加https://');
-      url = 'https://' + url;
-    }
-
-    // 去除尾部斜杠
-    url = url.replace(/\/$/, '');
-
-    localStorage.setItem('divineServerUrl', url);
-    console.log('服务器地址已保存到localStorage:', url);
-    console.log('请刷新页面以应用新的服务器地址设置。');
-  } else {
-    localStorage.removeItem('divineServerUrl');
-    console.log('已清除localStorage中的服务器地址设置，将使用默认配置。');
-    console.log('请刷新页面以应用默认设置。');
-  }
-};

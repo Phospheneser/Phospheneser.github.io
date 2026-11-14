@@ -1,0 +1,245 @@
+{
+  "translations": {
+    "en": {
+      "nav_label": "News",
+      "title": "🔥 News"
+    },
+    "zh": {
+      "nav_label": "新闻",
+      "title": "🔥 新闻"
+    },
+    "jp": {
+      "nav_label": "ニュース",
+      "title": "🔥 ニュース"
+    }
+  },
+  "items": [
+    {
+      "id": "2026-02-10",
+      "date": "2026.02.10",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://arxiv.org/abs/2602.08794\">MOVA technical report</a> was released! Additionally, <a href=\"https://mosi.cn/#models\">MOSS TTS Family</a> was released on the same day!"
+        },
+        "zh": {
+          "content": "<a href=\"https://arxiv.org/abs/2602.08794\">MOVA 技术报告</a>已发布！此外<a href=\"https://mosi.cn/#models\">MOSS TTS Family</a> 在同一天发布！"
+        },
+        "jp": {
+          "content": "<a href=\"https://arxiv.org/abs/2602.08794\">MOVA 技術報告</a>が公開されました。同時に<a href=\"https://mosi.cn/#models\">MOSS TTS Family</a> も公開されました！"
+        }
+      }
+    },
+    {
+      "id": "2026-01-29",
+      "date": "2026.01.29",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://mosi.cn/models/mova\">MOVA</a> was released!"
+        },
+        "zh": {
+          "content": "<a href=\"https://mosi.cn/models/mova\">MOVA</a> 已发布！"
+        },
+        "jp": {
+          "content": "<a href=\"https://mosi.cn/models/mova\">MOVA</a> がリリースされました！"
+        }
+      }
+    },
+    {
+      "id": "2026-01-26",
+      "date": "2026.01.26",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> was accepted by <a href=\"https://iclr.cc/Conferences/2026\">ICLR 2026</a>!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> 已被<a href=\"https://iclr.cc/Conferences/2026\">ICLR 2026</a>录用！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> が <a href=\"https://iclr.cc/Conferences/2026\">ICLR 2026</a> に採択されました！"
+        }
+      }
+    },
+    {
+      "id": "2026-01-18",
+      "translations": {
+        "en": {
+          "date": "2026.01.18",
+          "content": "Soma Robotics team won the Forvia Track Champion and Overall Champion in the <a href=\"https://www.frenchtechshanghai.com/upcoming-events/grow-ft-hackathon-2026/\">AI Hackathon 2026</a>!"
+        },
+        "zh": {
+          "date": "2026.01.17",
+          "content": "Soma Robotics小组在<a href=\"https://www.frenchtechshanghai.com/upcoming-events/grow-ft-hackathon-2026/\">2026 AI Hackathon</a>中获得了Forvia赛道冠军和总冠军！"
+        },
+        "jp": {
+          "date": "2026.01.17",
+          "content": "Soma Robotics チームが <a href=\"https://www.frenchtechshanghai.com/upcoming-events/grow-ft-hackathon-2026/\">2026 AI Hackathon</a> で Forvia トラックチャンピオンとチャンピオンを獲得しました！"
+        }
+      }
+    },
+    {
+      "id": "2026-01-01",
+      "date": "2026.01.01",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://mosi.cn/models/moss-transcribe-diarize\">MOSS Transcribe Diarize</a> was released!"
+        },
+        "zh": {
+          "content": "<a href=\"https://mosi.cn/models/moss-transcribe-diarize\">MOSS Transcribe Diarize</a> 已发布！"
+        },
+        "jp": {
+          "content": "<a href=\"https://mosi.cn/models/moss-transcribe-diarize\">MOSS Transcribe Diarize</a> がリリースされました！"
+        }
+      }
+    },
+    {
+      "id": "2025-10-04",
+      "date": "2025.10.04",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/Phospheneser/Phospheneser-awesome-academic-template\">Phospheneser-awesome-academic-template</a> was released!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/Phospheneser/Phospheneser-awesome-academic-template\">Phospheneser-awesome-academic-template</a> 已发布！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/Phospheneser/Phospheneser-awesome-academic-template\">Phospheneser-awesome-academic-template</a> がリリースされました！"
+        }
+      }
+    },
+    {
+      "id": "2025-10-01",
+      "date": "2025.10.01",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> was released!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> 已发布！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> がリリースされました！"
+        }
+      }
+    },
+    {
+      "id": "2025-06-26",
+      "date": "2025.06.26",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> was accepted by <a href=\"https://iccv.thecvf.com/\">ICCV 2025</a>!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> 被 <a href=\"https://iccv.thecvf.com/\">ICCV 2025</a> 录用！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> が <a href=\"https://iccv.thecvf.com/\">ICCV 2025</a> に採択されました！"
+        }
+      }
+    },
+    {
+      "id": "2025-06-20",
+      "date": "2025.06.20",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-TTSD\">MOSS-TTSD</a> was released!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-TTSD\">MOSS-TTSD</a> 已发布！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-TTSD\">MOSS-TTSD</a> がリリースされました！"
+        }
+      }
+    },
+    {
+      "id": "2025-03-05",
+      "date": "2025.03.05",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> was accepted by <a href=\"https://workshop-llm-reasoning-planning.github.io/\">Reasoning and Planning for LLMs</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a>!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> 被 <a href=\"https://workshop-llm-reasoning-planning.github.io/\">Reasoning and Planning for LLMs</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a> 录用！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> が <a href=\"https://workshop-llm-reasoning-planning.github.io/\">Reasoning and Planning for LLMs</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a> に採択されました！"
+        }
+      }
+    },
+    {
+      "id": "2025-03-05-11",
+      "date": "2025.03.05",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> was accepted by <a href=\"https://iclr.cc/virtual/2025/workshop/23977\">Generative Models for Robot Learning</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a>!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> 被 <a href=\"https://iclr.cc/virtual/2025/workshop/23977\">Generative Models for Robot Learning</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a> 录用！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> が <a href=\"https://iclr.cc/virtual/2025/workshop/23977\">Generative Models for Robot Learning</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a> に採択されました！"
+        }
+      }
+    },
+    {
+      "id": "2025-02-26",
+      "date": "2025.02.26",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> was <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">desk-rejected</a> by the <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> PC because one of the reviewers on the author list forgot to submit their review. After we emailed the PC to inquire, we learned that our paper had actually been <strong>accepted</strong>! So, among all papers accepted to CVPR, ours was the one of nineteen that got <i>accepted but desk-rejected</i>, lol."
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> 因为作者列表中有评审忘记提交评审意见，被 <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> PC <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">desk reject</a>。但在我们邮件询问后，PC 告诉我们论文其实是 <strong>接收</strong> 的！也就是说，在所有被 CVPR 接收的论文中，我们的论文成为了那 1/19 被 <i>accepted but desk-rejected</i> 的论文，lol。"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> は <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> の PC によって、著者リストに含まれていたレビュワーがレビューを提出し忘れたため <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">デスクリジェクト</a> されました。しかし、PC に問い合わせたところ、本来の判定は <strong>採択（Accept）</strong> であることが判明しました！結果として、CVPR に採択された論文の中で、私たちの論文は、<i>accepted but desk-rejected</i> となった19本の論文のうちの1本となってしまいました。（笑）。"
+        }
+      }
+    },
+    {
+      "id": "2025-01-26",
+      "date": "2025.01.26",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> was released!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> 已发布！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> がリリースされました！"
+        }
+      }
+    },
+    {
+      "id": "2025-01-13",
+      "date": "2025.01.13",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> was released!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> 已发布！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> がリリースされました！"
+        }
+      }
+    },
+    {
+      "id": "2024-12-25",
+      "date": "2024.12.25",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> Preview Version was released!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> 预览版本已发布！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> プレビュー版がリリースされました！"
+        }
+      }
+    }
+  ]
+}

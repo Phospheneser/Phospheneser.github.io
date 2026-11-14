@@ -1,0 +1,28 @@
+{
+  "translations": {
+    "en": {
+      "nav_label": "About Me",
+      "title": "🎄 About Me",
+      "texts": [
+        "Hello! My name is Zhe Xu, but you can also call me Joshua. I am currently a second-year Master's student at the School of Computer Science, Fudan University, supervised by <a href=\"https://xpqiu.github.io/en.html\">Prof. Xipeng Qiu</a>. My research interests focus on embodied intelligence and speech models, and I am currently exploring <b>full-duplex speech interaction</b>. Previously, I obtained my Bachelor's degree from Fudan University, where from freshman to sophomore year I conducted computer vision research under the supervision of <a href=\"https://iipl.fudan.edu.cn/70/ba/c45865a684218/page.htm\">Prof. Lifeng Chen</a> under the guidance of <a href=\"https://faculty.fudan.edu.cn/xyxue/zh_CN/more/436211/jsjjgd/index.htm\">Prof. Xiangyang Xue</a>. In my junior year, I completed two six-month NLP internships at the <a href=\"https://www.cnnpn.cn/article/21068.html\">Nuclear Power Institute of China, Institute No. 8</a> and <a href=\"https://leihuo.163.com/#/\">NetEase Leihuo</a>, and then joined the <a href=\"https://nlp.fudan.edu.cn/\">Fudan NLP Lab (FNLP)</a> to pursue NLP research. During my first year of graduate studies, I co-founded the Fudan University <a href=\"https://www.robomaster.com/en-US\">RM</a> Team EGA and served as the leader of the Vision Group, responsible for implementing the auto-aiming system.Since the beginning of my second year of the master’s program, I have been interning at <a href=\"https://mosi.cn/#hero\">Mosi Intelligence</a>",
+        "<br>Personally, I am dedicated to addressing <span style=\"font-weight: bold;color: #ee1212;\">truly meaningful research problems</span>, and I tend to focus on work that aligns with <strong>first principles</strong>. The most fundamental issues I currently believe in are <span style=\"font-weight: bold;color: #ee1212;\">Scaling</span> and <span style=\"font-weight: bold;color: #ee1212;\">Prediction</span>. Feel free to contact me anytime if you share the same passion for these problems."
+      ]
+    },
+    "zh": {
+      "nav_label": "关于我",
+      "title": "🎄 关于我",
+      "texts": [
+        "你好！我是徐哲，你也可以叫我 Joshua。我目前是复旦大学计算机学院二年级硕士生，导师是<a href=\"https://xpqiu.github.io/en.html\">邱锡鹏教授</a>。我的研究兴趣聚焦于具身智能和语音模型，目前在探索<b>全双工语音交互</b>。之前，我从复旦大学获得学士学位，大一至大二在<a href=\"https://faculty.fudan.edu.cn/xyxue/zh_CN/more/436211/jsjjgd/index.htm\">薛向阳老师</a>手下的<a href=\"https://iipl.fudan.edu.cn/70/ba/c45865a684218/page.htm\">陈利锋老师</a>的指导下进行CV研究，并在大三先后于<a href=\"https://www.cnnpn.cn/article/21068.html\">核工业第八研究所</a>和<a href=\"https://leihuo.163.com/#/\">网易雷火</a>NLP进行了半年实习，然后加入<a href=\"https://nlp.fudan.edu.cn/\">FNLP</a>参与NLP研究。研一时参与复旦大学<a href=\"https://www.robomaster.com/en-US\">RM</a>战队EGA建队并担任视觉组组长，负责自瞄代码实现。研二开始在<a href=\"https://mosi.cn/#hero\">模思智能</a>实习至今。",
+        "<br>个人而言，我致力于解决<span style=\"font-weight: bold;color: #ee1212;\">有趣且有意义的问题</span>，并倾向于关注符合<strong>第一性原理</strong>的工作。我目前相信的最基本问题是<span style=\"font-weight: bold;color: #ee1212;\">Scaling</span> 和 <span style=\"font-weight: bold;color: #ee1212;\">Prediction</span>。如果您对这些问题有相同的热情，随时联系我。"
+      ]
+    },
+    "jp": {
+      "nav_label": "私について",
+      "title": "🎄 私について",
+      "texts": [
+        "こんにちは！私は徐 哲と申しますが、Joshuaと呼んでいただいても構いません。現在、復旦大学コンピュータ科学学院の修士課程2年目に在籍しており、<a href=\"https://xpqiu.github.io/en.html\">邱 錫鵬教授</a>の指導を受けています。研究の関心はエンボディド・インテリジェンス（具身知能）と音声モデルにあり、現在は<b>全二重音声インタラクション</b>を探究しています。以前は復旦大学で学士号を取得し、学部1〜2年次には<a href=\"https://faculty.fudan.edu.cn/xyxue/zh_CN/more/436211/jsjjgd/index.htm\">薛 向陽教授</a>のもと、<a href=\"https://iipl.fudan.edu.cn/70/ba/c45865a684218/page.htm\">陳 利鋒教授</a>の指導を受けてコンピュータビジョン研究を行いました。3年次には<a href=\"https://www.cnnpn.cn/article/21068.html\">中国核工業第八研究所</a>と<a href=\"https://leihuo.163.com/#/\">NetEase 雷火</a>で半年間ずつNLPのインターンシップを経験し、その後<a href=\"https://nlp.fudan.edu.cn/\">復旦大学自然言語処理研究室（FNLP）</a>に参加して研究を続けました。修士課程1年次には復旦大学<a href=\"https://www.robomaster.com/en-US\">RM</a>チームEGAを立ち上げ、ビジョングループのリーダーを務め、自動照準コードの実装を担当しました。修士課程2年次より<a href=\"https://mosi.cn/#hero\">模思智能</a> にてインターンシップに参加しています。",
+        "<br>個人的には、<span style=\"font-weight: bold;color: #ee1212;\">本当に面白い且つ意味のある問題</span>を解決することに専念し、<strong>第一原理</strong>に沿った仕事に焦点を当てています。現在信じている最も基本的な問題は<span style=\"font-weight: bold;color: #ee1212;\">Scaling</span>と<span style=\"font-weight: bold;color: #ee1212;\">Prediction</span>です。これらの問題に同じ情熱を持っているなら、いつでも連絡してください。"
+      ]
+    }
+  }
+}

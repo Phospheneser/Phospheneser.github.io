@@ -154,7 +154,7 @@ html {
 }
 
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -294,7 +294,7 @@ body {
 }
 
 .teaser {
-  font-family: 'Google Sans', sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .teaser video {
@@ -307,11 +307,11 @@ body {
 }
 
 .publication-title {
-  font-family: 'Google Sans', sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .publication-authors {
-  font-family: 'Google Sans', sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 .publication-venue {

@@ -1,5 +1,8 @@
 .DS_Store
-.gitignore
+node_modules/
+__pycache__/
+*.pyc
+artifacts/
 old_*
 test-*
 *sdz*

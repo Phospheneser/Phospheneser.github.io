@@ -1,0 +1,38 @@
+{
+  "translations": {
+    "en": {
+      "nav_label": "Visitors",
+      "title": "🌐 Browsing Log",
+      "intro": "A live visitor globe tracks who has dropped by recently. Data is rendered via mapmyvisitors and loads on demand."
+    },
+    "zh": {
+      "nav_label": "浏览记录",
+      "title": "🌐 浏览记录",
+      "intro": "一个实时访客地球展示近期的访问足迹，由 mapmyvisitors 提供并按需加载。"
+    },
+    "jp": {
+      "nav_label": "閲覧記録",
+      "title": "🌐 閲覧記録",
+      "intro": "mapmyvisitors によるライブ地球が最近の訪問を可視化します。必要なときにのみ読み込みます。"
+    }
+  },
+  "items": [
+    {
+      "id": "visitors",
+      "type": "globe",
+      "translations": {
+        "en": {
+          "label": "Live Visitor Globe"
+        },
+        "zh": {
+          "label": "实时访客地球"
+        },
+        "jp": {
+          "label": "ライブ訪問者グローブ"
+        }
+      },
+      "url": "https://mapmyvisitors.com/web/1c0xc",
+      "image": "https://mapmyvisitors.com/map.png?d=b_OHoWvAxY-kJ6edpa0-KhBTg_dqdL64_u2Z4vbecEc&cl=ffffff"
+    }
+  ]
+}

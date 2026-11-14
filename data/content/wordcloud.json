@@ -1,0 +1,247 @@
+{
+  "items": [
+    {
+      "id": "a-good-team-leader",
+      "weight": 30,
+      "translations": {
+        "en": {
+          "text": "Leader",
+          "title": "A good team leader"
+        },
+        "zh": {
+          "text": "领导者",
+          "title": "优秀的团队领导者"
+        },
+        "jp": {
+          "text": "リーダー",
+          "title": "優れたチームリーダー"
+        }
+      }
+    },
+    {
+      "id": "instructor",
+      "weight": 15,
+      "translations": {
+        "en": {
+          "text": "Instructor"
+        },
+        "zh": {
+          "text": "导师"
+        },
+        "jp": {
+          "text": "指導者"
+        }
+      }
+    },
+    {
+      "id": "connector",
+      "weight": 25,
+      "translations": {
+        "en": {
+          "text": "Connector"
+        },
+        "zh": {
+          "text": "连接者"
+        },
+        "jp": {
+          "text": "コネクター"
+        }
+      }
+    },
+    {
+      "id": "smart",
+      "weight": 15,
+      "translations": {
+        "en": {
+          "text": "Smart"
+        },
+        "zh": {
+          "text": "聪明"
+        },
+        "jp": {
+          "text": "賢い"
+        }
+      }
+    },
+    {
+      "id": "mature",
+      "weight": 20,
+      "translations": {
+        "en": {
+          "text": "Mature"
+        },
+        "zh": {
+          "text": "成熟"
+        },
+        "jp": {
+          "text": "成熟"
+        }
+      }
+    },
+    {
+      "id": "impact-driven",
+      "weight": 40,
+      "translations": {
+        "en": {
+          "text": "Impact-Driven"
+        },
+        "zh": {
+          "text": "影响力驱动"
+        },
+        "jp": {
+          "text": "影響力主導"
+        }
+      }
+    },
+    {
+      "id": "resilience",
+      "weight": 30,
+      "translations": {
+        "en": {
+          "text": "Resilience"
+        },
+        "zh": {
+          "text": "韧性"
+        },
+        "jp": {
+          "text": "回復力"
+        }
+      }
+    },
+    {
+      "id": "passionate",
+      "weight": 20,
+      "translations": {
+        "en": {
+          "text": "Passionate"
+        },
+        "zh": {
+          "text": "热情"
+        },
+        "jp": {
+          "text": "情熱的"
+        }
+      }
+    },
+    {
+      "id": "faithful",
+      "weight": 30,
+      "translations": {
+        "en": {
+          "text": "Faithful"
+        },
+        "zh": {
+          "text": "忠诚"
+        },
+        "jp": {
+          "text": "忠実"
+        }
+      }
+    },
+    {
+      "id": "confident",
+      "weight": 20,
+      "translations": {
+        "en": {
+          "text": "Confident"
+        },
+        "zh": {
+          "text": "自信"
+        },
+        "jp": {
+          "text": "自信"
+        }
+      }
+    },
+    {
+      "id": "innovative",
+      "weight": 15,
+      "translations": {
+        "en": {
+          "text": "Innovative"
+        },
+        "zh": {
+          "text": "创新"
+        },
+        "jp": {
+          "text": "革新的"
+        }
+      }
+    },
+    {
+      "id": "questioner",
+      "weight": 30,
+      "translations": {
+        "en": {
+          "text": "Questioner"
+        },
+        "zh": {
+          "text": "质疑者"
+        },
+        "jp": {
+          "text": "質問者"
+        }
+      }
+    },
+    {
+      "id": "insightful",
+      "weight": 40,
+      "translations": {
+        "en": {
+          "text": "Insightful"
+        },
+        "zh": {
+          "text": "洞察力"
+        },
+        "jp": {
+          "text": "洞察力"
+        }
+      }
+    },
+    {
+      "id": "visionary",
+      "weight": 20,
+      "translations": {
+        "en": {
+          "text": "Visionary"
+        },
+        "zh": {
+          "text": "远见者"
+        },
+        "jp": {
+          "text": "先見者"
+        }
+      }
+    },
+    {
+      "id": "emotionally-stable",
+      "weight": 25,
+      "translations": {
+        "en": {
+          "text": "Emotionally Stable"
+        },
+        "zh": {
+          "text": "情绪稳定"
+        },
+        "jp": {
+          "text": "感情的に安定"
+        }
+      }
+    },
+    {
+      "id": "bold-endeavor",
+      "weight": 30,
+      "translations": {
+        "en": {
+          "text": "Bold Endeavor"
+        },
+        "zh": {
+          "text": "大胆尝试"
+        },
+        "jp": {
+          "text": "大胆な挑戦"
+        }
+      }
+    }
+  ]
+}

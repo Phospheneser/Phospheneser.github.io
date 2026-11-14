@@ -1,188 +1,56 @@
-# Academic Template
+# Academic homepage
 
-A configuration-first academic homepage template with unified section rendering, multi-language data, and plugin extensions.
-🌐 Live Demo: https://phospheneser.github.io/Phospheneser-awesome-academic-template/
+A configuration-driven static academic website with shared rendering, multilingual content, extensible sections, and blog articles.
 
-[中文文档](README_ZH.md)
+[中文文档与完整示例](README_ZH.md) · [Architecture and extension contracts](docs/architecture.md)
 
-## ✨ Features
-- 🎯 **Config Driven** – Navigation, sections, and content live in JSON; no HTML edits for day-to-day updates.
-- 🧱 **Unified Layout** – All sections (except About) use the same paragraph-based renderer for consistent typography.
-- 🔌 **Plugin Ready** – Search/sort plugins are bundled via `static/js/plugins.js`; register your own with a single call.
-- 🌍 **Multi-language** – Per-language folders keep localized content while sharing the same metadata.
-- 📱 **Responsive** – Bulma-based layout tuned for desktop, tablet, and mobile.
-- 🎨 **Theming** – Configure backgrounds, hero avatar, socials, and theme colors in `data/meta.json`.
+## Preview
 
-## 🚀 Quick Start
-1. **Clone & enter the project**
-   ```bash
-   git clone <your-repo-url>
-   cd academic-template
-   ```
-2. **Configure `data/meta.json`** – the global source of truth. Minimal sketch:
-   ```json
-   {
-     "defaultLanguage": "en",
-     "availableLanguages": ["en", "zh"],
-     "languageLabels": {"en": "English", "zh": "中文"},
-     "navbar": {"showLanguageDropdown": true},
-     "home": {"showHero": true, "avatar": "./media/personal.jpg"},
-     "backgrounds": {
-       "default": {"light": "./media/occupacy.jpg"}
-     },
-     "itemTypes": {
-       "news": {"requiredKeys": ["date", "content"]},
-       "publication": {"requiredKeys": ["title", "conference", "authors", "description", "links"]}
-     },
-     "sections": [
-       {
-         "id": "news",
-         "enabled": true,
-         "itemType": "news",
-         "dataSource": "news",
-         "background": "default",
-         "singlePage": {"enabled": true},
-         "multiPage": {"enabled": true, "plugins": ["search"]}
-       }
-     ],
-     "socials": [{"icon": "fab fa-github", "url": "https://github.com/your-name"}],
-     "emptyStates": {"news": "No news available."}
-   }
-   ```
-3. **Add per-language content** – each language uses `data/<lang>/`.
-   - `web_content.json` holds homepage copy (title, subtitle, footer, etc.).
-   - `<section>.json` mirrors the section `id`/`dataSource` in `meta.json`.
-   - `blogs.json` localizes the blog list/detail chrome (`archive_label`, `page_labels`, `post_labels`).
-   - Blog article bodies live under `blogs/posts/<slug>/<lang>.html` with automatic English fallback.
+```sh
+python3 -m http.server 8000
+```
 
-   Example `data/en/news.json`:
-   ```json
-   {
-     "nav_label": "News",
-     "title": "🔥 News",
-     "news": [
-       {"date": "2025.01.01", "content": "Placeholder news item."}
-     ]
-   }
-   ```
+Open `/index.html`, `/multipage_index.html?page=publications`, or `/blogs/index.html`. Add `lang=en`, `lang=zh`, or `lang=jp` to the query. Existing generated assets can be previewed directly. After editing images or navigation labels, run `npm ci && npm run build` before publishing. Serve over HTTP; do not open ES Modules using `file://`.
 
-   Example `data/en/about.json`:
-   ```json
-   {
-     "nav_label": "About Me",
-     "title": "🎄 About Me",
-   "texts": [
-     "<strong>About me placeholder:</strong> introduce yourself.",
-     "Add another paragraph with your interests or call-to-action."
-   ]
- }
- ```
+## One record, all languages
 
-   Example `data/en/blogs.json`:
-   ```json
-   {
-     "nav_label": "Blog",
-     "title": "Research Log",
-     "subtitle": "Stories, experiments, and longer reflections from ongoing projects.",
-     "archive_label": "View all posts",
-     "page_labels": {
-       "back": "Back to site",
-       "search": "Search posts...",
-       "allTags": "All topics",
-       "empty": "No posts published yet."
-     },
-     "post_labels": {
-       "backBlog": "Back to blog",
-       "bottomBackBlog": "Back to blog index",
-       "darkToLight": "Switch to light mode"
-     },
-     "blogs": [
-       {
-         "slug": "launching-the-research-blog",
-         "title": "Why This Blog Exists",
-         "summary": "Setting the tone for longer-form updates.",
-         "date": "2025-01-05",
-         "post_time": "2025-01-05 09:00",
-         "author": "Joshua Xu",
-         "tags": ["Meta"]
-       }
-     ]
-   }
-   ```
-4. **Serve statically**
-   ```bash
-   python3 -m http.server 8000
-   # or
-   npx serve .
-   ```
-   Open `http://localhost:8000` (single-page) or `http://localhost:8000/multipage_index.html` (multi-page).
+Append an item to `data/content/news.json`:
 
-## 🧩 Data & Rendering Model
-### `data/meta.json`
-- `availableLanguages` / `languageLabels` – configure language dropdown options.
-- `backgrounds` – reusable light/dark backgrounds; sections reference them via `background`.
-- Link icons are defined per link object via an `icon` (or `iconUrl`) property; icons render only when specified.
-- `sections` – declarative section list with `id`, `dataSource`, `itemType`, backgrounds, and plugin usage.
-- `itemTypes` – optional checklist of expected fields per item type; handy for content QA.
-- `emptyStates` – per-section fallback text when a list has no items.
-- `themes`, `socials`, `home` – tweak palette, social icons, and hero avatar.
-
-### Language Folders (`data/<lang>/`)
-Each section file must expose at least:
 ```json
 {
-  "nav_label": "...",
-  "title": "...",
-  "<dataSource>": [ ... items ... ]
+  "id": "new-paper-2026",
+  "date": "2026.11.13",
+  "translations": {
+    "en": { "content": "Our new paper is available." },
+    "zh": { "content": "我们的新论文已发布。" }
+  }
 }
 ```
-where `<dataSource>` matches `sections[].dataSource`. Omit a language file to hide the section for that locale.
 
-### Blog Content (`data/<lang>/blogs.json`)
-- `archive_label` controls the homepage call-to-action that links to the blog archive.
-- `page_labels` localizes the blog index chrome (back link, search placeholder, tag filter label, empty state, dark-mode tooltip).
-- `post_labels` provides the article page UI strings (navigation buttons, dark-mode tooltip, missing-article copy).
-- `blogs[]` stores metadata for each post (`slug`, `title`, `summary`, `date`, `post_time`, `author`, `tags`, optional `image`).
-- Article bodies live in `blogs/posts/<slug>/<lang>.html`; when a translation is missing, the English file is used automatically.
-- Configure card actions (e.g., "Read more") via `meta.json -> itemTypes.blog.templateOptions.actions`.
+Shared dates, assets, and URLs are stored once. Missing translations fall back field-by-field to `meta.defaultLanguage`. Nested objects (including link labels) can carry their own translations. Explicit `null` omits a field; empty strings/arrays remain intentional. Item IDs must be stable and unique within a collection. List order is the default display order.
 
-### Unified Section Renderer
-`index.html` and `multipage_index.html` share the same text-first renderer:
-- **news** – `date` + `content`.
-- **publication** – `title`, `conference`, optional `date`, `authors`, `description`, `links`.
-- **project** – `title`, `date`, `authors`, `description`, `links`.
-- **blog** – `title`, `date`, `content`, `links`.
-- **timeline** – `title`, `org`, `date`, `description`.
+- `data/meta.json`: enabled sections, languages, template mappings, optional features.
+- `data/content/*.json`: section metadata and `items`, with translations beside their content.
+- `data/i18n/*.json`: UI copy.
+- `blogs/posts/<slug>/<language>.html`: long-form article bodies. Missing bodies fall back to the default language without changing the visitor's preference.
 
-Missing fields are skipped automatically. When no items exist, the renderer displays the localized `emptyStates` message.
-Fine-tune how each item type maps onto the card layout through `meta.json -> itemTypes[*].templateOptions` and add styling via `.meta-card--<itemType>` selectors in CSS.
+To add a section, create a content document and register it in `meta.sections`. Reuse an existing `itemType`; no page edits are needed. Single-page and multi-page visibility, plugins, and layout are independent. Card grids use `layout: "grid"` and `options: { "columns": 2, "gap": "normal" }`.
 
-### Background Tips
-1. Add images under `media/` (or any static directory).
-2. Register light/dark paths in `backgrounds`.
-3. Reference the key from the section definition. Home falls back to `backgrounds.home` → `backgrounds.default`.
+Blog records need `id`, `slug`, `title`, `post_time`, and `summary`. Optional `body` points to an HTML file relative to the site root. Legacy `hero_image` paths remain relative to `blogs/`; ordinary images/link icons are relative to the site root. Article assets and scripts resolve relative to the actual body file, including fallback bodies. Only trusted repository-authored HTML is supported.
 
-## 🔧 Extending the Template
-### Add a Language
-1. Append the language code to `availableLanguages` and add a label under `languageLabels`.
-2. Create `data/<lang>/` with translated `web_content.json`, section files, and a localized `blogs.json` (plus article HTML under `blogs/posts/<slug>/<lang>.html`).
-3. Provide localized media if needed.
+## Development checks
 
-### Add a Section
-1. Describe the section in `meta.json.sections` (optionally add `emptyStates` text).
-2. Create `<lang>/<dataSource>.json` in every language folder.
-3. Map fields through `meta.json -> itemTypes` (or register a template in `static/js/templates.js`) and style with CSS classes such as `.meta-card--<itemType>`—no homepage HTML edits required.
+Node.js 22.15+ is needed for development checks, not to serve the site.
 
-For detailed changes, see the [Usage Example](https://github.com/Phospheneser/Phospheneser.github.io/commit/d562fbf003b006c1ef92675db1a8ce6184f5062d#diff-185fdcbe4e1d3cf7c9aa4e9e86e9cf6b1f49d7ecd733e9ec81220c2890673cb6).
+```sh
+npm ci
+npm run build
+```
 
+Checks cover content integrity, extension references, fallback, caching, stale-render guards, DOM navigation, filters, and component cleanup. `npm run verify:migration` is an optional one-time audit against the pre-refactor `f5cce8c` content. It is excluded from CI so normal future content edits are not blocked by old snapshots.
 
-### Customize Rendering or Plugins
-- Section markup comes from `static/js/templates.js` and the helper functions in `index.html` / `multipage_index.html`; extend `TemplateRegistry` or tweak `itemTypes[*].templateOptions` for new layouts without touching page HTML.
-- Register plugins in `static/js/plugins.js` via `PluginRegistry.register` and add the plugin name to `multiPage.plugins`.
-- Tweak typography and spacing inside `static/css/index.css` (`.text-homepage-1`, `.section-text-block`, etc.).
+## Deployment
 
-## 🧪 Development Notes
-- Use a static server with live reload for faster iteration.
-- `itemTypes.requiredKeys` act as a checklist when preparing content PRs.
-- Multi-page mode exercises plugin hooks (search/sort); test both modes after changes.
-- If a language file is missing, the corresponding section hides automatically—useful during translation rollouts.
+GitHub Pages continues serving the same static entry points; `.nojekyll` avoids unnecessary processing. The validation workflow does not change the deployment source. The optional Python diviner under `static/python/diviner/` remains a separately hosted service configured by `divine.serverUrl`. It is loaded only when enabled, after configuration is ready.
+
+The asset build creates responsive WebP copies and navigation labels from existing source files. Commit `media/optimized/`, `static/js/generated/`, `static/css/generated/`, and updated HTML alongside content changes for branch-based Pages deployment. Original images remain untouched. `npm run check` runs checks without regenerating assets. Local desktop/mobile rendering has been checked; production Web Vitals still need measurement.

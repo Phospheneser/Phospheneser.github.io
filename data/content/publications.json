@@ -1,0 +1,611 @@
+{
+  "translations": {
+    "en": {
+      "nav_label": "Publications",
+      "title": "📑 Publications"
+    },
+    "zh": {
+      "nav_label": "出版物",
+      "title": "📑 出版物"
+    },
+    "jp": {
+      "nav_label": "出版物",
+      "title": "📑 出版物"
+    }
+  },
+  "items": [
+    {
+      "id": "mova-towards-scalable-and-synchronized-video-audio-generation",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>SII-OpenMOSS Team</strong>",
+      "links": [
+        {
+          "url": "https://arxiv.org/abs/2602.08794",
+          "icon": "./media/link_icon/arxiv.svg",
+          "translations": {
+            "en": {
+              "type": "Paper"
+            },
+            "zh": {
+              "type": "论文"
+            },
+            "jp": {
+              "type": "論文"
+            }
+          }
+        },
+        {
+          "url": "https://github.com/OpenMOSS/MOVA",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png",
+          "translations": {
+            "en": {
+              "type": "Code"
+            },
+            "zh": {
+              "type": "代码"
+            },
+            "jp": {
+              "type": "コード"
+            }
+          }
+        },
+        {
+          "translations": {
+            "en": {
+              "type": "Homepage",
+              "url": "https://mosi.cn/models/mova",
+              "icon": "./media/link_icon/website.svg"
+            },
+            "zh": {
+              "type": "模型",
+              "url": "https://huggingface.co/collections/OpenMOSS-Team/mova",
+              "icon": "./media/link_icon/hf.svg"
+            },
+            "jp": {
+              "type": "ホームページ",
+              "url": "https://mosi.cn/models/mova",
+              "icon": "./media/link_icon/website.svg"
+            }
+          }
+        },
+        {
+          "translations": {
+            "en": {
+              "type": "Model",
+              "url": "https://huggingface.co/collections/OpenMOSS-Team/mova",
+              "icon": "./media/link_icon/hf.svg"
+            },
+            "zh": {
+              "type": "主页",
+              "url": "https://mosi.cn/models/mova",
+              "icon": "./media/link_icon/website.svg"
+            },
+            "jp": {
+              "type": "モデル",
+              "url": "https://huggingface.co/collections/OpenMOSS-Team/mova",
+              "icon": "./media/link_icon/hf.svg"
+            }
+          }
+        }
+      ],
+      "image": "./media/publications/mova.jpg",
+      "translations": {
+        "en": {
+          "title": "MOVA: Towards Scalable and Synchronized Video–Audio Generation",
+          "description": "MOVA (MOSS Video and Audio) is an open-source video and audio generation model that aims to achieve high-quality, synchronized video and audio content generation. The model is based on a 32B parameter Mixture-of-Experts architecture and activates 18B parameters during inference, supporting IT2VA (Image to Video Audio) and T2VA (Text to Video Audio) tasks. It can generate naturally synchronized lip-synced speech, environment-aware audio effects, and content-aligned background music. The project provides a complete toolchain for efficient inference, LoRA fine-tuning, and prompt enhancement."
+        },
+        "zh": {
+          "title": "MOVA: Towards Scalable and Synchronized Video–Audio Generation",
+          "description": "MOVA（MOSS Video and Audio） 是一个开源的音视频联合生成模型，旨在实现高质量、强同步的视频与音频内容生成。模型基于 32B 参数的 Mixture-of-Experts 架构，推理时激活 18B 参数，支持图文生成音视频（IT2VA）与文本生成音视频（T2VA）任务，可生成自然的口型同步语音、环境感知音效以及内容对齐的背景音乐。项目同时提供高效推理、LoRA 微调和提示词增强等完整工具链。"
+        },
+        "jp": {
+          "title": "MOVA: スケーラブルかつ同期化されたビデオ音声生成",
+          "description": "MOVA（MOSS Video and Audio） は、高品質で同期性の高いビデオ音声生成を実現するためのオープンソースモデルです。モデルは 32B パラメータの Mixture-of-Experts アーキテクチャを基にし、推論時には 18B パラメータを有効化し、IT2VA（Image to Video Audio）と T2VA（Text to Video Audio）のタスクをサポートします。モデルは、自然な口型同期音声、環境感知音効、コンテンツに対応した背景音楽を生成することができます。また、効率的な推論、LoRA ファインチューニング、プロンプトエンハンスメントなどの完全なツールチェインを提供します。"
+        }
+      }
+    },
+    {
+      "id": "moss-transcribe-diarize-accurate-transcription-with-speaker-diarization",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>MOSI AI Team</strong>",
+      "links": [
+        {
+          "url": "https://arxiv.org/abs/2601.01554",
+          "icon": "./media/link_icon/arxiv.svg",
+          "translations": {
+            "en": {
+              "type": "Paper"
+            },
+            "zh": {
+              "type": "论文"
+            },
+            "jp": {
+              "type": "論文"
+            }
+          }
+        },
+        {
+          "url": "https://mosi.cn/models/moss-transcribe-diarize",
+          "icon": "./media/link_icon/website.svg",
+          "translations": {
+            "en": {
+              "type": "Homepage"
+            },
+            "zh": {
+              "type": "主页"
+            },
+            "jp": {
+              "type": "ホームページ"
+            }
+          }
+        },
+        {
+          "url": "https://moss-transcribe-diarize-demo.mosi.cn",
+          "icon": "./media/link_icon/robot.svg",
+          "translations": {
+            "en": {
+              "type": "Online Demo"
+            },
+            "zh": {
+              "type": "在线演示"
+            },
+            "jp": {
+              "type": "オンラインデモ"
+            }
+          }
+        }
+      ],
+      "image": "./media/publications/moss-transcribe-diarize.jpg",
+      "translations": {
+        "en": {
+          "title": "MOSS Transcribe Diarize: Accurate Transcription with Speaker Diarization",
+          "description": "This paper introduces a multi-modal large language model MOSS Transcribe Diarize, which can perform transcription, speaker diarization, and timestamp output simultaneously. Compared to the traditional method of separating speech recognition and speaker diarization, this model can process long conversations (about 90 minutes) in a single model and maintain speaker consistency on multiple evaluation sets, outperforming existing commercial systems."
+        },
+        "zh": {
+          "title": "MOSS Transcribe Diarize: Accurate Transcription with Speaker Diarization",
+          "description": "这篇论文提出了一个 端对端的多模态大语言模型 MOSS Transcribe Diarize，可同时完成语音内容转写、说话人标注与时间戳输出。与传统把语音识别与说话人分离分开处理相比，该模型可在 单一模型中处理长对话（约 90 分钟）并维持说话人一致性，在多个评测集上优于现有商用系统。"
+        },
+        "jp": {
+          "title": "MOSS Transcribe Diarize: 正確な音声トランスクリプトと話者分離",
+          "description": "この論文では、端対端の多モーダル大言語モデル MOSS Transcribe Diarize を紹介します。このモデルは、音声内容のトランスクリプト、話者のラベル付け、および時間スタンプの出力を同時に行うことができます。従来の音声認識と話者分離を別々に処理する方法と比較して、このモデルは長文対話（約90分）を処理し、話者の一貫性を維持することができ、複数の評価セットで既存の商用システムを上回ります。"
+        }
+      }
+    },
+    {
+      "id": "moss-speech-towards-true-speech-to-speech-models-without-text-guidance",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>, <a href='https://iclr.cc/Conferences/2026'>ICLR 2026</a>",
+      "authors": "<strong>SLM Team</strong>",
+      "image": "./media/publications/moss-speech-model.png",
+      "translations": {
+        "en": {
+          "title": "MOSS-Speech: Towards True Speech-to-Speech Models Without Text Guidance",
+          "description": "Our method combines a modality-based layer splitting architecture with a frozen pre-training strategy, leveraging the inference and knowledge capabilities of pre-trained text large language models while extending the native speech processing capabilities. Experimental results show that the model achieves the best performance on speech question-answering tasks and remains competitive in speech-to-speech generation tasks compared to text-guided systems.",
+          "links": [
+            {
+              "type": "Paper",
+              "url": "https://arxiv.org/abs/2510.00499",
+              "icon": "./media/link_icon/arxiv.svg"
+            },
+            {
+              "type": "Code",
+              "url": "https://github.com/OpenMOSS/MOSS-Speech",
+              "icon": "./media/link_icon/github.svg",
+              "dark_icon": "./media/link_icon/github_dark.png"
+            },
+            {
+              "type": "Model",
+              "url": "https://huggingface.co/collections/fnlp/moss-speech-68dbab23bc98501afede0cd3",
+              "icon": "./media/link_icon/hf.svg"
+            },
+            {
+              "type": "Online Demo",
+              "url": "https://huggingface.co/spaces/fnlp/MOSS-Speech",
+              "icon": "./media/link_icon/robot.svg"
+            },
+            {
+              "type": "Vedio Demo",
+              "url": "https://moss-speech.open-moss.com/",
+              "icon": "./media/link_icon/vedio_demo.svg"
+            }
+          ]
+        },
+        "zh": {
+          "title": "MOSS-Speech: Towards True Speech-to-Speech Models Without Text Guidance",
+          "description": "我们的方法结合了 基于模态的层拆分架构 与 冻结预训练策略，在利用预训练文本大型语言模型的推理与知识能力的同时，扩展了原生语音处理能力。实验结果显示，该模型在语音问答任务上取得了最先进的性能，并在语音到语音生成任务中，相较于文本引导系统仍保持竞争力。",
+          "links": [
+            {
+              "type": "论文",
+              "url": "https://arxiv.org/abs/2510.00499",
+              "icon": "./media/link_icon/arxiv.svg"
+            },
+            {
+              "type": "代码",
+              "url": "https://github.com/OpenMOSS/MOSS-Speech",
+              "icon": "./media/link_icon/github.svg",
+              "dark_icon": "./media/link_icon/github_dark.png"
+            },
+            {
+              "type": "模型",
+              "url": "https://huggingface.co/collections/fnlp/moss-speech-68dbab23bc98501afede0cd3",
+              "icon": "./media/link_icon/hf.svg"
+            },
+            {
+              "type": "在线演示",
+              "url": "https://huggingface.co/spaces/fnlp/MOSS-Speech",
+              "icon": "./media/link_icon/robot.svg"
+            },
+            {
+              "type": "视频演示",
+              "url": "https://moss-speech.open-moss.com/",
+              "icon": "./media/link_icon/vedio_demo.svg"
+            }
+          ]
+        },
+        "jp": {
+          "title": "MOSS-Speech: テキストガイダンスなしの真の音声対話モデルを目指して",
+          "description": "当手法は、モダリティベースのレイヤ分割アーキテクチャと固定化事前学習戦略を組み合わせ、事前学習済みテキスト大規模言語モデルの推論能力と知識を活用しつつ、本来の音声処理能力を拡張します。実験結果から、本モデルは音声質問応答タスクにおいて最高の性能を達成し、音声対話生成タスクにおいてもテキスト誘導型システムと比較して遜色ない競争力を維持することが示されました。",
+          "links": [
+            {
+              "type": "論文",
+              "url": "https://arxiv.org/abs/2510.00499",
+              "icon": "./media/link_icon/arxiv.svg"
+            },
+            {
+              "type": "コード",
+              "url": "https://github.com/OpenMOSS/MOSS-Speech",
+              "icon": "./media/link_icon/github.svg",
+              "dark_icon": "./media/link_icon/github_dark.png"
+            },
+            {
+              "type": "モデル",
+              "url": "https://huggingface.co/collections/fnlp/moss-speech-68dbab23bc98501afede0cd3",
+              "icon": "./media/link_icon/hf.svg"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "moss-ttsd-text-to-spoken-dialogue-generation",
+      "title": "MOSS-TTSD: Text to Spoken Dialogue Generation",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>OpenMOSS Team</strong>",
+      "links": [
+        {
+          "url": "https://openmoss.ai/en/moss-ttsd/",
+          "icon": "./media/link_icon/blog.svg",
+          "translations": {
+            "en": {
+              "type": "Blog"
+            },
+            "zh": {
+              "type": "博客"
+            },
+            "jp": {
+              "type": "ブログ"
+            }
+          }
+        },
+        {
+          "url": "https://github.com/OpenMOSS/MOSS-TTSD",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png",
+          "translations": {
+            "en": {
+              "type": "Code"
+            },
+            "zh": {
+              "type": "代码"
+            },
+            "jp": {
+              "type": "コード"
+            }
+          }
+        },
+        {
+          "url": "https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTSD",
+          "icon": "./media/link_icon/robot.svg",
+          "translations": {
+            "en": {
+              "type": "Online Demo"
+            },
+            "zh": {
+              "type": "在线演示"
+            },
+            "jp": {
+              "type": "オンラインデモ"
+            }
+          }
+        }
+      ],
+      "image": "./media/publications/moss-ttsd.jpg",
+      "translations": {
+        "en": {
+          "description": "MOSS-TTSD is a bilingual dialogue speech synthesis model (Text to Spoken Dialogue) that can directly generate natural and expressive speech from multi-speaker dialogue text. The model is based on the Qwen3-1.7B-base architecture and trained on massive single-speaker and dialogue speech data to achieve bilingual support, long text speech generation, and zero-shot dual-speaker speech cloning capabilities, suitable for high-quality speech synthesis in podcast, interview, intelligent interaction, and other dialogue scenarios."
+        },
+        "zh": {
+          "description": "MOSS-TTSD 是双语对话语音合成模型（Text to Spoken Dialogue），能够直接从多说话人的对话文本生成自然、富有表现力的语音。该模型基于 Qwen3-1.7B-base 架构，通过海量单人及对话语音数据训练，实现中英文双语支持、长文本语音生成和零样本双人语音克隆等能力，适用于播客、访谈、智能交互等对话场景的高质量语音合成。MOSS-TTSD 的模型权重、推理代码和 API 都已开源，支持商业使用"
+        },
+        "jp": {
+          "description": "MOSS-TTSD は OpenMOSS チームによって開発されたオープンソースの バイリンガル対話型音声合成モデル（Text to Spoken Dialogue） です。複数話者による対話テキストから、自然で表現力豊かな音声を直接生成することができます。本モデルは Qwen3-1.7B-base アーキテクチャを基盤としており、大規模な単一話者および対話音声データを用いて学習されています。中国語・英語のバイリンガル対応、長文音声生成、ゼロショットによる二人対話音声クローニングなどの高度な機能を備え、ポッドキャスト、インタビュー、音声アシスタントなどの対話型音声生成シーンに適しています。MOSS-TTSD のモデル重み、推論コード、API はすべてオープンソースとして公開されており、商用利用にも対応しています。 "
+        }
+      }
+    },
+    {
+      "id": "speechgpt-2-0-preview-version",
+      "conference": "<a href='https://www.open-moss.com/cn/'>OpenMOSS</a>",
+      "authors": "<strong>OpenMOSS Team</strong>",
+      "links": [
+        {
+          "icon": "./media/link_icon/blog.svg",
+          "translations": {
+            "en": {
+              "type": "Blog",
+              "url": "https://www.open-moss.com/en/speechgpt2-preview/"
+            },
+            "zh": {
+              "type": "博客",
+              "url": "https://www.open-moss.com/cn/speechgpt2-preview/"
+            },
+            "jp": {
+              "type": "ブログ",
+              "url": "https://www.open-moss.com/jp/speechgpt2-preview/"
+            }
+          }
+        },
+        {
+          "url": "https://github.com/OpenMOSS/SpeechGPT-2.0-preview",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png",
+          "translations": {
+            "en": {
+              "type": "Code"
+            },
+            "zh": {
+              "type": "代码"
+            },
+            "jp": {
+              "type": "コード"
+            }
+          }
+        }
+      ],
+      "image": "./media/publications/speechgpt2-preview.png",
+      "translations": {
+        "en": {
+          "title": "SpeechGPT 2.0 - Preview Version",
+          "description": "SpeechGPT 2.0-preview is the first anthropomorphic real-time interactive system we launched towards contextual intelligence. As an end-to-end speech large model trained on millions of hours of voice data, it features anthropomorphic spoken expression and sub-100ms low-latency response, supporting natural and fluent real-time interruption interaction."
+        },
+        "zh": {
+          "title": "SpeechGPT 2.0-预览版",
+          "description": "SpeechGPT 2.0-preview 是我们在迈向情景智能推出的第一个拟人化实时交互系统。作为在百万小时级语音数据上训练的端到端语音大模型，它具有拟人口语化表达与百毫秒级低延迟响应，支持自然流畅的实时打断交互。"
+        },
+        "jp": {
+          "title": "SpeechGPT 2.0 - プレビュー版",
+          "description": "SpeechGPT 2.0-previewは、コンテキストインテリジェンスに向けた最初の擬人化リアルタイム対話システムです。数百万時間の音声データで学習したエンドツーエンドの音声大規模モデルとして、擬人化された話し言葉表現と100ミリ秒未満の低遅延応答を特徴とし、自然で流暢なリアルタイム割り込み対話をサポートします。"
+        }
+      }
+    },
+    {
+      "id": "vlabench-a-large-scale-benchmark-for-language-conditioned-robotics-manip",
+      "authors": "Shiduo Zhang, <strong>Zhe Xu</strong>, Peiju Liu, Xiaopeng Yu, Yuan Li, Qinghui Gao, Zhaoye Fei, Zhangyue Yin, Zuxuan Wu, Yu-Gang Jiang & Xipeng Qiu",
+      "links": [
+        {
+          "url": "https://arxiv.org/abs/2412.18194",
+          "icon": "./media/link_icon/arxiv.svg",
+          "translations": {
+            "en": {
+              "type": "Paper"
+            },
+            "zh": {
+              "type": "论文"
+            },
+            "jp": {
+              "type": "論文"
+            }
+          }
+        },
+        {
+          "url": "https://github.com/OpenMOSS/VLABench",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png",
+          "translations": {
+            "en": {
+              "type": "Code"
+            },
+            "zh": {
+              "type": "代码"
+            },
+            "jp": {
+              "type": "コード"
+            }
+          }
+        },
+        {
+          "url": "https://huggingface.co/VLABench",
+          "icon": "./media/link_icon/hf.svg",
+          "translations": {
+            "en": {
+              "type": "Dataset"
+            },
+            "zh": {
+              "type": "数据集"
+            },
+            "jp": {
+              "type": "データセット"
+            }
+          }
+        },
+        {
+          "url": "https://vlabench.github.io/",
+          "icon": "./media/link_icon/project.svg",
+          "translations": {
+            "en": {
+              "type": "Project Page"
+            },
+            "zh": {
+              "type": "项目页面"
+            },
+            "jp": {
+              "type": "プロジェクトページ"
+            }
+          }
+        }
+      ],
+      "image": "./media/publications/vlabench-benchmark.jpg",
+      "translations": {
+        "en": {
+          "title": "VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks",
+          "conference": "CVPR'25 (1 of 19), ICCV'25",
+          "description": "\"First benchmark for VLA. Not only for evaluation, definition matters most.\""
+        },
+        "zh": {
+          "title": "VLABench：一个用于语言条件机器人操纵的长程推理任务的大规模基准",
+          "conference": "CVPR'25 (1 of 19), ICCV'25",
+          "description": "\"VLA 的第一个基准。不仅用于评估，定义最重要。\""
+        },
+        "jp": {
+          "title": "VLABench: 言語条件付きロボット操作における長期推論課題のための大規模ベンチマーク",
+          "conference": "CVPR'25（全体のうち 1/19 採択）, ICCV'25",
+          "description": "VLAのための初のベンチマーク。評価だけでなく、定義そのものが最も重要であることを示す。"
+        }
+      }
+    },
+    {
+      "id": "longsafety-enhance-safety-for-long-context-llms",
+      "authors": "Mianqiu Huang, Xiaoran Liu, Shaojun Zhou, Mozhi Zhang, Chenkun Tan, Pengyu Wang, Qipeng Guo, <strong>Zhe Xu</strong>, Linyang Li, Zhikai Lei, Linlin Li, Qun Liu, Yaqian Zhou, Xipeng Qiu, Xuanjing Huang",
+      "links": [
+        {
+          "url": "https://arxiv.org/abs/2411.06899v1",
+          "icon": "./media/link_icon/arxiv.svg",
+          "translations": {
+            "en": {
+              "type": "Paper"
+            },
+            "zh": {
+              "type": "论文"
+            },
+            "jp": {
+              "type": "論文"
+            }
+          }
+        },
+        {
+          "url": "https://github.com/OpenMOSS/LongSafety",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png",
+          "translations": {
+            "en": {
+              "type": "Code"
+            },
+            "zh": {
+              "type": "代码"
+            },
+            "jp": {
+              "type": "コード"
+            }
+          }
+        },
+        {
+          "url": "https://huggingface.co/datasets/LutherXD/LongSafetyBench",
+          "icon": "./media/link_icon/hf.svg",
+          "translations": {
+            "en": {
+              "type": "Dataset"
+            },
+            "zh": {
+              "type": "数据集"
+            },
+            "jp": {
+              "type": "データセット"
+            }
+          }
+        }
+      ],
+      "image": "./media/publications/longsafety-benchmark.jpg",
+      "translations": {
+        "en": {
+          "title": "LongSafety: Enhance Safety for Long-Context LLMs",
+          "description": "This paper introduces LongSafety, a specialized safety alignment dataset for long-context LLMs (spanning 8 tasks, ~17K samples, ~40.9K tokens average) along with a benchmark LongSafetyBench, and shows that fine-tuning on it improves safety in long contexts without degrading general capabilities."
+        },
+        "zh": {
+          "title": "LongSafetyBench: 长上下文大语言模型安全问题严重",
+          "description": "一个专门用于长上下文安全对齐的数据集（8 个任务，约 17K 样本，平均 40.9K 令牌）和对应的评测基准 LongSafetyBench，实验证明在长上下文中进行安全微调可提升模型的安全性而不损失其通用能力。"
+        },
+        "jp": {
+          "title": "LongSafety: 長文脈LLMの安全性を強化する",
+          "description": "本論文はLongSafetyを紹介する。これは長文脈LLM向けに設計された安全性アラインメントデータセット（8つのタスク、約17Kサンプル、平均40.9Kトークン）とベンチマークLongSafetyBenchを含み、これを用いたファインチューニングが汎用能力を損なうことなく長文脈での安全性を改善することを示す。"
+        }
+      }
+    },
+    {
+      "id": "detectiveqa-evaluating-long-context-reasoning-on-detective-novels",
+      "conference": "ICLR2025",
+      "authors": "<strong>Zhe Xu</strong>, Jiasheng Ye, Xiaoran Liu, Xiangyang Liu, Tianxiang Sun, Zhigeng Liu, Qipeng Guo, Linlin Li, Qun Liu, Xuanjing Huang, Xipeng Qiu",
+      "links": [
+        {
+          "url": "https://arxiv.org/abs/2409.02465",
+          "icon": "./media/link_icon/arxiv.svg",
+          "translations": {
+            "en": {
+              "type": "Paper"
+            },
+            "zh": {
+              "type": "论文"
+            },
+            "jp": {
+              "type": "論文"
+            }
+          }
+        },
+        {
+          "url": "https://github.com/Phospheneser/DetectiveQA",
+          "icon": "./media/link_icon/github.svg",
+          "dark_icon": "./media/link_icon/github_dark.png",
+          "translations": {
+            "en": {
+              "type": "Code"
+            },
+            "zh": {
+              "type": "代码"
+            },
+            "jp": {
+              "type": "コード"
+            }
+          }
+        },
+        {
+          "url": "https://huggingface.co/datasets/Phospheneser/DetectiveQA",
+          "icon": "./media/link_icon/hf.svg",
+          "translations": {
+            "en": {
+              "type": "Dataset"
+            },
+            "zh": {
+              "type": "数据集"
+            },
+            "jp": {
+              "type": "データセット"
+            }
+          }
+        }
+      ],
+      "image": "./media/publications/detectiveqa-benchmark.jpg",
+      "translations": {
+        "en": {
+          "title": "DetectiveQA: Evaluating Long-Context Reasoning on Detective Novels",
+          "description": "DetectiveQA is a narrative reasoning benchmark based on detective novels with very long contexts (on average over 100,000 tokens), offering 1,200 Chinese-English question-answer pairs with detailed reasoning chains, designed to test LLMs’ abilities in long-text comprehension, evidence retrieval, and reasoning, and demonstrating that current long-context LLMs still struggle significantly with dependency questions that truly require full context."
+        },
+        "zh": {
+          "title": "DetectiveQA: 在侦探小说中进行长上下文推理的评估基准",
+          "description": "这篇论文提出 <strong>DetectiveQA</strong> —— 一个以侦探小说为背景的长上下文叙述推理基准（平均上下文长度超 100K 令牌，含 1200 个中英问题与推理步骤标注），用于评估 LLM 在理解长篇文本、提取证据和按证据推理中表现出的能力，并发现现有模型在真正依赖长上下文的推理任务上仍有显著不足。"
+        },
+        "jp": {
+          "title": "DetectiveQA: 推理小説に基づく長文脈推論の評価",
+          "description": "DetectiveQAは探偵小説に基づく長文脈叙述推論ベンチマークであり、平均10万トークン以上の文脈を含み、1,200件の中英質問応答ペアと詳細な推論チェーンを提供する。長文読解、証拠抽出、推論におけるLLMの能力を評価することを目的とし、現行の長文脈LLMが真に全コンテキスト依存の推論課題において依然として大きな課題を抱えていることを示している。"
+        }
+      }
+    }
+  ]
+}

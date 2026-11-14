@@ -1,0 +1,220 @@
+{
+  "translations": {
+    "en": {
+      "nav_label": "Education & Internships",
+      "title": "🎓 Educational and Internship Experience"
+    },
+    "zh": {
+      "nav_label": "教育与实习",
+      "title": "🎓 教育背景与实习经历"
+    },
+    "jp": {
+      "nav_label": "学歴・インターンシップ",
+      "title": "🎓 学歴およびインターンシップ経験"
+    }
+  },
+  "items": [
+    {
+      "id": "education",
+      "translations": {
+        "en": {
+          "title": "Education"
+        },
+        "zh": {
+          "title": "教育经历"
+        },
+        "jp": {
+          "title": "学歴"
+        }
+      }
+    },
+    {
+      "id": "bachelor-s-degree",
+      "translations": {
+        "en": {
+          "date": "Sep 2020 – Jun 2024",
+          "title": "Bachelor's Degree",
+          "org": "[Fudan University](https://www.fudan.edu.cn/)",
+          "content": [
+            "Pursued a Bachelor's degree at the [School of Computer Science](https://cs.fudan.edu.cn/), majoring in Artificial Intelligence."
+          ]
+        },
+        "zh": {
+          "date": "2020.09 - 2024.06",
+          "title": "本科",
+          "org": "[复旦大学](https://www.fudan.edu.cn/)",
+          "content": [
+            "攻读学士学位，于[计算机科学与技术学院](https://cs.fudan.edu.cn/)主修人工智能专业"
+          ]
+        },
+        "jp": {
+          "date": "2020年9月 – 2024年6月",
+          "title": "学士課程",
+          "org": "[復旦大学](https://www.fudan.edu.cn/)",
+          "content": [
+            "[コンピュータ科学技術学院](https://cs.fudan.edu.cn/)に所属し、人工知能専攻で学士号を取得。"
+          ]
+        }
+      }
+    },
+    {
+      "id": "master-s-student",
+      "translations": {
+        "en": {
+          "date": "Sep 2024 – Present",
+          "title": "Master's Student",
+          "org": "[Fudan University](https://www.fudan.edu.cn/)",
+          "content": [
+            "Pursuing a Master's degree with a research focus on Natural Language Processing and Artificial Intelligence."
+          ]
+        },
+        "zh": {
+          "date": "2024.09 - 至今",
+          "title": "硕士研究生",
+          "org": "[复旦大学](https://www.fudan.edu.cn/)",
+          "content": [
+            "攻读硕士学位，专注于自然语言处理与人工智能方向的研究"
+          ]
+        },
+        "jp": {
+          "date": "2024年9月 – 現在",
+          "title": "修士課程",
+          "org": "[復旦大学](https://www.fudan.edu.cn/)",
+          "content": [
+            "自然言語処理および人工知能分野の研究に専念し、修士号取得を目指している。"
+          ]
+        }
+      }
+    },
+    {
+      "id": "internships",
+      "translations": {
+        "en": {
+          "title": "Internships"
+        },
+        "zh": {
+          "title": "实习经历"
+        },
+        "jp": {
+          "title": "インターンシップ"
+        }
+      }
+    },
+    {
+      "id": "algorithm-intern",
+      "translations": {
+        "en": {
+          "date": "Jul 2023 – Oct 2023",
+          "title": "Algorithm Intern",
+          "org": "[No. 8 Institute of CNNC](https://www.cnnpn.cn/article/21068.html)",
+          "content": [
+            "Participated in a clean-energy large model project, responsible for [RLHF fine-tuning](https://huggingface.co/docs/transformers/main/en/conceptual/rhlf) tasks."
+          ]
+        },
+        "zh": {
+          "date": "2023.07 - 2023.10",
+          "title": "算法实习生",
+          "org": "[核工业第八研究所](https://www.cnnpn.cn/article/21068.html)",
+          "content": [
+            "参与清洁能源大模型项目，负责 [RLHF 微调](https://huggingface.co/docs/transformers/main/en/conceptual/rhlf) 相关工作"
+          ]
+        },
+        "jp": {
+          "date": "2023年7月 – 2023年10月",
+          "title": "アルゴリズムインターン",
+          "org": "[中国核工業第八研究所](https://www.cnnpn.cn/article/21068.html)",
+          "content": [
+            "クリーンエネルギー大規模モデルプロジェクトに参加し、[RLHF微調整](https://huggingface.co/docs/transformers/main/en/conceptual/rhlf)関連のタスクを担当。"
+          ]
+        }
+      }
+    },
+    {
+      "id": "algorithm-intern-6",
+      "translations": {
+        "en": {
+          "date": "Jan 2024 – Mar 2024",
+          "title": "Algorithm Intern",
+          "org": "[NetEase Leihuo](https://leihuo.163.com/#/)",
+          "content": [
+            "Developed an NPC interaction demo driven by large language models, exploring AI applications in gaming."
+          ]
+        },
+        "zh": {
+          "date": "2024.01 - 2024.03",
+          "title": "算法实习生",
+          "org": "[网易雷火](https://leihuo.163.com/#/)",
+          "content": [
+            "实现大语言模型驱动的NPC交互Demo，探索AI在游戏中的应用"
+          ]
+        },
+        "jp": {
+          "date": "2024年1月 – 2024年3月",
+          "title": "アルゴリズムインターン",
+          "org": "[NetEase雷火スタジオ](https://leihuo.163.com/#/)",
+          "content": [
+            "大規模言語モデルを活用したNPC対話デモを開発し、ゲーム分野におけるAI応用を探索。"
+          ]
+        }
+      }
+    },
+    {
+      "id": "research-assistant",
+      "translations": {
+        "en": {
+          "date": "Mar 2024 – Present",
+          "title": "Research Assistant",
+          "org": "[Fudan Natural Language Processing Laboratory (FNLP)](https://nlp.fudan.edu.cn/)",
+          "content": [
+            "Engaged in academic research projects focused on natural language generation and understanding."
+          ]
+        },
+        "zh": {
+          "date": "2024.03 - 至今",
+          "title": "研究助理",
+          "org": "[复旦大学自然语言处理实验室（FNLP）](https://nlp.fudan.edu.cn/)",
+          "content": [
+            "参与实验室科研项目，专注于自然语言生成与理解相关研究"
+          ]
+        },
+        "jp": {
+          "date": "2024年3月 – 現在",
+          "title": "研究助手",
+          "org": "[復旦大学 自然言語処理研究室（FNLP）](https://nlp.fudan.edu.cn/)",
+          "content": [
+            "研究プロジェクトに参加し、自然言語生成および理解に関する研究に従事。"
+          ]
+        }
+      }
+    },
+    {
+      "id": "algorithm-research-intern",
+      "translations": {
+        "en": {
+          "date": "Apr 2025 – Present",
+          "title": "Algorithm Research Intern",
+          "org": "[Moss Intelligence](http://mosi-ai.com/) ([SII](https://www.sii.edu.cn/))",
+          "content": [
+            "Involved in large-scale speech-language model development and optimization."
+          ]
+        },
+        "zh": {
+          "date": "2025.04 - 至今",
+          "title": "算法研究实习生",
+          "org": "[模思智能](http://mosi-ai.com/)([SII](https://www.sii.edu.cn/))",
+          "content": [
+            "参与大规模语音语言模型的研发与优化工作"
+          ]
+        },
+        "jp": {
+          "date": "2025年4月 – 現在",
+          "title": "アルゴリズム研究インターン",
+          "org": "[模思智能](http://mosi-ai.com/)([SII](https://www.sii.edu.cn/))",
+          "content": [
+            "大規模音声言語モデルの開発および最適化に携わる。"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "items": [
+    {
+      "id": "a-good-leader",
+      "translations": {
+        "en": {
+          "title": "A Good Leader",
+          "description": "A person who inspires and motivates others to achieve their goals."
+        },
+        "zh": {
+          "title": "优秀领导者",
+          "description": "一个能够激励和鼓舞他人实现目标的人。"
+        },
+        "jp": {
+          "title": "優れたリーダー",
+          "description": "他人を鼓舞し、目標達成へと導く人物。"
+        }
+      }
+    },
+    {
+      "id": "cognitive-level-far-above-peers",
+      "translations": {
+        "en": {
+          "title": "Cognitive Level Far Above Peers",
+          "description": "Possesses exceptional cognitive abilities that stand out among peers."
+        },
+        "zh": {
+          "title": "认知水平远超同龄人",
+          "description": "拥有卓越的认知能力，在同龄人中脱颖而出。"
+        },
+        "jp": {
+          "title": "認知レベルが同年代をはるかに上回る",
+          "description": "同年代の中で突出した卓越した認知能力を持つ。"
+        }
+      }
+    },
+    {
+      "id": "only-conduct-impactful-research",
+      "translations": {
+        "en": {
+          "title": "Only Conduct Impactful Research",
+          "description": "Focuses solely on research that makes a significant difference."
+        },
+        "zh": {
+          "title": "只做有影响力的研究",
+          "description": "专注于进行能够产生重大突破的研究。"
+        },
+        "jp": {
+          "title": "影響力のある研究のみを行う",
+          "description": "重大な違いを生む研究にのみ焦点を当てる。"
+        }
+      }
+    },
+    {
+      "id": "resilience-and-tolerance",
+      "translations": {
+        "en": {
+          "title": "Resilience and Tolerance",
+          "description": "Trains oneself to handle challenges and tolerate frustrations effectively."
+        },
+        "zh": {
+          "title": "韧性和包容性",
+          "description": "训练自己有效应对挑战和容忍挫折。"
+        },
+        "jp": {
+          "title": "回復力と寛容性",
+          "description": "課題に対処し、挫折を効果的に耐えうるよう自分を訓練する。"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+.experience-item { margin-block: .75rem; }
+.experience-subheading { font-size: 1.05rem; font-weight: 700; text-transform: uppercase; margin-block: 1.25rem .5rem; }
+.experience-header { display: grid; grid-template-columns: 14rem minmax(0, 1fr) minmax(0, 1.5fr); gap: 1rem; align-items: baseline; font-weight: 700; }
+.exp-date { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.exp-title, .exp-org { min-width: 0; overflow-wrap: anywhere; }
+.experience-content { margin: .5rem 0 1rem 15rem; padding-left: 1.25rem; list-style: disc; }
+.experience-content li { margin-block: .25rem; }
+.experience-content a, .exp-org a { color: inherit; border-bottom: 1px dashed currentColor; }
+.experience-content a:hover, .exp-org a:hover { color: var(--site-primary); border-bottom-style: solid; }
+@media (max-width: 768px) {
+  .experience-header { grid-template-columns: 1fr; gap: .25rem; }
+  .experience-content { margin-left: 0; }
+}
+:root {
+  --site-primary: #3273dc;
+  --site-secondary: #23d160;
+  --site-accent: #ff3860;
+}
+[hidden] { display: none !important; }
+.navbar.is-primary .navbar-link::after { content: none; border: none; }
+.meta-link-icon--dark, body.dark-mode .meta-link-icon--light { display: none; }
+body.dark-mode .meta-link-icon--dark { display: inline-block; }
+.section-heading { margin-top: 3.75rem; margin-bottom: 1rem; }
+.mp-controls { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.mp-controls .meta-search { flex: 1 1 12rem; }
+.load-error { padding: 1rem; border: 1px solid var(--site-accent); margin: 1rem; }
+body[data-layout="multi"] .footer { position: static !important; }
+body[data-layout="multi"] #content-root { min-height: calc(100vh - 14rem); }
+.home-hero { padding-block: 2rem; }
+.home-hero .is-rounded { width: 100%; height: 100%; object-fit: cover; }
+.cloud-unavailable canvas { display: none; }
+.cloud-unavailable #tags { display: flex; flex-wrap: wrap; gap: .75rem; }
+:focus-visible { outline: 2px solid var(--site-primary); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+.mp-list[data-layout="grid"] { display: grid; grid-template-columns: repeat(var(--section-columns, 2), minmax(0, 1fr)); gap: var(--section-gap, 1.5rem); }
+.mp-list[data-layout="grid"] > .meta-card { flex-direction: column; }
+.mp-list[data-layout="grid"] .meta-card-media { flex-basis: auto; max-width: 100%; width: 100%; }
+.mp-list[data-layout="grid"] .blog-archive-callout { grid-column: 1 / -1; }
+@media (max-width: 768px) { .mp-list[data-layout="grid"] { grid-template-columns: 1fr; } }
+
+/* Keep below-the-fold sections searchable while skipping offscreen layout/paint.
+   The first section and hero retain normal rendering. */
+@supports (content-visibility: auto) {
+  #meta-sections-root:not(.anchor-navigation) > .section ~ .section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 700px;
+  }
+}
+.member-avatar { object-fit: cover; }
+.card-container .card { transition: transform .5s ease-in-out, opacity .5s ease-in-out; }
+/* Avoid interpolating layout dimensions, shadows and filters on each frame. */
+.arrow-btn { transition: transform .2s ease, color .2s ease, background-color .2s ease; }
+.navbar-item.has-dropdown .navbar-dropdown { will-change: auto; }
+.navbar-menu .navbar-item { backdrop-filter: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .card-container .card, .arrow-btn { transition: none; }
+}
+
+/* Keep progressive section slots stable while requests are pending. */
+.section-loading { min-height: 240px; }
+/* Avoid animating paint-heavy shadows on content cards. */
+.meta-card, .section-text-block, .back-to-top, .member-card {
+  transition-property: transform, opacity, color, background-color, border-color;
+}
+@media (max-width: 768px) {
+  .navbar-menu, .navbar-dropdown { backdrop-filter: none !important; }
+}
+.home-hero [data-pending-widget] { visibility: hidden; }

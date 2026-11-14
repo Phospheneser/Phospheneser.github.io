@@ -34,12 +34,10 @@
         },
         "publication": {
             "requiredKeys": [
+                "id",
                 "title",
-                "conference",
                 "authors",
-                "description",
-                "links",
-                "image"
+                "description"
             ],
             "template": "paper-card",
             "templateOptions": {
@@ -60,16 +58,20 @@
                 "detailsField": "highlights",
                 "tagsField": "tags",
                 "placeholderLabel": "Publication Preview"
-            }
+            },
+            "optionalKeys": [
+                "conference",
+                "date",
+                "image",
+                "links",
+                "tags"
+            ]
         },
         "project": {
             "requiredKeys": [
+                "id",
                 "title",
-                "date",
-                "authors",
-                "description",
-                "links",
-                "image"
+                "description"
             ],
             "template": "paper-card",
             "templateOptions": {
@@ -87,15 +89,22 @@
                 "detailsField": "stack",
                 "tagsField": "tags",
                 "placeholderLabel": "Project Preview"
-            }
+            },
+            "optionalKeys": [
+                "date",
+                "authors",
+                "links",
+                "image",
+                "tags"
+            ]
         },
         "blog": {
             "requiredKeys": [
+                "id",
+                "slug",
                 "title",
-                "date",
-                "content",
-                "links",
-                "image"
+                "post_time",
+                "summary"
             ],
             "template": "paper-card",
             "templateOptions": {
@@ -131,7 +140,15 @@
                         }
                     }
                 ]
-            }
+            },
+            "optionalKeys": [
+                "image",
+                "hero_image",
+                "links",
+                "tags",
+                "author",
+                "body"
+            ]
         },
         "timeline": {
             "requiredKeys": [
@@ -411,5 +428,6 @@
     },
     "divine": {
         "serverUrl": "https://phospheneser-awesome-academic-template.onrender.com"
-    }
+    },
+    "contentVersion": 2
 }

@@ -1,0 +1,3 @@
+/* Generated responsive background; original images remain untouched. */
+:root { --site-default-background: image-set(url("../../../media/optimized/4133ac5429aa222c-640.webp") 1x, url("../../../media/optimized/4133ac5429aa222c-1280.webp") 2x); }
+@media (min-width: 769px) { :root { --site-default-background: image-set(url("../../../media/optimized/4133ac5429aa222c-1280.webp") 1x, url("../../../media/optimized/4133ac5429aa222c-1920.webp") 2x); } }

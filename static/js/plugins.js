@@ -1,138 +1,73 @@
-(function (global) {
-    const PluginRegistry = {
-        registry: new Map(),
-        register(name, plugin) {
-            this.registry.set(name, plugin);
-        },
-        get(name) {
-            return this.registry.get(name);
-        },
-        applyPlugins(section, container, data, webContent) {
-            if (!section.plugins || !Array.isArray(section.plugins)) return;
+import { selectItems } from './core/content.js';
+import { createScope } from './core/lifecycle.js';
 
-            section.plugins.forEach(pluginName => {
-                const plugin = this.get(pluginName);
-                if (plugin && typeof plugin.apply === 'function') {
-                    plugin.apply(section, container, data, webContent);
-                }
-            });
-        }
-    };
+const registry = new Map();
+export const PluginRegistry = {
+  register(name, plugin) {
+    if (registry.has(name)) throw new Error(`Plugin already registered: ${name}`);
+    if (typeof plugin.mount !== 'function') throw new TypeError('A plugin needs mount(context)');
+    registry.set(name, plugin);
+  },
+  get(name) { return registry.get(name); }
+};
 
-    function getControlsAndContent(section, container) {
-        const controls = container.querySelector(`#${section.id}-controls`) || container.querySelector('.mp-controls') || container;
-        const content = container.querySelector(`#${section.id}-content`) || container.querySelector('.mp-list');
-        return { controls, content };
+PluginRegistry.register('search', {
+  mount({ controls, update, labels, scope }) {
+    const input = document.createElement('input');
+    input.type = 'search';
+    input.className = 'input meta-search';
+    input.placeholder = labels.search_placeholder || 'Search…';
+    input.setAttribute('aria-label', input.placeholder);
+    controls.appendChild(input);
+    scope.on(input, 'input', () => update({ search: input.value }));
+  }
+});
+PluginRegistry.register('sort', {
+  mount({ controls, update, labels, scope }) {
+    const select = document.createElement('select');
+    select.className = 'meta-sort';
+    const copy = labels.sort_labels || {};
+    for (const [value, label] of [
+      ['', copy.default || 'Original order'],
+      ['date-desc', copy.date_desc || 'Date (newest)'],
+      ['date-asc', copy.date_asc || 'Date (oldest)'],
+      ['title-asc', copy.title_asc || 'Title (A–Z)'],
+      ['title-desc', copy.title_desc || 'Title (Z–A)']
+    ]) {
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = label;
+      select.appendChild(option);
     }
+    select.setAttribute('aria-label', copy.default || 'Sort');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'select';
+    wrapper.appendChild(select);
+    controls.appendChild(wrapper);
+    scope.on(select, 'change', () => update({ sort: select.value }));
+  }
+});
 
-    function normalizeText(text) {
-        return (text || '').replace(/\s+/g, ' ').trim().toLowerCase();
-    }
-
-    // Search plugin
-    PluginRegistry.register('search', {
-        apply(section, container, data, webContent) {
-            const { controls, content } = getControlsAndContent(section, container);
-            if (!controls || !content) return;
-
-            if (controls.querySelector('.meta-search')) return;
-
-            const wrapper = document.createElement('div');
-            wrapper.className = 'mp-control mp-control-search';
-
-            const searchInput = document.createElement('input');
-            searchInput.className = 'input meta-search';
-            searchInput.type = 'search';
-            const placeholder = webContent && webContent.search_placeholder ? webContent.search_placeholder : 'Search...';
-            searchInput.placeholder = placeholder;
-
-            wrapper.appendChild(searchInput);
-            controls.appendChild(wrapper);
-
-            searchInput.addEventListener('input', (e) => {
-                const keyword = normalizeText(e.target.value);
-                const items = Array.from(content.children);
-                items.forEach(el => {
-                    const text = normalizeText(el.textContent);
-                    el.style.display = keyword ? (text.includes(keyword) ? '' : 'none') : '';
-                });
-            });
-        }
-    });
-
-    // Sort plugin
-    PluginRegistry.register('sort', {
-        apply(section, container, data, webContent) {
-            const { controls, content } = getControlsAndContent(section, container);
-            if (!controls || !content) return;
-
-            if (controls.querySelector('.meta-sort')) return;
-
-            const wrapper = document.createElement('div');
-            wrapper.className = 'mp-control mp-control-sort select';
-
-            const sortSelect = document.createElement('select');
-            sortSelect.className = 'meta-sort';
-            const sortLabels = (webContent && webContent.sort_labels) || {};
-            sortSelect.innerHTML = `
-        <option value="">${sortLabels.default || 'Sort by...'}</option>
-        <option value="date-desc">${sortLabels.date_desc || 'Date (Newest)'}</option>
-        <option value="date-asc">${sortLabels.date_asc || 'Date (Oldest)'}</option>
-        <option value="title-asc">${sortLabels.title_asc || 'Title (A-Z)'}</option>
-        <option value="title-desc">${sortLabels.title_desc || 'Title (Z-A)'}</option>
-      `;
-
-            wrapper.appendChild(sortSelect);
-            controls.appendChild(wrapper);
-
-            sortSelect.addEventListener('change', (e) => {
-                const sortValue = e.target.value;
-                const items = Array.from(content.children);
-                if (!sortValue || items.length === 0) return;
-
-                const getDateValue = (element) => {
-                    if (element.dataset && element.dataset.sortDate) {
-                        return element.dataset.sortDate;
-                    }
-                    const dateEl = element.querySelector('[data-sort-date]') || element.querySelector('.paper-title span, time, .paper-conf, .paper-date');
-                    return dateEl ? dateEl.getAttribute('data-sort-date') || dateEl.textContent || '' : '';
-                };
-
-                const getTitleValue = (element) => {
-                    if (element.dataset && element.dataset.sortTitle) {
-                        return element.dataset.sortTitle;
-                    }
-                    const titleEl = element.querySelector('[data-sort-title], .paper-title, h2, h3, .timeline-item > div:first-child');
-                    if (titleEl) {
-                        return titleEl.getAttribute('data-sort-title') || titleEl.textContent || '';
-                    }
-                    return '';
-                };
-
-                const compareStrings = (a, b, direction = 1) => {
-                    return direction * a.localeCompare(b, undefined, { sensitivity: 'base' });
-                };
-
-                items.sort((a, b) => {
-                    switch (sortValue) {
-                        case 'date-desc':
-                            return compareStrings(getDateValue(b), getDateValue(a));
-                        case 'date-asc':
-                            return compareStrings(getDateValue(a), getDateValue(b));
-                        case 'title-asc':
-                            return compareStrings(getTitleValue(a), getTitleValue(b));
-                        case 'title-desc':
-                            return compareStrings(getTitleValue(b), getTitleValue(a));
-                        default:
-                            return 0;
-                    }
-                });
-
-                items.forEach(item => content.appendChild(item));
-            });
-        }
-    });
-
-    global.PluginRegistry = PluginRegistry;
-})(window);
-
+// Plugins operate on source records, not a renderer's DOM structure.
+export function mountList({ section, mode, data, container, controls, renderer, labels, language }) {
+  const scope = createScope();
+  const items = data[section.dataSource || section.id] || data.items || [];
+  let state = { language, search: '', sort: '' };
+  let cleanup;
+  const plugins = (section[mode]?.plugins || []).map(name => {
+    const plugin = PluginRegistry.get(name);
+    if (!plugin) throw new Error(`Unknown plugin: ${name}`);
+    return plugin;
+  });
+  const redraw = () => {
+    cleanup?.();
+    const selected = plugins.reduce((result, plugin) => plugin.transform ? plugin.transform(result, state) : result, selectItems(items, state));
+    cleanup = renderer.drawList(selected, section, container, data);
+  };
+  const update = patch => { state = { ...state, ...patch }; redraw(); };
+  for (const plugin of plugins) {
+    scope.add(plugin.mount({ section, controls, items, state: () => state, update, labels, scope }));
+  }
+  redraw();
+  return () => { scope.destroy(); cleanup?.(); };
+}
