@@ -58,7 +58,8 @@ body[data-layout="multi"] #content-root { min-height: calc(100vh - 132px); }
     contain-intrinsic-size: auto 700px;
   }
 }
-.member-avatar { object-fit: cover; }
+/* Keep a square crop when mobile image rules switch height to auto. */
+.member-avatar { aspect-ratio: 1 / 1; object-fit: cover; }
 .card-container .card { transition: transform .5s ease-in-out, opacity .5s ease-in-out; }
 /* Avoid interpolating layout dimensions, shadows and filters on each frame. */
 .arrow-btn { transition: transform .2s ease, color .2s ease, background-color .2s ease; }
