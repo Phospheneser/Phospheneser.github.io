@@ -62,26 +62,26 @@
       "translations": {
         "en": {
           "date": "Sep 2024 – Present",
-          "title": "Master's Student",
+          "title": "PhD Student (transferred from Master's in 2026)",
           "org": "[Fudan University](https://www.fudan.edu.cn/)",
           "content": [
-            "Pursuing a Master's degree with a research focus on Natural Language Processing and Artificial Intelligence."
+            "Entered graduate studies in 2024 and transferred from the Master's program to the PhD program in 2026; currently in the third year of graduate studies. Research focuses on multimodal generation, particularly foundation models for image generation."
           ]
         },
         "zh": {
           "date": "2024.09 - 至今",
-          "title": "硕士研究生",
+          "title": "博士研究生（2026 年硕转博）",
           "org": "[复旦大学](https://www.fudan.edu.cn/)",
           "content": [
-            "攻读硕士学位，专注于自然语言处理与人工智能方向的研究"
+            "2024 年入学，2026 年由硕士转入博士阶段，现为研三。研究聚焦多模态生成，目前主要从事图像生成基础模型研究。"
           ]
         },
         "jp": {
           "date": "2024年9月 – 現在",
-          "title": "修士課程",
+          "title": "博士課程（2026年に修士課程から移行）",
           "org": "[復旦大学](https://www.fudan.edu.cn/)",
           "content": [
-            "自然言語処理および人工知能分野の研究に専念し、修士号取得を目指している。"
+            "2024年に大学院へ入学し、2026年に修士課程から博士課程へ移行。現在は大学院在籍3年目で、マルチモーダル生成、特に画像生成の基盤モデルを研究。"
           ]
         }
       }

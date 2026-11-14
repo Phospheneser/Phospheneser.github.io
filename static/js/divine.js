@@ -1,3 +1,4 @@
+import { divinationCopy } from './core/divination-copy.js';
 import { createScope } from './core/lifecycle.js';
 import { siteURL } from './core/data.js';
 import { requestDivination, resolveDivineServer } from './core/divination.js';
@@ -5,16 +6,38 @@ import { serviceWarmup } from './core/service-warmup.js';
 
 // 占卜小人功能实现
 export class Diviner {
-  constructor(meta = {}) {
+  constructor(meta = {}, { language = 'zh' } = {}) {
+    this.language = language;
     this.meta = meta;
     this.lifecycle = createScope();
     this.container = null;
     this.divineWindow = null;
     this.divineMode = 'JiuGongLiuRen'; // 默认占卜模式
-    this.query = '今日运势'; // 默认查询
+    this.query = this.copy.defaultQuery; // 默认查询
     this.isDragging = false;
     this.offsetX = 0;
     this.offsetY = 0;
+  }
+
+  get copy() { return divinationCopy(this.language); }
+
+  label(element, key) {
+    element.dataset.divineCopy = key;
+    element.textContent = this.copy[key];
+  }
+
+  setLanguage(language) {
+    if (this.language === language) return;
+    const oldDefault = this.copy.defaultQuery;
+    this.language = language;
+    this.container?.setAttribute('aria-label', this.copy.open);
+    if (this.query === oldDefault) {
+      this.query = this.copy.defaultQuery;
+      const input = this.divineWindow?.querySelector('#divine-query');
+      if (input) input.value = this.query;
+    }
+    this.divineWindow?.querySelectorAll('[data-divine-copy]').forEach(el => this.label(el, el.dataset.divineCopy));
+    this.divineWindow?.querySelector('#divine-close-btn')?.setAttribute('aria-label', this.copy.close);
   }
 
   // 初始化占卜小人
@@ -22,7 +45,7 @@ export class Diviner {
     // 创建占卜小人容器
     this.container = document.createElement('button');
     this.container.type = 'button';
-    this.container.setAttribute('aria-label', '打开占卜');
+    this.container.setAttribute('aria-label', this.copy.open);
     this.container.style.border = '0';
     this.container.style.padding = '0';
     this.container.style.background = 'transparent';
@@ -125,6 +148,7 @@ export class Diviner {
     const closeBtn = document.createElement('button');
     closeBtn.innerText = '×';
     closeBtn.id = 'divine-close-btn';
+    closeBtn.setAttribute('aria-label', this.copy.close);
     closeBtn.style.position = 'absolute';
     closeBtn.style.top = '10px';
     closeBtn.style.right = '10px';
@@ -150,7 +174,7 @@ export class Diviner {
 
     // 添加标题
     const title = document.createElement('h3');
-    title.innerText = '神秘占卜师';
+    this.label(title, 'title');
     title.style.textAlign = 'center';
     title.style.color = document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#363636';
     title.style.marginBottom = '20px';
@@ -166,15 +190,16 @@ export class Diviner {
     this.divineWindow.appendChild(serviceStatus);
     if (this.meta.divine?.prewarm !== false) {
       const serverUrl = resolveDivineServer(this.meta);
-      serviceStatus.textContent = serviceWarmup.isReady(serverUrl) ? '占卜服务已就绪' : '正在提前唤醒占卜服务，你可以先输入问题…';
+      this.label(serviceStatus, serviceWarmup.isReady(serverUrl) ? 'ready' : 'warming');
       void serviceWarmup.ensure(serverUrl).then(ready => {
-        if (serviceStatus.isConnected) serviceStatus.textContent = ready ? '占卜服务已就绪' : '暂未确认服务就绪，可以点击开始占卜重试。';
+        if (serviceStatus.isConnected) this.label(serviceStatus, ready ? 'ready' : 'notReady');
       });
     }
 
     // 添加查询输入
     const queryLabel = document.createElement('label');
-    queryLabel.innerText = '请输入您的问题：';
+    this.label(queryLabel, 'query');
+    queryLabel.htmlFor = 'divine-query';
     queryLabel.style.display = 'block';
     queryLabel.style.marginBottom = '10px';
     queryLabel.style.color = document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#333';
@@ -200,7 +225,7 @@ export class Diviner {
 
     // 添加占卜模式选择
     const modeLabel = document.createElement('label');
-    modeLabel.innerText = '选择占卜方式：';
+    this.label(modeLabel, 'mode');
     modeLabel.style.display = 'block';
     modeLabel.style.marginBottom = '10px';
     modeLabel.style.color = document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#333';
@@ -231,7 +256,7 @@ export class Diviner {
 
       const modeLabel = document.createElement('label');
       modeLabel.htmlFor = `mode-${mode.id}`;
-      modeLabel.innerText = mode.name;
+      this.label(modeLabel, mode.id);
       modeLabel.style.marginLeft = '5px';
       modeLabel.style.cursor = 'pointer';
       modeLabel.style.color = document.body.classList.contains('dark-mode') ? '#e0e0e0' : '#333';
@@ -247,14 +272,16 @@ export class Diviner {
     const llmInput = document.createElement('input');
     llmInput.type = 'checkbox'; llmInput.id = 'divine-use-llm';
     llmInput.checked = this.meta.divine?.useLLM === true;
-    llmLabel.append(llmInput, document.createTextNode(' 附加 AI 解读（较慢）'));
+    const llmText = document.createElement('span');
+    this.label(llmText, 'ai');
+    llmLabel.append(llmInput, document.createTextNode(' '), llmText);
     llmLabel.style.display = 'block'; llmLabel.style.marginBottom = '15px';
     this.divineWindow.appendChild(llmLabel);
 
     // 添加占卜按钮
     const divineBtn = document.createElement('button');
     divineBtn.id = 'divine-submit';
-    divineBtn.innerText = '开始占卜';
+    this.label(divineBtn, 'submit');
     divineBtn.style.width = '100%';
     divineBtn.style.padding = '10px';
     divineBtn.style.backgroundColor = document.body.classList.contains('dark-mode') ? '#4a4a4a' : '#f5f5f5';
@@ -407,32 +434,33 @@ export class Diviner {
     if (!panel || this.requestController) return;
     const result = panel.querySelector('#divine-result');
     const query = panel.querySelector('#divine-query').value.trim();
-    if (!query) { result.textContent = '请先输入您的问题。'; return; }
+    if (!query) { this.label(result, 'queryRequired'); return; }
     const button = panel.querySelector('#divine-submit');
     const controller = this.requestController = new AbortController();
     const current = () => this.requestController === controller && this.divineWindow === panel;
-    button.disabled = true; button.textContent = '占卜中…';
-    result.textContent = '正在连接占卜服务…';
+    button.disabled = true; this.label(button, 'submitting');
+    this.label(result, 'connecting');
     result.setAttribute('aria-busy', 'true');
     this.slowTimer = setTimeout(() => {
-      if (current()) result.textContent = '服务响应较慢，可能正在唤醒或生成解读，请稍候。可以关闭窗口取消等待。';
+      if (current()) this.label(result, 'slow');
     }, 8000);
     try {
       const serverUrl = resolveDivineServer(this.meta);
       const output = await requestDivination({ serverUrl, type: this.divineMode, query,
-        useLLM: panel.querySelector('#divine-use-llm').checked, signal: controller.signal });
+        useLLM: panel.querySelector('#divine-use-llm').checked, signal: controller.signal, language: this.language });
       serviceWarmup.noteReady(serverUrl);
       if (current()) {
+        delete result.dataset.divineCopy;
         result.textContent = output;
-        panel.querySelector('#divine-service-status').textContent = '占卜服务已就绪';
+        this.label(panel.querySelector('#divine-service-status'), 'ready');
       }
     } catch (error) {
-      if (current() && error.name !== 'AbortError') result.textContent = error.message;
+      if (current() && error.name !== 'AbortError') { delete result.dataset.divineCopy; result.textContent = error.message; }
     } finally {
       if (current()) {
         clearTimeout(this.slowTimer);
         this.requestController = null;
-        button.disabled = false; button.textContent = '开始占卜';
+        button.disabled = false; this.label(button, 'submit');
         result.removeAttribute('aria-busy');
       }
     }
@@ -440,9 +468,9 @@ export class Diviner {
 }
 
 // The caller awaits config before initializing this optional feature.
-export function initDiviner(meta) {
+export function initDiviner(meta, options) {
   if (meta.add_diviner === false) return null;
-  const diviner = new Diviner(meta);
+  const diviner = new Diviner(meta, options);
   diviner.init();
   return diviner;
 }

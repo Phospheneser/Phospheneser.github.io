@@ -23,7 +23,7 @@ export async function validateSite(root = project) {
       for (const [lang, fields] of Object.entries(value.translations)) {
         if (!languages.includes(lang)) errors.push(`${path}: unsupported translation ${lang}`);
         if (!fields || Array.isArray(fields) || typeof fields !== 'object') errors.push(`${path}: ${lang} translation must contain fields`);
-        if (fields && ('id' in fields || 'slug' in fields)) errors.push(`${path}: IDs and slugs must be shared`);
+        if (fields && ('id' in fields || 'slug' in fields || 'featuredOrder' in fields)) errors.push(`${path}: IDs, slugs and featuredOrder must be shared`);
       }
     }
     for (const [key, child] of Object.entries(value)) checkTranslations(child, `${path}.${key}`);
@@ -40,10 +40,15 @@ export async function validateSite(root = project) {
       checkTranslations(data, name);
       if (data.items !== undefined && !Array.isArray(data.items)) errors.push(`${name}: items must be an array`);
       const ids = new Set();
+      const ranks = new Set();
       for (const item of Array.isArray(data.items) ? data.items : []) {
         if (typeof item.id !== 'string' || !/^[a-z0-9][a-z0-9_-]*$/i.test(item.id)) errors.push(`${name}: each item needs a stable id`);
         if (ids.has(item.id)) errors.push(`${name}: duplicate id ${item.id}`);
         ids.add(item.id);
+        if (item.featuredOrder !== undefined) {
+          if (!Number.isInteger(item.featuredOrder) || item.featuredOrder < 1 || ranks.has(item.featuredOrder)) errors.push(`${name}/${item.id}: featuredOrder must be a unique positive integer`);
+          ranks.add(item.featuredOrder);
+        }
       }
     } catch (error) { errors.push(`${name}: ${error.message}`); }
   }
@@ -57,6 +62,8 @@ export async function validateSite(root = project) {
     if (section.itemType && !type) errors.push(`${section.id}: unknown itemType ${section.itemType}`);
     const template = section.template || type?.template || 'default';
     if (!builtinTemplates.has(template) && !TemplateRegistry.get(template)) errors.push(`${section.id}: unknown template ${template}`);
+    const featuredOnly = section.singlePage?.options?.featuredOnly;
+    if (featuredOnly !== undefined && typeof featuredOnly !== 'boolean') errors.push(`${section.id}: featuredOnly must be a boolean`);
     for (const mode of ['singlePage', 'multiPage']) {
       for (const plugin of section[mode]?.plugins || []) if (!PluginRegistry.get(plugin)) errors.push(`${section.id}: unknown plugin ${plugin}`);
     }

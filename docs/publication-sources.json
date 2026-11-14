@@ -1,0 +1,124 @@
+{
+  "checkedOn": "2026-11-13",
+  "notes": "Dates use the first arXiv submission where available. MOSS-Image uses the collective author MOSI.AI from arXiv. Images are unchanged official project assets; translations and summaries are editorial paraphrases. ETC links to its project homepage for data and model availability because the homepage points to an organization rather than a specific release.",
+  "publications": {
+    "omnivae": {
+      "metadata": [
+        "https://openmoss.ai/OmniVAE.github.io/",
+        "https://github.com/OpenMOSS/OmniVAE",
+        "https://arxiv.org/abs/2607.23855"
+      ],
+      "image": "https://openmoss.ai/OmniVAE.github.io/assets/images/omnivae-architecture.png",
+      "date": "2026.07.26",
+      "dateSource": "https://arxiv.org/abs/2607.23855",
+      "dateBasis": "First arXiv submission."
+    },
+    "cutetts": {
+      "metadata": [
+        "https://arxiv.org/abs/2608.08638v2",
+        "https://github.com/OPPO-Mente-Lab/CuteTTS"
+      ],
+      "image": "https://huggingface.co/OPPOer/CuteTTS/resolve/main/assets/cute_backbone.png"
+    },
+    "etc-two-bridges-one-pathway": {
+      "metadata": [
+        "https://arxiv.org/abs/2606.08520",
+        "https://linqiy.github.io/etc/"
+      ],
+      "image": "https://linqiy.github.io/etc/assets/main-a-rendered.png"
+    },
+    "moss-image": {
+      "metadata": [
+        "https://arxiv.org/abs/2610.23374",
+        "https://github.com/OpenMOSS/MOSS-Image"
+      ],
+      "image": "https://raw.githubusercontent.com/OpenMOSS/MOSS-Image/main/assets/teaser.webp"
+    },
+    "mova-towards-scalable-and-synchronized-video-audio-generation": {
+      "metadata": [
+        "https://arxiv.org/abs/2602.08794"
+      ],
+      "date": "2026.02.09",
+      "dateSource": "https://arxiv.org/abs/2602.08794",
+      "dateBasis": "First arXiv submission."
+    },
+    "moss-transcribe-diarize-accurate-transcription-with-speaker-diarization": {
+      "metadata": [
+        "https://arxiv.org/abs/2601.01554"
+      ],
+      "date": "2026.01.04",
+      "dateSource": "https://arxiv.org/abs/2601.01554",
+      "dateBasis": "First arXiv submission."
+    },
+    "moss-speech-towards-true-speech-to-speech-models-without-text-guidance": {
+      "metadata": [
+        "https://arxiv.org/abs/2510.00499"
+      ],
+      "date": "2025.10.01",
+      "dateSource": "https://arxiv.org/abs/2510.00499",
+      "dateBasis": "First arXiv submission."
+    },
+    "moss-ttsd-text-to-spoken-dialogue-generation": {
+      "metadata": [
+        "https://github.com/OpenMOSS/MOSS-TTSD"
+      ],
+      "date": "2025.06.20",
+      "dateSource": "https://github.com/OpenMOSS/MOSS-TTSD",
+      "dateBasis": "Official v0 release announcement."
+    },
+    "speechgpt-2-0-preview-version": {
+      "metadata": [
+        "https://github.com/OpenMOSS/SpeechGPT-2.0-preview"
+      ],
+      "date": "2025",
+      "dateSource": "https://github.com/OpenMOSS/SpeechGPT-2.0-preview",
+      "dateBasis": "Official BibTeX year; month and day not verified."
+    },
+    "vlabench-a-large-scale-benchmark-for-language-conditioned-robotics-manip": {
+      "metadata": [
+        "https://arxiv.org/abs/2412.18194"
+      ],
+      "date": "2024.12.24",
+      "dateSource": "https://arxiv.org/abs/2412.18194",
+      "dateBasis": "First arXiv submission."
+    },
+    "longsafety-enhance-safety-for-long-context-llms": {
+      "metadata": [
+        "https://arxiv.org/abs/2411.06899"
+      ],
+      "date": "2024.11.11",
+      "dateSource": "https://arxiv.org/abs/2411.06899",
+      "dateBasis": "First arXiv submission."
+    },
+    "detectiveqa-evaluating-long-context-reasoning-on-detective-novels": {
+      "metadata": [
+        "https://arxiv.org/abs/2409.02465"
+      ],
+      "date": "2024.09.04",
+      "dateSource": "https://arxiv.org/abs/2409.02465",
+      "dateBasis": "First arXiv submission."
+    }
+  },
+  "news": {
+    "moss-image-release": {
+      "date": "2026.10.16",
+      "source": "https://github.com/OpenMOSS/MOSS-Image",
+      "dateBasis": "Official code and model release announcement."
+    },
+    "cutetts-paper": {
+      "date": "2026.08.09",
+      "source": "https://arxiv.org/abs/2608.08638",
+      "dateBasis": "First arXiv submission; news describes the paper, not the code release."
+    },
+    "omnivae-paper": {
+      "date": "2026.07.26",
+      "source": "https://arxiv.org/abs/2607.23855",
+      "dateBasis": "First arXiv submission; news describes the paper, not the code release."
+    },
+    "etc-paper": {
+      "date": "2026.06.07",
+      "source": "https://arxiv.org/abs/2606.08520",
+      "dateBasis": "First arXiv submission; news describes the paper, not the code release."
+    }
+  }
+}

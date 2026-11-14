@@ -24,8 +24,16 @@ body.dark-mode .meta-link-icon--dark { display: inline-block; }
 .mp-controls { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 1rem; }
 .mp-controls .meta-search { flex: 1 1 12rem; }
 .load-error { padding: 1rem; border: 1px solid var(--site-accent); margin: 1rem; }
-body[data-layout="multi"] .footer { position: static !important; }
-body[data-layout="multi"] #content-root { min-height: calc(100vh - 14rem); }
+/* Keep multi-page chrome independent of document length. A fixed image layer
+   preserves viewport framing without background-attachment scroll repaints. */
+body[data-layout="multi"] #background-container { isolation: isolate; min-height: calc(100vh - 52px); padding-bottom: 5rem; }
+body[data-layout="multi"] #page-backdrop {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), var(--site-default-background);
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+body[data-layout="multi"] .footer { padding: .75rem 1.5rem; }
+body[data-layout="multi"] #content-root { min-height: calc(100vh - 132px); }
 .home-hero { padding-block: 2rem; }
 .home-hero .is-rounded { width: 100%; height: 100%; object-fit: cover; }
 .cloud-unavailable canvas { display: none; }
@@ -70,3 +78,39 @@ body[data-layout="multi"] #content-root { min-height: calc(100vh - 14rem); }
   .navbar-menu, .navbar-dropdown { backdrop-filter: none !important; }
 }
 .home-hero [data-pending-widget] { visibility: hidden; }
+
+/* Homepage highlights share the full-list renderer, with a shorter summary. */
+.meta-card--compact { padding: 1.25rem; }
+.meta-card--compact .meta-card-title { font-size: 1.2rem; }
+.meta-card--compact .meta-card-summary { margin-block: .65rem; }
+.section-more { display: flex; justify-content: flex-end; margin-top: 1.25rem; }
+.section-more-link { font-weight: 600; padding: .65rem 1rem; border: 1px solid currentColor; border-radius: .6rem; }
+.section-more-link:hover { background: rgba(50,115,220,.08); }
+.feature-editor { border: 1px solid #b8cbe3; border-radius: 1rem; padding: 1.25rem; margin-bottom: 2rem; background: #f6f9fe; color: #26364a; }
+.feature-editor h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: .35rem; }
+.feature-editor h3 { font-weight: 700; margin-block: 1rem .5rem; }
+.feature-editor-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.feature-editor ul, .feature-editor ol { display: block; padding-left: 0 !important; }
+.feature-editor li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .6rem; padding: .75rem 0; border-bottom: 1px solid #d9e2ee; }
+.feature-editor li > span { flex: 1 1 12rem; overflow-wrap: anywhere; }
+.feature-editor-selected { counter-reset: pin; }
+.feature-editor-selected li > span::before { counter-increment: pin; content: counter(pin) '. '; font-weight: 700; }
+.feature-editor-row-actions, .feature-editor-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.feature-editor-actions { margin-top: 1rem; }
+.feature-editor button { border: 1px solid #9db2ce; border-radius: .4rem; padding: .35rem .7rem; background: white; color: #234f87; cursor: pointer; font: inherit; }
+.feature-editor button:disabled { opacity: .4; cursor: default; }
+.feature-editor-status { min-height: 1.5em; margin-top: .6rem; }
+.dark-mode .feature-editor { background: #192333; color: #e3ecf7; border-color: #49617d; }
+.dark-mode .feature-editor button { background: #293b52; color: #e3ecf7; }
+@media (max-width: 768px) { .feature-editor-lists { grid-template-columns: 1fr; } }
+
+/* A dedicated handle keeps links, buttons and normal touch scrolling usable. */
+.feature-editor .feature-editor-drag { cursor: grab; touch-action: none; flex: 0 0 auto; font-size: 1.3rem; padding: .35rem .5rem; min-width: 36px; min-height: 44px; }
+.feature-editor .feature-editor-drag:focus-visible { outline: 2px solid #387bc5; outline-offset: 2px; }
+.feature-editor--dragging, .feature-editor--dragging * { cursor: grabbing !important; user-select: none; }
+.feature-editor li.is-dragging { background: #dfebfc; outline: 2px dashed #387bc5; outline-offset: -2px; border-radius: .4rem; }
+.dark-mode .feature-editor li.is-dragging { background: #294667; }
+
+/* Keep author and date rows consistent across publications, projects and blogs. */
+.meta-card .meta-card-meta { flex-direction: column; align-items: flex-start; gap: 6px; }
+.meta-card-date { font-variant-numeric: tabular-nums; }

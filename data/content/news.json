@@ -2,18 +2,103 @@
   "translations": {
     "en": {
       "nav_label": "News",
-      "title": "🔥 News"
+      "title": "🔥 News",
+      "view_all_label": "View all news",
+      "featured_empty": "No news pinned yet. View all news for more.",
+      "editor_labels": {
+        "title": "Homepage news",
+        "available": "Other news",
+        "empty": "No news pinned yet.",
+        "intro": "Choose any number of news items, including none, and arrange their order. The full list keeps every item."
+      }
     },
     "zh": {
       "nav_label": "新闻",
-      "title": "🔥 新闻"
+      "title": "🔥 新闻",
+      "view_all_label": "查看全部新闻",
+      "featured_empty": "暂未置顶新闻，可查看全部新闻。",
+      "editor_labels": {
+        "title": "首页新闻",
+        "available": "其他新闻",
+        "empty": "还没有置顶新闻。",
+        "intro": "置顶数量不限，也可以不选。拖动调整首页新闻顺序后保存，完整列表保留所有新闻。"
+      }
     },
     "jp": {
       "nav_label": "ニュース",
-      "title": "🔥 ニュース"
+      "title": "🔥 ニュース",
+      "view_all_label": "すべてのニュースを見る",
+      "featured_empty": "固定されたニュースはありません。すべてのニュースをご覧ください。",
+      "editor_labels": {
+        "title": "ホームページのニュース",
+        "available": "その他のニュース",
+        "empty": "固定されたニュースはありません。",
+        "intro": "ニュースを件数の制限なく選び、順序を調整して保存します。未選択でも保存でき、一覧にはすべてのニュースが残ります。"
+      }
     }
   },
   "items": [
+    {
+      "id": "moss-image-release",
+      "date": "2026.10.16",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Image\">MOSS-Image</a> is now open source, with code and model weights for MOSS-Image-Base and MOSS-Image-SFT available!"
+        },
+        "zh": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Image\">MOSS-Image</a> 已开源，发布 MOSS-Image-Base、MOSS-Image-SFT 的代码与模型权重！"
+        },
+        "jp": {
+          "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Image\">MOSS-Image</a> をオープンソースとして公開しました。MOSS-Image-Base と MOSS-Image-SFT のコードとモデル重みが利用可能です！"
+        }
+      },
+      "featuredOrder": 1
+    },
+    {
+      "id": "cutetts-paper",
+      "date": "2026.08.09",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://arxiv.org/abs/2608.08638\">CuteTTS</a>: our paper on efficient, high-quality speech synthesis with continuous autoregressive modeling is now on arXiv!"
+        },
+        "zh": {
+          "content": "<a href=\"https://arxiv.org/abs/2608.08638\">CuteTTS</a> 论文已发布！探索基于连续潜变量自回归建模的高效、高质量语音合成。"
+        },
+        "jp": {
+          "content": "<a href=\"https://arxiv.org/abs/2608.08638\">CuteTTS</a> の論文を arXiv に公開しました！連続潜在変数の自己回帰モデリングによる高効率・高品質な音声合成を探究します。"
+        }
+      }
+    },
+    {
+      "id": "omnivae-paper",
+      "date": "2026.07.26",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://arxiv.org/abs/2607.23855\">OmniVAE</a>: our paper on cross-modal alignment in audio-video VAEs for joint generation is now on arXiv!"
+        },
+        "zh": {
+          "content": "<a href=\"https://arxiv.org/abs/2607.23855\">OmniVAE</a> 论文已发布！通过音视频 VAE 的跨模态对齐，提升音视频联合生成的质量与同步效果。"
+        },
+        "jp": {
+          "content": "<a href=\"https://arxiv.org/abs/2607.23855\">OmniVAE</a> の論文を arXiv に公開しました！音声・映像 VAE のクロスモーダル整合により、共同生成の品質と同期精度を高めます。"
+        }
+      }
+    },
+    {
+      "id": "etc-paper",
+      "date": "2026.06.07",
+      "translations": {
+        "en": {
+          "content": "<a href=\"https://arxiv.org/abs/2606.08520\">Two Bridges, One Pathway (ETC)</a>: our paper on transferring VLMs to generalizable VLAs using embodied trajectory-coupled data is now on arXiv!"
+        },
+        "zh": {
+          "content": "<a href=\"https://arxiv.org/abs/2606.08520\">Two Bridges, One Pathway (ETC)</a> 论文已发布！利用具身轨迹耦合数据，探索从视觉语言模型到可泛化机器人策略的迁移。"
+        },
+        "jp": {
+          "content": "<a href=\"https://arxiv.org/abs/2606.08520\">Two Bridges, One Pathway (ETC)</a> の論文を arXiv に公開しました！身体化された軌跡と結び付いたデータを用い、視覚言語モデルから汎化可能なロボット方策への転移を探究します。"
+        }
+      }
+    },
     {
       "id": "2026-02-10",
       "date": "2026.02.10",
@@ -27,7 +112,8 @@
         "jp": {
           "content": "<a href=\"https://arxiv.org/abs/2602.08794\">MOVA 技術報告</a>が公開されました。同時に<a href=\"https://mosi.cn/#models\">MOSS TTS Family</a> も公開されました！"
         }
-      }
+      },
+      "featuredOrder": 2
     },
     {
       "id": "2026-01-29",
@@ -42,7 +128,8 @@
         "jp": {
           "content": "<a href=\"https://mosi.cn/models/mova\">MOVA</a> がリリースされました！"
         }
-      }
+      },
+      "featuredOrder": 3
     },
     {
       "id": "2026-01-26",
@@ -57,7 +144,8 @@
         "jp": {
           "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> が <a href=\"https://iclr.cc/Conferences/2026\">ICLR 2026</a> に採択されました！"
         }
-      }
+      },
+      "featuredOrder": 4
     },
     {
       "id": "2026-01-18",
@@ -119,7 +207,8 @@
         "jp": {
           "content": "<a href=\"https://github.com/OpenMOSS/MOSS-Speech\">MOSS-Speech</a> がリリースされました！"
         }
-      }
+      },
+      "featuredOrder": 5
     },
     {
       "id": "2025-06-26",
@@ -134,7 +223,8 @@
         "jp": {
           "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> が <a href=\"https://iccv.thecvf.com/\">ICCV 2025</a> に採択されました！"
         }
-      }
+      },
+      "featuredOrder": 6
     },
     {
       "id": "2025-06-20",
@@ -164,7 +254,8 @@
         "jp": {
           "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> が <a href=\"https://workshop-llm-reasoning-planning.github.io/\">Reasoning and Planning for LLMs</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a> に採択されました！"
         }
-      }
+      },
+      "featuredOrder": 7
     },
     {
       "id": "2025-03-05-11",
@@ -179,7 +270,8 @@
         "jp": {
           "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> が <a href=\"https://iclr.cc/virtual/2025/workshop/23977\">Generative Models for Robot Learning</a> @ <a href=\"https://www.iclr.cc/Conferences/2025\">ICLR 2025</a> に採択されました！"
         }
-      }
+      },
+      "featuredOrder": 8
     },
     {
       "id": "2025-02-26",
@@ -194,7 +286,8 @@
         "jp": {
           "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> は <a href=\"https://cvpr.thecvf.com/Conferences/2025\">CVPR 2025</a> の PC によって、著者リストに含まれていたレビュワーがレビューを提出し忘れたため <a href=\"https://openreview.net/forum?id=C6w5prnBlR\">デスクリジェクト</a> されました。しかし、PC に問い合わせたところ、本来の判定は <strong>採択（Accept）</strong> であることが判明しました！結果として、CVPR に採択された論文の中で、私たちの論文は、<i>accepted but desk-rejected</i> となった19本の論文のうちの1本となってしまいました。（笑）。"
         }
-      }
+      },
+      "featuredOrder": 9
     },
     {
       "id": "2025-01-26",
@@ -209,7 +302,8 @@
         "jp": {
           "content": "<a href=\"https://github.com/OpenMOSS/SpeechGPT-2.0-preview\">SpeechGPT-2-preview</a> がリリースされました！"
         }
-      }
+      },
+      "featuredOrder": 12
     },
     {
       "id": "2025-01-13",
@@ -224,7 +318,8 @@
         "jp": {
           "content": "<a href=\"https://github.com/Phospheneser/DetectiveQA\">DetectiveQA</a> がリリースされました！"
         }
-      }
+      },
+      "featuredOrder": 10
     },
     {
       "id": "2024-12-25",
@@ -239,7 +334,8 @@
         "jp": {
           "content": "<a href=\"https://github.com/OpenMOSS/VLABench\">VLABench</a> プレビュー版がリリースされました！"
         }
-      }
+      },
+      "featuredOrder": 11
     }
   ]
 }

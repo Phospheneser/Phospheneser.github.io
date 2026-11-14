@@ -14,6 +14,7 @@ const multi = document.body.dataset.layout === 'multi';
 const mode = multi ? 'multiPage' : 'singlePage';
 const root = document.getElementById(multi ? 'content-root' : 'meta-sections-root');
 const background = document.getElementById('background-container');
+const backgroundSurface = multi ? document.getElementById('page-backdrop') : background;
 const lifetime = createScope();
 const gate = createRenderGate();
 let pageScope = createScope();
@@ -21,10 +22,26 @@ let meta;
 let language;
 let theme;
 let diviner;
+let mountEditor;
+let uiCopy = {};
+const editing = new URLSearchParams(location.search).get('edit') === '1' && ['localhost', '127.0.0.1'].includes(location.hostname);
 let singleHero = multi ? null : background.querySelector(':scope > .container');
 const text = (id, value) => { const el = document.getElementById(id); if (el && value != null) el.innerHTML = value; };
 const pageKey = () => multi ? new URLSearchParams(location.search).get('page') || 'home' : location.hash.slice(1) || 'home';
 const visibleSections = () => meta.sections.filter(section => section.enabled && section[mode]?.enabled);
+
+function updateInterface(copy) {
+  uiCopy = copy;
+  for (const [selector, label] of [
+    ['#layout-mode-toggle', multi ? copy.layout_single : copy.layout_multi],
+    ['#back-to-top', copy.back_to_top], ['.navbar-burger', copy.menu]
+  ]) {
+    const element = document.querySelector(selector);
+    if (element && label) { element.title = label; element.setAttribute('aria-label', label); }
+  }
+  theme?.update();
+  diviner?.setLanguage(language);
+}
 
 function applyBackground() {
   if (!meta) return;
@@ -33,7 +50,7 @@ function applyBackground() {
   const config = meta.backgrounds?.[section?.background] || meta.backgrounds?.[pageKey()] || meta.backgrounds?.default || {};
   const dark = document.body.classList.contains('dark-mode');
   const image = dark ? config.dark || config.light : config.light || config.dark;
-  background.style.backgroundImage = image ? `linear-gradient(${dark ? 'rgba(0,0,0,.45),rgba(0,0,0,.45)' : 'rgba(255,255,255,.5),rgba(255,255,255,.5)'}),${backgroundImage(image)}` : 'none';
+  backgroundSurface.style.backgroundImage = image ? `linear-gradient(${dark ? 'rgba(0,0,0,.45),rgba(0,0,0,.45)' : 'rgba(255,255,255,.5),rgba(255,255,255,.5)'}),${backgroundImage(image)}` : 'none';
 }
 
 function closeMenu() {
@@ -63,7 +80,7 @@ function renderNavigation(documents, copy) {
     anchor.dataset.section = section.id;
     anchor.id = `navbar-${section.id}`;
     anchor.textContent = documents[section.id]?.nav_label || navigationLabels[section.dataSource || section.id]?.[language] || navigationLabels[section.dataSource || section.id]?.[meta.defaultLanguage] || section.id;
-    anchor.href = multi ? `?page=${encodeURIComponent(section.id)}&lang=${language}` : `#${section.id}`;
+    anchor.href = multi ? `?page=${encodeURIComponent(section.id)}&lang=${language}${editing ? '&edit=1' : ''}` : `#${section.id}`;
     navigation.insertBefore(anchor, dropdown);
   }
   text('navbar-title', copy.navbar_title || copy.navbar_home || 'Home');
@@ -113,6 +130,20 @@ function renderSection(section, data, copy, renderer, placeholder) {
   } else {
     pageScope.add(mountList({ section, mode, data, container: content, controls, renderer, labels: { ...copy, ...data }, language }));
   }
+  if (!multi && options.featuredOnly === true && section.multiPage?.enabled) {
+    const more = document.createElement('div');
+    more.className = 'section-more';
+    const link = document.createElement('a');
+    link.className = 'section-more-link';
+    link.href = siteURL(`multipage_index.html?page=${encodeURIComponent(section.id)}&lang=${language}${editing ? '&edit=1' : ''}`);
+    link.textContent = data.view_all_label || copy.view_all || 'View all';
+    more.appendChild(link); container.appendChild(more);
+  }
+  if (editing && multi && mountEditor && section.singlePage?.options?.featuredOnly === true) {
+    const editor = document.createElement('div');
+    container.insertBefore(editor, controls);
+    pageScope.add(mountEditor(editor, { source: section.dataSource || section.id, data, language, onSaved: () => dataStore.clear(), onRefresh: () => { dataStore.clear(); renderPage(); } }));
+  }
 }
 
 async function renderPage() {
@@ -134,6 +165,7 @@ async function renderPage() {
     const words = showHero && meta.home?.showWordCloud !== false ? dataStore.content('wordcloud', requestedLanguage, { optional: true }).then(data => data?.wordcloud || []).catch(() => []) : [];
     const copy = await dataStore.ui(requestedLanguage);
     if (!current()) return;
+    updateInterface(copy);
     pageScope.destroy(); pageScope = createScope();
     root.replaceChildren();
     renderNavigation({}, copy);
@@ -180,8 +212,8 @@ async function renderPage() {
     console.error(error);
     const status = document.createElement('div');
     status.id = 'page-error'; status.className = 'load-error'; status.setAttribute('role', 'alert');
-    status.textContent = 'Unable to load the page. ';
-    const retry = document.createElement('button'); retry.textContent = 'Retry';
+    status.textContent = (uiCopy.load_error || 'Unable to load the page.') + ' ';
+    const retry = document.createElement('button'); retry.textContent = uiCopy.retry || 'Retry';
     retry.onclick = renderPage; status.appendChild(retry); root.prepend(status);
   } finally { if (current()) root.removeAttribute('aria-busy'); }
 }
@@ -228,7 +260,7 @@ function wireNavigation() {
   layout.innerHTML = `<i class="fas fa-${multi ? 'file-alt' : 'layer-group'}"></i>`;
   lifetime.on(layout, 'click', event => {
     event.preventDefault(); storage.set('layoutMode', multi ? 'single' : 'multi');
-    location.href = siteURL(multi ? `index.html?lang=${language}#${pageKey() === 'home' ? '' : pageKey()}` : `multipage_index.html?page=${encodeURIComponent(pageKey())}&lang=${language}`);
+    location.href = siteURL(multi ? `index.html?lang=${language}${editing ? '&edit=1' : ''}#${pageKey() === 'home' ? '' : pageKey()}` : `multipage_index.html?page=${encodeURIComponent(pageKey())}&lang=${language}${editing ? '&edit=1' : ''}`);
   });
   const top = document.getElementById('back-to-top');
   lifetime.on(window, 'scroll', () => top.classList.toggle('show', window.scrollY > 300), { passive: true });
@@ -241,13 +273,20 @@ async function start() {
     attachServiceWarmup(meta, lifetime);
     language = setLanguage(getLanguage(meta), meta);
     wireNavigation();
-    theme = initTheme(document.getElementById('dark-mode-toggle-mobile'), { onChange: applyBackground });
+    theme = initTheme(document.getElementById('dark-mode-toggle-mobile'), { labels: () => uiCopy, onChange: applyBackground });
     for (const [name, color] of Object.entries(meta.themes || {})) document.documentElement.style.setProperty(`--site-${name}`, color);
+    if (editing) {
+      const editor = await import('../components/feature-editor.js');
+      mountEditor = editor.mountFeatureEditor;
+      lifetime.on(window, 'beforeunload', event => {
+        if (editor.hasFeatureDrafts() && !editor.preserveFeatureDrafts()) { event.preventDefault(); event.returnValue = ''; }
+      });
+    }
     const rendering = renderPage();
     if (meta.add_diviner !== false) {
       try {
         const { initDiviner } = await import('../divine.js');
-        diviner = initDiviner(meta);
+        diviner = initDiviner(meta, { language });
       } catch (error) { console.warn('Optional diviner unavailable:', error); }
     }
     await rendering;

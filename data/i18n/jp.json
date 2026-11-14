@@ -12,5 +12,24 @@
   "japanese": "日本語",
   "title": "大きな夢を持ち、懸命に働き、謙虚に。",
   "subtitle": "——多才多能で偉大になる。",
-  "footer": "© 2024 Phospheneser. All rights reserved."
+  "footer": "© 2024 Phospheneser. 無断転載を禁じます。",
+  "search_placeholder": "検索…",
+  "sort_labels": {
+    "label": "並べ替え",
+    "default": "元の順序",
+    "date_desc": "日付（新しい順）",
+    "date_asc": "日付（古い順）",
+    "title_asc": "タイトル（昇順）",
+    "title_desc": "タイトル（降順）"
+  },
+  "darkToLight": "ライトモードへ切り替える",
+  "lightToDark": "ダークモードへ切り替える",
+  "layout_single": "シングルページ表示に切り替える",
+  "layout_multi": "マルチページ表示に切り替える",
+  "back_to_top": "ページの先頭へ",
+  "menu": "メニュー",
+  "content_unavailable": "コンテンツを読み込めません。もう一度お試しください。",
+  "section_missing": "このセクションは利用できません。",
+  "load_error": "ページを読み込めません。",
+  "retry": "再試行"
 }

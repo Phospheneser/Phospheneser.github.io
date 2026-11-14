@@ -46,3 +46,36 @@ test('search and sort compose without changing source order, including reset', (
 });
 
 test('repository content validates', async () => assert.deepEqual(await validateSite(), []));
+
+test('featured selection is explicit, ordered, unlimited and does not mutate full lists', async () => {
+  const { selectFeatured } = await import('../static/js/core/content.js');
+  const items = [{ id: 'a', featuredOrder: 3 }, { id: 'b' }, { id: 'c', featuredOrder: 1 }, { id: 'd', featuredOrder: 2 }, { id: 'e', featuredOrder: 4 }, { id: 'invalid', featuredOrder: -1 }];
+  assert.deepEqual(selectFeatured(items).map(item => item.id), ['c', 'd', 'a', 'e']);
+  assert.deepEqual(selectFeatured([{ id: 'new' }]), []);
+  assert.equal(items[0].id, 'a');
+  assert.equal(items.length, 6);
+});
+
+
+test('card dates normalize padding and separators without inventing precision', async () => {
+  const { formatContentDate } = await import('../static/js/core/content.js');
+  assert.equal(formatContentDate('2025.9-2025.10'), '2025.09 – 2025.10');
+  assert.equal(formatContentDate('2025-10-07 01:13'), '2025.10.07 01:13');
+  assert.equal(formatContentDate('2026.8.9'), '2026.08.09');
+  assert.equal(formatContentDate('2026'), '2026');
+  assert.equal(formatContentDate(null), '');
+});
+
+test('publication locales explicitly translate titles and preserve every link action', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const data = JSON.parse(await readFile(new URL('../data/content/publications.json', import.meta.url)));
+  for (const item of data.items) {
+    const en = localize(item, 'en');
+    for (const lang of ['en', 'zh', 'jp']) {
+      assert.ok(item.translations?.[lang]?.title, `${item.id}: missing explicit ${lang} title`);
+      const translated = localize(item, lang);
+      assert.equal(translated.links.length, en.links.length, `${item.id}/${lang}: missing link action`);
+      assert.deepEqual(translated.links.map(link => link.icon), en.links.map(link => link.icon), `${item.id}/${lang}: inconsistent action order`);
+    }
+  }
+});

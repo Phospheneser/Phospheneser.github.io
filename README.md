@@ -54,3 +54,10 @@ Checks cover content integrity, extension references, fallback, caching, stale-r
 GitHub Pages continues serving the same static entry points; `.nojekyll` avoids unnecessary processing. The validation workflow does not change the deployment source. The optional Python diviner under `static/python/diviner/` remains a separately hosted service configured by `divine.serverUrl`. It is loaded only when enabled, after configuration is ready.
 
 The asset build creates responsive WebP copies and navigation labels from existing source files. Commit `media/optimized/`, `static/js/generated/`, `static/css/generated/`, and updated HTML alongside content changes for branch-based Pages deployment. Original images remain untouched. `npm run check` runs checks without regenerating assets. Local desktop/mobile rendering has been checked; production Web Vitals still need measurement.
+
+
+## Edit homepage selections locally
+
+Run `npm run edit`, then open `http://127.0.0.1:8765/multipage_index.html?page=publications&lang=en&edit=1`. Pin/unpin works, drag the left-hand grip to reorder, and save. Up/down buttons remain available; Escape cancels a drag. Use the News, Projects or Blog navigation link to edit those sections. Each homepage section shows all pinned works (zero or more) and a count-free link to its complete list.
+
+Saving updates only local JSON; commit and publish as usual to share the change. The editing server binds to loopback, uses same-origin checks and a per-session write token, and detects conflicting file changes. Visitors need no login. `npm run dev` runs the same uncached preview with editing disabled. You can also set the shared item field `featuredOrder` manually; homepage cards retain the full description, authors, dates and links.

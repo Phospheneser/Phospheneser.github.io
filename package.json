@@ -11,7 +11,9 @@
     "check": "npm run validate && npm test",
     "verify:migration": "node scripts/verify-migration.mjs",
     "prepare:assets": "node scripts/prepare-assets.mjs",
-    "build": "npm run prepare:assets && npm run check"
+    "build": "npm run prepare:assets && npm run check",
+    "dev": "python3 scripts/dev_server.py",
+    "edit": "python3 scripts/dev_server.py --edit"
   },
   "devDependencies": {
     "jsdom": "^26.1.0",

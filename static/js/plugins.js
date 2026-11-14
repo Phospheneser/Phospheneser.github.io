@@ -1,4 +1,4 @@
-import { selectItems } from './core/content.js';
+import { selectItems, selectFeatured } from './core/content.js';
 import { createScope } from './core/lifecycle.js';
 
 const registry = new Map();
@@ -39,7 +39,7 @@ PluginRegistry.register('sort', {
       option.textContent = label;
       select.appendChild(option);
     }
-    select.setAttribute('aria-label', copy.default || 'Sort');
+    select.setAttribute('aria-label', copy.label || 'Sort');
     const wrapper = document.createElement('div');
     wrapper.className = 'select';
     wrapper.appendChild(select);
@@ -51,7 +51,10 @@ PluginRegistry.register('sort', {
 // Plugins operate on source records, not a renderer's DOM structure.
 export function mountList({ section, mode, data, container, controls, renderer, labels, language }) {
   const scope = createScope();
-  const items = data[section.dataSource || section.id] || data.items || [];
+  const sourceItems = data[section.dataSource || section.id] || data.items || [];
+  const options = section[mode]?.options || {};
+  const featured = mode === 'singlePage' && options.featuredOnly === true;
+  const items = featured ? selectFeatured(sourceItems) : sourceItems;
   let state = { language, search: '', sort: '' };
   let cleanup;
   const plugins = (section[mode]?.plugins || []).map(name => {
@@ -62,7 +65,11 @@ export function mountList({ section, mode, data, container, controls, renderer, 
   const redraw = () => {
     cleanup?.();
     const selected = plugins.reduce((result, plugin) => plugin.transform ? plugin.transform(result, state) : result, selectItems(items, state));
-    cleanup = renderer.drawList(selected, section, container, data);
+    cleanup = renderer.drawList(selected, section, container, data, {
+      compact: mode === 'singlePage' && options.compact === true,
+      emptyMessage: featured ? labels.featured_empty : undefined,
+      hideArchive: featured
+    });
   };
   const update = patch => { state = { ...state, ...patch }; redraw(); };
   for (const plugin of plugins) {

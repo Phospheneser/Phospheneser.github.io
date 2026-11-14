@@ -9,5 +9,24 @@
   "language": "语言",
   "title": "梦想远大，努力工作，保持谦逊。",
   "subtitle": "——多才多艺，成就伟大。",
-  "footer": "© 2024 Phospheneser。保留所有权利。"
+  "footer": "© 2024 Phospheneser。保留所有权利。",
+  "search_placeholder": "搜索…",
+  "sort_labels": {
+    "label": "排序",
+    "default": "原始顺序",
+    "date_desc": "日期（从新到旧）",
+    "date_asc": "日期（从旧到新）",
+    "title_asc": "标题（升序）",
+    "title_desc": "标题（降序）"
+  },
+  "darkToLight": "切换为浅色模式",
+  "lightToDark": "切换为深色模式",
+  "layout_single": "切换为单页模式",
+  "layout_multi": "切换为多页模式",
+  "back_to_top": "返回顶部",
+  "menu": "菜单",
+  "content_unavailable": "内容暂时无法加载，请重试。",
+  "section_missing": "此板块暂不可用。",
+  "load_error": "页面加载失败。",
+  "retry": "重试"
 }

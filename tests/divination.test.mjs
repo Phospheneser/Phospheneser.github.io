@@ -37,3 +37,17 @@ test('divination handles invalid responses and deliberate cancellation without s
   controller.abort();
   await assert.rejects(pending, { name: 'AbortError' });
 });
+
+test('divination errors and interpretation headings follow the selected language', async () => {
+  for (const [language, heading, failure] of [
+    ['en', 'Interpretation', 'temporarily unavailable'],
+    ['zh', '卦象解读', '暂时不可用'],
+    ['jp', '占いの解説', '一時的に利用できません']
+  ]) {
+    const output = await requestDivination({ ...request, language }, async () => ({ ok: true,
+      text: async () => JSON.stringify({ success: true, result: 'base', philosophical_reply: 'reply', philosophical_reply_error: 'unavailable' }) }));
+    assert.ok(output.includes(heading));
+    assert.ok(output.includes(failure));
+    await assert.rejects(requestDivination({ ...request, language }, async () => ({ ok: false, status: 503, text: async () => '' })), error => error.message.includes(failure) && error.message.includes('503'));
+  }
+});

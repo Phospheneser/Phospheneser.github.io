@@ -1,3 +1,4 @@
+import { formatContentDate } from '../core/content.js';
 import { setImageSource } from '../core/images.js';
 import { TemplateRegistry } from '../templates.js';
 import { decorateLinkAnchor, isValidUrl, isExternalUrl, assetURL, blogURL } from '../core/links.js';
@@ -17,12 +18,12 @@ export function createSectionRenderer(metaConfig, currentLang) {
     }
   };
 
-  function drawList(list, section, contentDiv, sectionData) {
+  function drawList(list, section, contentDiv, sectionData, presentation = {}) {
     if (!contentDiv) return;
     contentDiv.innerHTML = '';
 
     if (!Array.isArray(list) || list.length === 0) {
-      const placeholder = (metaConfig && metaConfig.emptyStates && metaConfig.emptyStates[section.id]) || 'No records available.';
+      const placeholder = presentation.emptyMessage || (metaConfig && metaConfig.emptyStates && metaConfig.emptyStates[section.id]) || 'No records available.';
       const p = document.createElement('p');
       p.className = 'text-homepage-1';
       p.textContent = placeholder;
@@ -45,13 +46,14 @@ export function createSectionRenderer(metaConfig, currentLang) {
     list.forEach(entry => {
       const block = document.createElement('div');
       block.className = 'section-text-block';
-      renderEntryByTemplate(block, entry, section, template, type);
+      block.dataset.itemId = entry.id || '';
+      renderEntryByTemplate(block, entry, section, template, type, presentation);
       if (block.childElementCount > 0) {
         contentDiv.appendChild(block);
       }
     });
 
-    if (type === 'blog' && templateSupportsArchive(template)) {
+    if (type === 'blog' && !presentation.hideArchive && templateSupportsArchive(template)) {
       appendBlogArchiveCallout(contentDiv, getSectionArchiveLabel(section, sectionData));
     }
   }
@@ -79,7 +81,7 @@ export function createSectionRenderer(metaConfig, currentLang) {
     return name === 'paper-card' || name === 'meta-card' || name === 'feature-card' || name === 'card';
   }
 
-  function renderEntryByTemplate(block, entry, section, template, type) {
+  function renderEntryByTemplate(block, entry, section, template, type, presentation) {
     appendSortMetadata(block, entry);
     const builtins = {
       'paper-card': renderMetaCard, 'meta-card': renderMetaCard,
@@ -87,7 +89,7 @@ export function createSectionRenderer(metaConfig, currentLang) {
       timeline: renderTimelineEntry, 'list-inline': renderListInlineEntry,
       default: renderGenericEntry
     };
-    (builtins[template] || renderGenericEntry)(block, entry, type);
+    (builtins[template] || renderGenericEntry)(block, entry, type, presentation);
   }
 
   function renderListInlineEntry(block, entry) {
@@ -211,7 +213,10 @@ export function createSectionRenderer(metaConfig, currentLang) {
   }
 
   function gatherMetaFields(entry, fields) {
-    return toArray(fields).map(field => readField(entry, field)).filter(Boolean);
+    return toArray(fields).map(field => ({
+      text: ['date', 'post_time'].includes(field) ? formatContentDate(readField(entry, field)) : readField(entry, field),
+      isDate: ['date', 'post_time'].includes(field)
+    })).filter(item => item.text);
   }
 
   function gatherBadgeFields(entry, fields) {
@@ -243,10 +248,11 @@ export function createSectionRenderer(metaConfig, currentLang) {
     }
   }
 
-  function renderMetaCard(block, entry, type) {
+  function renderMetaCard(block, entry, type, { compact = false } = {}) {
     if (!entry) return;
     const { data, options } = buildMetaCardData(entry, type);
     block.classList.add('meta-card', `meta-card--${type}`);
+    if (compact) block.classList.add('meta-card--compact');
 
     const imageSrc = entry.hero_image ? new URL(entry.hero_image, siteURL('blogs/')).href : data.image || '';
     const media = createMediaSlot(imageSrc, data.title, options.placeholderLabel);
@@ -277,7 +283,7 @@ export function createSectionRenderer(metaConfig, currentLang) {
       header.appendChild(subtitle);
     }
 
-    if (data.meta.length) {
+    if (data.meta.length && !compact) {
       const meta = buildMetaLine(data.meta);
       if (meta) header.appendChild(meta);
     }
@@ -287,11 +293,16 @@ export function createSectionRenderer(metaConfig, currentLang) {
     if (data.description) {
       const summary = document.createElement('p');
       summary.className = 'blog-summary meta-card-summary';
-      summary.innerHTML = data.description;
+      if (compact) {
+        const plain = document.createElement('div');
+        plain.innerHTML = entry.featuredSummary || data.description;
+        const text = plain.textContent.trim();
+        summary.textContent = text.length > 180 ? `${text.slice(0, 177).trimEnd()}…` : text;
+      } else summary.innerHTML = data.description;
       content.appendChild(summary);
     }
 
-    if (data.details.length) {
+    if (data.details.length && !compact) {
       const list = document.createElement('ul');
       list.className = 'meta-card-list';
       data.details.forEach(item => {
@@ -303,7 +314,7 @@ export function createSectionRenderer(metaConfig, currentLang) {
       if (list.childElementCount) content.appendChild(list);
     }
 
-    if (data.tags.length) {
+    if (data.tags.length && !compact) {
       const tags = createTagList(data.tags);
       if (tags) {
         tags.classList.add('meta-card-tags');
@@ -312,6 +323,7 @@ export function createSectionRenderer(metaConfig, currentLang) {
     }
 
     const actions = buildCardActions(entry, data, type, options);
+    if (compact && actions) [...actions.children].slice(2).forEach(action => action.remove());
     if (actions) content.appendChild(actions);
 
     block.appendChild(content);
@@ -362,10 +374,11 @@ export function createSectionRenderer(metaConfig, currentLang) {
     if (!filtered.length) return null;
     const meta = document.createElement('div');
     meta.className = 'blog-meta meta-card-meta';
-    filtered.forEach(text => {
+    filtered.forEach(({ text, isDate }) => {
       const span = document.createElement('span');
-      span.className = 'meta-card-meta-item';
-      span.innerHTML = text;
+      span.className = 'meta-card-meta-item' + (isDate ? ' meta-card-date' : '');
+      if (isDate) span.textContent = text;
+      else span.innerHTML = text;
       meta.appendChild(span);
     });
     return meta;

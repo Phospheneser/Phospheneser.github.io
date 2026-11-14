@@ -2,15 +2,21 @@
   "translations": {
     "en": {
       "nav_label": "Projects",
-      "title": "⚙️ Projects"
+      "title": "⚙️ Projects",
+      "view_all_label": "View all projects",
+      "featured_empty": "Featured work will appear here."
     },
     "zh": {
       "nav_label": "项目",
-      "title": "⚙️ 项目"
+      "title": "⚙️ 项目",
+      "view_all_label": "查看全部项目",
+      "featured_empty": "代表作待更新。"
     },
     "jp": {
       "nav_label": "プロジェクト",
-      "title": "⚙️ プロジェクト"
+      "title": "⚙️ プロジェクト",
+      "view_all_label": "すべてのプロジェクトを見る",
+      "featured_empty": "代表作は準備中です。"
     }
   },
   "items": [
@@ -85,23 +91,26 @@
         "en": {
           "title": "Car-Mounted Smart Assistant System",
           "authors": "<strong>Xu Zhe</strong>, Zhao Laoban, Adam, Tianyi, David, Stella",
-          "description": "Our project aims to build a new generation of in-car smart assistant system, using multi-modal perception and automatic intent recognition technology to understand the state and behavior intention of drivers and passengers in real time, and to coordinate vehicle functions autonomously, to achieve safe, comfortable, and highly intelligent cabin interaction experience."
+          "description": "Our project aims to build a new generation of in-car smart assistant system, using multi-modal perception and automatic intent recognition technology to understand the state and behavior intention of drivers and passengers in real time, and to coordinate vehicle functions autonomously, to achieve safe, comfortable, and highly intelligent cabin interaction experience.",
+          "featuredSummary": "A multimodal in-car assistant that understands passenger intent and coordinates vehicle functions."
         },
         "zh": {
           "title": "基于STM32的车载智能助手",
           "authors": "<strong>徐哲</strong>, 赵老板,Adam,天一,大卫,stella",
-          "description": "我们的项目旨在构建新一代车内智能助手系统，通过多模态感知与自动意图识别技术，实时理解驾乘人员状态与行为意图，并自主联动车辆功能，实现安全、舒适且高度智能化的座舱交互体验。"
+          "description": "我们的项目旨在构建新一代车内智能助手系统，通过多模态感知与自动意图识别技术，实时理解驾乘人员状态与行为意图，并自主联动车辆功能，实现安全、舒适且高度智能化的座舱交互体验。",
+          "featuredSummary": "结合多模态感知与意图识别，让车载助手理解驾乘需求并联动车辆功能。"
         },
         "jp": {
           "title": "車載型スマートアシスタントシステム",
           "authors": "<strong>徐哲</strong>, 赵老板,Adam,天一,大卫,stella",
-          "description": "私たちのプロジェクトは、新世代の車内スマートアシスタントシステムを構築することを目的としています。多モーダル感知と自動意図認識技術を活用し、運転者と乗客の状態と行動意図をリアルタイムに理解し、車両機能を自主的に連携させ、安全で快適で高度に知的な座艙インタラクション体験を実現します。"
+          "description": "私たちのプロジェクトは、新世代の車内スマートアシスタントシステムを構築することを目的としています。多モーダル感知と自動意図認識技術を活用し、運転者と乗客の状態と行動意図をリアルタイムに理解し、車両機能を自主的に連携させ、安全で快適で高度に知的な座艙インタラクション体験を実現します。",
+          "featuredSummary": "乗員の意図を理解し、車両機能と連携するマルチモーダル車載アシスタント。"
         }
       }
     },
     {
       "id": "personal-academic-homepage-template",
-      "date": "2025.9-2024.10",
+      "date": "2025.09–2025.10",
       "image": "./media/projects/academic-homepage-template.jpg",
       "links": [
         {
@@ -140,19 +149,23 @@
         "en": {
           "title": "Personal Academic Homepage Template",
           "authors": "<strong>Xu Zhe</strong>, codex",
-          "description": "An open-source personal academic homepage template built around configuration-first and modular design principles. It supports multilingual content, plugin extensions, and a unified rendering logic. By simply editing JSON configuration files, you can flexibly manage navigation, sections, and content without touching any HTML. Optimized for both desktop and mobile, this template is a powerful tool for creating clean, elegant, and highly extensible academic websites."
+          "description": "An open-source personal academic homepage template built around configuration-first and modular design principles. It supports multilingual content, plugin extensions, and a unified rendering logic. By simply editing JSON configuration files, you can flexibly manage navigation, sections, and content without touching any HTML. Optimized for both desktop and mobile, this template is a powerful tool for creating clean, elegant, and highly extensible academic websites.",
+          "featuredSummary": "A configurable academic homepage with multilingual content and extensible sections."
         },
         "zh": {
           "title": "个人学术网站模板",
           "authors": "<strong>徐哲</strong>，codex",
-          "description": "一个开源的个人学术主页模板。它以配置优先、模块化设计为核心，支持多语言、插件扩展和统一的内容渲染逻辑。你只需通过修改 JSON 配置文件，就可以灵活管理导航、板块、内容，而无需直接编辑 HTML。模板对桌面／移动端均有良好适配，是构建简洁、高可扩展性学术主页的利器。"
+          "description": "一个开源的个人学术主页模板。它以配置优先、模块化设计为核心，支持多语言、插件扩展和统一的内容渲染逻辑。你只需通过修改 JSON 配置文件，就可以灵活管理导航、板块、内容，而无需直接编辑 HTML。模板对桌面／移动端均有良好适配，是构建简洁、高可扩展性学术主页的利器。",
+          "featuredSummary": "通过配置管理多语言内容与可扩展板块的开源学术主页模板。"
         },
         "jp": {
           "title": "個人学術ウェブサイトテンプレート",
           "authors": "<strong>徐哲（Xu Zhe）</strong>, codex",
-          "description": "オープンソースの個人学術ホームページテンプレートです。設定優先・モジュール化設計を核とし、多言語対応、プラグイン拡張、そして統一されたコンテンツレンダリングロジックを備えています。JSON 設定ファイルを編集するだけで、ナビゲーションやセクション、コンテンツを柔軟に管理でき、HTML を直接編集する必要はありません。デスクトップとモバイルの両方に最適化されており、シンプルで拡張性の高い学術サイトを構築するための強力なツールです。"
+          "description": "オープンソースの個人学術ホームページテンプレートです。設定優先・モジュール化設計を核とし、多言語対応、プラグイン拡張、そして統一されたコンテンツレンダリングロジックを備えています。JSON 設定ファイルを編集するだけで、ナビゲーションやセクション、コンテンツを柔軟に管理でき、HTML を直接編集する必要はありません。デスクトップとモバイルの両方に最適化されており、シンプルで拡張性の高い学術サイトを構築するための強力なツールです。",
+          "featuredSummary": "多言語コンテンツと拡張可能なセクションを設定で管理する学術ホームページ。"
         }
-      }
+      },
+      "featuredOrder": 1
     },
     {
       "id": "rm-full-series-auto-aiming-code",
@@ -179,19 +192,23 @@
         "en": {
           "title": "RM Full-Series Auto-Aiming Code",
           "authors": "<strong>Zhe Xu</strong>, Qingyun Shi, Cheng Su",
-          "description": "Full-series auto-aiming code for Fudan University RM Team EGA, including auto-aiming, prediction, and ballistic compensation, developed based on the <a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a> framework. The team eventually won the 1v1 Championship at the Shanghai Regional that year, and secured the First Prize among non-top-tier teams in the 3v3 Battle Tournament after reaching the quarterfinals."
+          "description": "Full-series auto-aiming code for Fudan University RM Team EGA, including auto-aiming, prediction, and ballistic compensation, developed based on the <a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a> framework. The team eventually won the 1v1 Championship at the Shanghai Regional that year, and secured the First Prize among non-top-tier teams in the 3v3 Battle Tournament after reaching the quarterfinals.",
+          "featuredSummary": "Auto-aiming, target prediction and ballistic compensation for Fudan EGA RoboMaster robots."
         },
         "zh": {
           "title": "RM全系列自瞄代码",
           "authors": "<strong>徐哲</strong>, 石青云, 苏城",
-          "description": "复旦大学RM战队EGA全系列自瞄代码，包括自瞄、预测、弹道补偿等，基于<a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a>框架开发,最终战队在当年上海站荣获1v1冠军，并在3v3八强血战交龙获得3v3对抗赛非甲级队伍一等奖"
+          "description": "复旦大学RM战队EGA全系列自瞄代码，包括自瞄、预测、弹道补偿等，基于<a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a>框架开发,最终战队在当年上海站荣获1v1冠军，并在3v3八强血战交龙获得3v3对抗赛非甲级队伍一等奖",
+          "featuredSummary": "为复旦 EGA 战队实现自动瞄准、目标预测与弹道补偿。"
         },
         "jp": {
           "title": "RMシリーズ全自動照準コード",
           "authors": "<strong>徐 哲</strong>, 石 青雲, 蘇 城",
-          "description": "復旦大学RMチームEGA向けの全シリーズ自動照準コード。自動照準、予測、弾道補正を含み、<a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a> フレームワークを基に開発。最終的に当年の上海大会で1v1チャンピオンを獲得し、3v3血戦交龍ではベスト8進出後、非A級チームの中で1等賞を受賞。"
+          "description": "復旦大学RMチームEGA向けの全シリーズ自動照準コード。自動照準、予測、弾道補正を含み、<a href=\"https://github.com/HHgzs/TJURM-2024\">TJURM-2024</a> フレームワークを基に開発。最終的に当年の上海大会で1v1チャンピオンを獲得し、3v3血戦交龍ではベスト8進出後、非A級チームの中で1等賞を受賞。",
+          "featuredSummary": "復旦 EGA チーム向けの自動照準、目標予測、弾道補正システム。"
         }
-      }
+      },
+      "featuredOrder": 2
     },
     {
       "id": "lacsr5-efficient-spmv-optimization-based-on-csr5",
@@ -339,7 +356,8 @@
           "authors": "Hongdou, <strong>Zhe Xu</strong>, Kari.ah, 1nk, Jones",
           "description": "Unityエンジンを使用し、C#言語で開発したRPG独立探索・ステージ攻略ゲーム。創造的なレベルデザイン。"
         }
-      }
+      },
+      "featuredOrder": 3
     }
   ]
 }

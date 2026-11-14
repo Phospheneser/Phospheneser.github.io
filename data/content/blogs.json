@@ -70,21 +70,27 @@
       "title": "🔬 Research Log",
       "subtitle": "Stories, experiments, and longer reflections from ongoing projects.",
       "kicker": "Lab notebook",
-      "archive_label": "View all posts"
+      "archive_label": "View all posts",
+      "view_all_label": "View all posts",
+      "featured_empty": "No featured posts yet."
     },
     "zh": {
       "nav_label": "博客",
       "title": "🔬 研究博客",
       "subtitle": "记录项目进展、实验体会以及更长的思考。",
       "kicker": "实验室手记",
-      "archive_label": "查看全部文章"
+      "archive_label": "查看全部文章",
+      "view_all_label": "查看全部文章",
+      "featured_empty": "置顶文章待更新。"
     },
     "jp": {
       "nav_label": "ブログ",
       "title": "🔬 リサーチログ",
       "subtitle": "進行中のプロジェクトや実験から得た学びを綴ります。",
       "kicker": "Lab Notebook",
-      "archive_label": "すべての記事を見る"
+      "archive_label": "すべての記事を見る",
+      "view_all_label": "すべての記事を見る",
+      "featured_empty": "固定された記事はまだありません。"
     }
   },
   "items": [
@@ -124,7 +130,8 @@
             "理論"
           ]
         }
-      }
+      },
+      "featuredOrder": 1
     },
     {
       "id": "launching-the-research-blog",

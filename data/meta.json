@@ -77,9 +77,10 @@
             "templateOptions": {
                 "mediaField": "image",
                 "titleField": "title",
-                "subtitleFields": "date",
+                "subtitleFields": [],
                 "metaFields": [
-                    "authors"
+                    "authors",
+                    "date"
                 ],
                 "descriptionFields": [
                     "description",
@@ -114,8 +115,8 @@
                     "subtitle"
                 ],
                 "metaFields": [
-                    "post_time",
-                    "author"
+                    "author",
+                    "post_time"
                 ],
                 "badgeFields": [],
                 "badgeSeparator": " · ",
@@ -224,7 +225,8 @@
                 "layout": "list",
                 "options": {
                     "columns": 1,
-                    "gap": "normal"
+                    "gap": "normal",
+                    "featuredOnly": true
                 }
             },
             "multiPage": {
@@ -250,7 +252,8 @@
                 "layout": "list",
                 "options": {
                     "columns": 1,
-                    "gap": "normal"
+                    "gap": "normal",
+                    "featuredOnly": true
                 }
             },
             "multiPage": {
@@ -277,7 +280,8 @@
                 "layout": "list",
                 "options": {
                     "columns": 1,
-                    "gap": "normal"
+                    "gap": "normal",
+                    "featuredOnly": true
                 }
             },
             "multiPage": {
@@ -373,7 +377,8 @@
                 "layout": "list",
                 "options": {
                     "columns": 1,
-                    "gap": "normal"
+                    "gap": "normal",
+                    "featuredOnly": true
                 }
             },
             "multiPage": {
@@ -427,7 +432,8 @@
         "accent": "#ff3860"
     },
     "divine": {
-        "serverUrl": "https://phospheneser-awesome-academic-template.onrender.com"
+        "serverUrl": "https://phospheneser-awesome-academic-template.onrender.com",
+        "useLLM": true
     },
     "contentVersion": 2
 }

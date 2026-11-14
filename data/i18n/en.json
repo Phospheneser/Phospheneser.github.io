@@ -9,5 +9,24 @@
   "language": "Language",
   "title": "Dream Big, Work Hard, Stay Humble.",
   "subtitle": "——Be Versatile, Be Great.",
-  "footer": "© 2024 Phospheneser. All rights reserved."
+  "footer": "© 2024 Phospheneser. All rights reserved.",
+  "search_placeholder": "Search…",
+  "sort_labels": {
+    "label": "Sort",
+    "default": "Original order",
+    "date_desc": "Date (newest)",
+    "date_asc": "Date (oldest)",
+    "title_asc": "Title (A–Z)",
+    "title_desc": "Title (Z–A)"
+  },
+  "darkToLight": "Switch to light mode",
+  "lightToDark": "Switch to dark mode",
+  "layout_single": "Switch to single-page mode",
+  "layout_multi": "Switch to multi-page mode",
+  "back_to_top": "Back to top",
+  "menu": "Menu",
+  "content_unavailable": "Content is temporarily unavailable. Please try again.",
+  "section_missing": "This section is not available.",
+  "load_error": "Unable to load the page.",
+  "retry": "Retry"
 }

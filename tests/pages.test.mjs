@@ -19,6 +19,9 @@ const { initDiviner } = await import('../static/js/divine.js');
 
 let sequence = 0;
 const repo = new URL('../', import.meta.url);
+const featuredCounts = Object.fromEntries(await Promise.all(['publications', 'projects', 'blogs'].map(async source => [source, JSON.parse(await readFile(new URL(`data/content/${source}.json`, repo))).items.filter(item => Number.isInteger(item.featuredOrder) && item.featuredOrder > 0).length])));
+const newsCount = JSON.parse(await readFile(new URL('data/content/news.json', repo))).items.length;
+const publicationCount = JSON.parse(await readFile(new URL('data/content/publications.json', repo))).items.length;
 async function setup(page, search = '', options = {}) {
   const html = await readFile(new URL(page, repo), 'utf8');
   class ArticleResources extends ResourceLoader {
@@ -88,10 +91,10 @@ test('single-page home preserves all sections in three languages and cleans up w
   const env = await setup('index.html', '?lang=en');
   try {
     await load('home');
-    await until(() => document.querySelector('#publications-content .meta-card'));
-    assert.equal(document.querySelectorAll('#publications-content .meta-card').length, 8);
-    assert.equal(document.querySelectorAll('#projects-content .meta-card').length, 6);
-    assert.equal(document.querySelectorAll('#blogs-content .meta-card').length, 3);
+    await until(() => document.querySelector('#blogs .section-more-link') && !document.getElementById('meta-sections-root').hasAttribute('aria-busy'));
+    assert.equal(document.querySelectorAll('#publications-content .meta-card').length, featuredCounts.publications);
+    assert.equal(document.querySelectorAll('#projects-content .meta-card').length, featuredCounts.projects);
+    assert.equal(document.querySelectorAll('#blogs-content .meta-card').length, featuredCounts.blogs);
     assert.equal(document.querySelectorAll('.experience-item').length, 8);
     assert.equal(env.intervals.size, 1);
     assert.equal(env.requests.some(url => url.endsWith('/health')), false, 'disabled diviner never prewarms');
@@ -99,9 +102,9 @@ test('single-page home preserves all sections in three languages and cleans up w
       click(document.querySelector(`[data-language="${lang}"]`));
       await until(() => !document.getElementById('meta-sections-root').hasAttribute('aria-busy'));
       assert.equal(document.documentElement.lang, lang === 'jp' ? 'ja' : lang);
-      assert.equal(document.querySelectorAll('#publications-content .meta-card').length, 8);
+      assert.equal(document.querySelectorAll('#publications-content .meta-card').length, featuredCounts.publications);
       assert.equal(env.intervals.size, 1, 'only one live carousel interval');
-      assert.equal(document.querySelector('#blogs-content a.blog-card-title').href.includes(`lang=${lang}`), true);
+      if (featuredCounts.blogs) assert.equal(document.querySelector('#blogs-content a.blog-card-title').href.includes(`lang=${lang}`), true);
     }
     const jsonRequests = env.requests.filter(url => url.includes('/data/content/'));
     assert.equal(jsonRequests.length, new Set(jsonRequests).size, 'locale switches reuse content documents');
@@ -137,7 +140,7 @@ test('slow section requests do not delay the hero or language controls', async (
     assert.ok(document.querySelector('#publications-content .meta-card'), 'other sections render before projects resolves');
     release();
     await until(() => !document.getElementById('meta-sections-root').hasAttribute('aria-busy'));
-    assert.equal(document.querySelectorAll('#projects-content .meta-card').length, 6);
+    assert.equal(document.querySelectorAll('#projects-content .meta-card').length, featuredCounts.projects);
   } finally { release(); env.cleanup(); }
 });
 
@@ -192,7 +195,7 @@ test('a multipage route does not wait for unrelated section data', async () => {
   });
   try {
     await load('home');
-    await until(() => document.querySelectorAll('#publications-content .meta-card').length === 8);
+    await until(() => document.querySelectorAll('#publications-content .meta-card').length === publicationCount);
     assert.equal(document.getElementById('content-root').hasAttribute('aria-busy'), false);
     assert.equal(document.querySelector('#navbar-projects').textContent, 'Projects');
     assert.deepEqual(env.requests.filter(url => url.includes('/data/content/')).map(url => url.split('/').at(-1)), ['publications.json']);
@@ -253,7 +256,7 @@ test('multi-page routes, back navigation, search/sort and optional visibility', 
   const env = await setup('multipage_index.html', '?page=publications&lang=jp');
   try {
     await load('home');
-    await until(() => document.querySelectorAll('#publications-content .meta-card').length === 8);
+    await until(() => document.querySelectorAll('#publications-content .meta-card').length === publicationCount);
     const titles = () => [...document.querySelectorAll('#publications-content .meta-card-title')].map(el => el.textContent);
     const original = titles();
     const input = document.querySelector('.meta-search'); input.value = 'MOSS Transcribe'; input.dispatchEvent(new window.Event('input'));
@@ -285,7 +288,7 @@ test('multi-page routes, back navigation, search/sort and optional visibility', 
     await until(() => document.getElementById('publications-content'));
     assert.equal(document.getElementById('news'), null);
     assert.equal(document.getElementById('navbar-news'), null);
-    assert.equal(document.querySelectorAll('#awards-content .section-text-block').length, 15);
+    assert.equal(document.querySelectorAll('#awards-content .section-text-block').length, newsCount);
     assert.equal(document.getElementById('awards-content').dataset.layout, 'grid');
     assert.equal(document.querySelector('.home-hero'), null);
     assert.equal(hidden.intervals.size, 0);
@@ -527,5 +530,306 @@ test('responsive images work on project paths and preserve unknown/external sour
     setImageSource(img, './media/new-item.jpg');
     assert.equal(img.src, 'http://localhost/project/media/new-item.jpg');
     assert.equal(backgroundImage('./media/occupacy.jpg'), 'var(--site-default-background)');
+  } finally { env.cleanup(); }
+});
+
+test('homepage shows complete pinned cards and count-free links; full routes keep every record', async () => {
+  for (const lang of ['zh', 'en', 'jp']) {
+    const env = await setup('index.html', `?lang=${lang}`);
+    try {
+      await load('home');
+      await until(() => document.querySelector('#projects .section-more-link'));
+      for (const source of ['publications', 'projects', 'blogs']) {
+        const documentData = JSON.parse(await readFile(new URL(`data/content/${source}.json`, repo)));
+        const cards = [...document.querySelectorAll(`#${source}-content .meta-card`)];
+        const expected = documentData.items.filter(item => item.featuredOrder).sort((a, b) => a.featuredOrder - b.featuredOrder);
+        assert.deepEqual(cards.map(card => card.dataset.itemId), expected.map(item => item.id));
+        assert.ok(cards.every(card => !card.classList.contains('meta-card--compact')));
+        const { resolveDocument, formatContentDate } = await import('../static/js/core/content.js');
+        const localized = resolveDocument(documentData, source, lang)[source];
+        for (const card of cards) {
+          const item = localized.find(item => item.id === card.dataset.itemId);
+          const plain = document.createElement('div'); plain.innerHTML = item.description || item.summary;
+          assert.equal(card.querySelector('.meta-card-summary').textContent, plain.textContent);
+          assert.equal(card.querySelector('.meta-card-date').textContent, formatContentDate(item.date || item.post_time));
+          assert.ok(card.querySelector('.meta-card-meta-item'));
+          assert.ok(card.querySelectorAll('.meta-card-actions > a').length >= (item.links?.length || 1));
+        }
+        assert.equal(document.querySelector(`#${source} .section-more-link`).textContent, documentData.translations[lang].view_all_label);
+        const href = new URL(document.querySelector(`#${source} .section-more-link`).href);
+        assert.equal(href.searchParams.get('page'), source); assert.equal(href.searchParams.get('lang'), lang);
+        assert.equal(document.querySelector(`#${source} .feature-editor`), null);
+      }
+      assert.equal(env.requests.some(url => url.includes('/__editor/')), false);
+    } finally { env.cleanup(); }
+  }
+});
+
+test('homepage renders every pinned work when more than three are selected', async () => {
+  const value = JSON.parse(await readFile(new URL('data/content/projects.json', repo)));
+  value.items.forEach((item, index) => { item.featuredOrder = value.items.length - index; });
+  const env = await setup('index.html', '?lang=zh', {
+    response: async url => url.endsWith('/content/projects.json') ? { ok: true, json: async () => value } : undefined
+  });
+  try {
+    await load('home');
+    await until(() => document.querySelector('#projects .section-more-link'));
+    const cards = [...document.querySelectorAll('#projects-content .meta-card')];
+    assert.ok(cards.length > 3);
+    assert.deepEqual(cards.map(card => card.dataset.itemId), value.items.map(item => item.id).reverse());
+  } finally { env.cleanup(); }
+});
+
+test('local blog route mounts the selection editor with all available posts', async () => {
+  const value = JSON.parse(await readFile(new URL('data/content/blogs.json', repo)));
+  const env = await setup('multipage_index.html', '?page=blogs&lang=zh&edit=1', {
+    response: async url => {
+      if (url.endsWith('/__editor/session')) return { ok: true, json: async () => ({ token: 'local-blog-session' }) };
+      if (url.includes('/__editor/featured?source=blogs')) return { ok: true, json: async () => ({ ids: [value.items[0].id], revision: 'blog-revision' }) };
+    }
+  });
+  try {
+    await load('home');
+    await until(() => document.querySelector('#blogs .feature-editor-selected li'));
+    assert.equal(document.querySelectorAll('#blogs .feature-editor-selected li').length, 1);
+    assert.equal(document.querySelectorAll('#blogs .feature-editor-available li').length, value.items.length - 1);
+    assert.equal(document.querySelectorAll('#blogs-content .meta-card').length, value.items.length);
+  } finally { env.cleanup(); }
+});
+
+test('blog selections control homepage order while full blog lists retain unpinned posts', async () => {
+  const value = JSON.parse(await readFile(new URL('data/content/blogs.json', repo)));
+  value.items.forEach(item => delete item.featuredOrder);
+  value.items[2].featuredOrder = 1;
+  value.items[0].featuredOrder = 2;
+  for (const page of ['index.html', 'multipage_index.html', 'blogs/index.html']) {
+    const env = await setup(page, '?lang=zh&page=blogs', {
+      response: async url => url.endsWith('/content/blogs.json') ? { ok: true, json: async () => value } : undefined
+    });
+    try {
+      await load(page === 'blogs/index.html' ? 'blog-index' : 'home');
+      if (page === 'index.html') {
+        await until(() => document.querySelector('#blogs .section-more-link'));
+        assert.deepEqual([...document.querySelectorAll('#blogs-content .meta-card')].map(card => card.dataset.itemId), [value.items[2].id, value.items[0].id]);
+        assert.equal(document.querySelector('#blogs .blog-archive-callout'), null);
+      } else {
+        const selector = page === 'blogs/index.html' ? '#blog-post-list article' : '#blogs-content .meta-card';
+        await until(() => document.querySelectorAll(selector).length === 3);
+      }
+    } finally { env.cleanup(); }
+  }
+});
+
+test('unpinning everything leaves a useful full-list link on the homepage', async () => {
+  const env = await setup('index.html', '?lang=zh', {
+    response: async url => {
+      if (!url.endsWith('/content/projects.json')) return;
+      const value = JSON.parse(await readFile(new URL('data/content/projects.json', repo)));
+      value.items.forEach(item => delete item.featuredOrder);
+      return { ok: true, json: async () => value };
+    }
+  });
+  try {
+    await load('home');
+    await until(() => document.querySelector('#projects .section-more-link'));
+    assert.equal(document.querySelectorAll('#projects-content .meta-card').length, 0);
+    assert.equal(document.querySelector('#projects-content').textContent, '代表作待更新。');
+    assert.equal(document.querySelector('#projects .section-more-link').textContent, '查看全部项目');
+  } finally { env.cleanup(); }
+});
+
+test('local editor supports all pins, reorders, saves and preserves drafts on a conflicting save', async () => {
+  const env = await setup('multipage_index.html');
+  const { mountFeatureEditor, hasFeatureDrafts } = await import('../static/js/components/feature-editor.js');
+  const host = document.createElement('div'); document.body.appendChild(host);
+  let conflict = false, saved = 0, writes = [];
+  globalThis.fetch = async (url, options = {}) => {
+    if (options.method === 'POST') {
+      writes.push(JSON.parse(options.body));
+      assert.equal(options.headers['X-Editor-Token'], 'local-session');
+      if (conflict) return { ok: false, status: 409 };
+      return { ok: true, json: async () => ({ ids: writes.at(-1).ids, revision: 'revision-2' }) };
+    }
+    return { ok: true, json: async () => String(url).endsWith('/session') ? { token: 'local-session' } : { ids: ['a', 'b', 'c'], revision: 'revision-1' } };
+  };
+  const cleanup = mountFeatureEditor(host, { source: 'projects', language: 'zh', data: { projects: ['a', 'b', 'c', 'd'].map(id => ({ id, title: id })) }, onSaved: () => saved++ });
+  const control = (label) => [...host.querySelectorAll('button')].find(button => button.getAttribute('aria-label') === label);
+  try {
+    await until(() => host.querySelector('.feature-editor-selected li'));
+    assert.equal(control('置顶：d').disabled, false);
+    click(control('置顶：d'));
+    assert.equal(host.querySelectorAll('.feature-editor-selected li').length, 4);
+    assert.equal(hasFeatureDrafts(), true);
+    click(control('上移：d'));
+    click(control('保存选择'));
+    await until(() => saved === 1);
+    assert.deepEqual(writes[0], { source: 'projects', ids: ['a', 'b', 'd', 'c'], revision: 'revision-1' });
+    assert.equal(control('保存选择').disabled, true);
+    assert.equal(hasFeatureDrafts(), false);
+    conflict = true;
+    click(control('取消置顶：c'));
+    click(control('保存选择'));
+    await until(() => host.querySelector('[role=status]').textContent.includes('其他地方'));
+    assert.equal(saved, 1);
+    assert.deepEqual([...host.querySelectorAll('.feature-editor-selected li')].map(el => el.dataset.itemId), ['a', 'b', 'd']);
+    click(control('撤销修改'));
+    assert.deepEqual([...host.querySelectorAll('.feature-editor-selected li')].map(el => el.dataset.itemId), ['a', 'b', 'd', 'c']);
+  } finally { cleanup(); env.cleanup(); }
+});
+
+
+test('editor drafts survive reload and content refresh without blocking navigation or losing other sections', async () => {
+  const env = await setup('multipage_index.html', '?page=publications&lang=zh&edit=1');
+  const key = 'homepage-feature-drafts-v1';
+  window.sessionStorage.setItem(key, JSON.stringify({ blogs: { ids: ['post'], saved: [], revision: 'blog-rev' } }));
+  const host = document.createElement('div'); document.body.appendChild(host);
+  let revision = 'before-content-change', submitted, refreshed = 0;
+  globalThis.fetch = async (url, options = {}) => {
+    if (options.method === 'POST') {
+      submitted = JSON.parse(options.body);
+      return { ok: true, json: async () => ({ ids: submitted.ids, revision: 'saved' }) };
+    }
+    return { ok: true, json: async () => String(url).endsWith('/session') ? { token: 'never-store-this' } : { ids: ['a'], revision } };
+  };
+  const control = name => [...host.querySelectorAll('button')].find(el => el.getAttribute('aria-label') === name);
+  let cleanup;
+  try {
+    const first = await import('../static/js/components/feature-editor.js?draft-reload-first');
+    cleanup = first.mountFeatureEditor(host, { source: 'publications', data: { publications: [{ id: 'a', title: 'A' }, { id: 'b', title: 'B' }] }, language: 'zh' });
+    await until(() => control('置顶：B'));
+    click(control('置顶：B'));
+    assert.equal(first.hasFeatureDrafts(), true);
+    assert.equal(first.preserveFeatureDrafts(), true);
+    assert.ok(!window.sessionStorage.getItem(key).includes('never-store-this'));
+    cleanup(); host.replaceChildren();
+    revision = 'after-content-change';
+    const reloaded = await import('../static/js/components/feature-editor.js?draft-reload-second');
+    cleanup = reloaded.mountFeatureEditor(host, { source: 'publications', data: { publications: ['a', 'b', 'c'].map(id => ({ id, title: id.toUpperCase() })) }, language: 'zh', onRefresh: () => refreshed++ });
+    await until(() => control('取消置顶：B'));
+    assert.deepEqual([...host.querySelectorAll('.feature-editor-selected li')].map(el => el.dataset.itemId), ['a', 'b']);
+    assert.ok(control('置顶：C'));
+    click(control('刷新内容')); assert.equal(refreshed, 1);
+    click(control('保存选择'));
+    await until(() => host.querySelector('[role=status]').textContent.includes('已保存'));
+    assert.equal(submitted.revision, 'after-content-change');
+    const remaining = JSON.parse(window.sessionStorage.getItem(key));
+    assert.equal(remaining.publications, undefined);
+    assert.deepEqual(remaining.blogs.ids, ['post']);
+  } finally { cleanup?.(); env.cleanup(); }
+});
+
+test('drag handles move across multiple items, cancel safely and save the new order', async () => {
+  const env = await setup('multipage_index.html');
+  const { mountFeatureEditor } = await import('../static/js/components/feature-editor.js?drag-test');
+  const host = document.createElement('div'); document.body.appendChild(host);
+  host.setPointerCapture = () => {};
+  host.hasPointerCapture = () => false;
+  let submitted;
+  globalThis.fetch = async (url, options = {}) => {
+    if (options.method === 'POST') {
+      submitted = JSON.parse(options.body);
+      return { ok: true, json: async () => ({ ids: submitted.ids, revision: 'saved' }) };
+    }
+    return { ok: true, json: async () => String(url).endsWith('/session') ? { token: 'local' } : { ids: ['a', 'b', 'c', 'd'], revision: 'initial' } };
+  };
+  const cleanup = mountFeatureEditor(host, { source: 'projects', data: { projects: ['a', 'b', 'c', 'd'].map(id => ({ id, title: id })) }, language: 'zh' });
+  const rows = () => [...host.querySelectorAll('.feature-editor-selected li')];
+  const order = () => rows().map(el => el.dataset.itemId);
+  const pointer = (target, type, y) => {
+    const event = new window.MouseEvent(type, { bubbles: true, cancelable: true, clientY: y, button: 0 });
+    Object.defineProperties(event, { pointerId: { value: 7 }, isPrimary: { value: true } });
+    target.dispatchEvent(event);
+  };
+  const geometry = () => rows().forEach((row, i) => { row.getBoundingClientRect = () => ({ top: 100 + i * 100, height: 100 }); });
+  try {
+    await until(() => host.querySelector('.feature-editor-drag'));
+    geometry();
+    pointer(rows()[0].querySelector('.feature-editor-drag'), 'pointerdown', 150);
+    pointer(host, 'pointermove', 480);
+    pointer(host, 'pointerup', 480);
+    assert.deepEqual(order(), ['b', 'c', 'd', 'a']);
+    assert.equal(document.activeElement.closest('li').dataset.itemId, 'a');
+    geometry();
+    pointer(rows()[3].querySelector('.feature-editor-drag'), 'pointerdown', 450);
+    pointer(host, 'pointermove', 110);
+    document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    assert.deepEqual(order(), ['b', 'c', 'd', 'a']);
+    assert.equal(host.classList.contains('feature-editor--dragging'), false);
+    const last = rows()[3].querySelector('.feature-editor-drag');
+    last.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Home', bubbles: true }));
+    assert.deepEqual(order(), ['a', 'b', 'c', 'd']);
+    rows()[0].querySelector('.feature-editor-drag').dispatchEvent(new window.KeyboardEvent('keydown', { key: 'End', bubbles: true }));
+    assert.deepEqual(order(), ['b', 'c', 'd', 'a']);
+    click([...host.querySelectorAll('button')].find(el => el.textContent === '保存选择'));
+    await until(() => host.querySelector('[role=status]').textContent.includes('已保存'));
+    assert.deepEqual(submitted.ids, ['b', 'c', 'd', 'a']);
+  } finally { cleanup(); env.cleanup(); }
+});
+
+test('news pins select homepage entries and editor uses readable dated content', async () => {
+  const value = JSON.parse(await readFile(new URL('data/content/news.json', repo)));
+  for (const lang of ['en', 'zh', 'jp']) {
+    const env = await setup('index.html', `?lang=${lang}`);
+    try {
+      await load('home');
+      await until(() => document.querySelector('#news .section-more-link'));
+      const expected = value.items.filter(item => item.featuredOrder).sort((a, b) => a.featuredOrder - b.featuredOrder);
+      assert.deepEqual([...document.querySelectorAll('#news-content [data-item-id]')].map(el => el.dataset.itemId), expected.map(item => item.id));
+      assert.equal(document.querySelector('#news .section-more-link').textContent, value.translations[lang].view_all_label);
+    } finally { env.cleanup(); }
+  }
+  const env = await setup('multipage_index.html', '?page=news&lang=zh&edit=1', {
+    response: async url => {
+      if (url.endsWith('/__editor/session')) return { ok: true, json: async () => ({ token: 'news-test' }) };
+      if (url.includes('/__editor/featured?source=news')) return { ok: true, json: async () => ({ ids: [], revision: 'news-test' }) };
+    }
+  });
+  try {
+    await load('home');
+    await until(() => document.querySelector('#news .feature-editor-available li'));
+    assert.equal(document.querySelector('#news .feature-editor h2').textContent, '首页新闻');
+    assert.equal(document.querySelectorAll('#news .feature-editor-available li').length, value.items.length);
+    assert.equal(document.querySelectorAll('#news-content [data-item-id]').length, value.items.length);
+    const row = document.querySelector('#news .feature-editor-available li');
+    assert.match(row.textContent, /2026\.10\.16 · MOSS-Image/);
+    assert.equal(row.querySelector('a'), null);
+  } finally { env.cleanup(); }
+});
+
+test('switching locale updates list controls and an open diviner without discarding input', async () => {
+  const env = await setup('multipage_index.html', '?page=publications&lang=en', {
+    meta: config => { config.add_diviner = true; config.divine = { prewarm: false, useLLM: true }; }
+  });
+  try {
+    await load('home');
+    await until(() => document.querySelector('#publications-content .meta-card') && document.getElementById('diviner-container'));
+    click(document.getElementById('diviner-container'));
+    const panel = document.getElementById('divine-window');
+    const question = panel.querySelector('#divine-query');
+    assert.equal(question.value, "Today's fortune");
+    question.value = 'Keep my question';
+    question.dispatchEvent(new window.Event('input', { bubbles: true }));
+    click(panel.querySelector('#mode-Tarot'));
+    click(panel.querySelector('#divine-use-llm'));
+    const expected = {
+      en: ['Search…', 'Sort', 'Start divination', 'Switch to single-page mode', 'Back to top', 'Switch to dark mode'],
+      zh: ['搜索…', '排序', '开始占卜', '切换为单页模式', '返回顶部', '切换为深色模式'],
+      jp: ['検索…', '並べ替え', '占いを始める', 'シングルページ表示に切り替える', 'ページの先頭へ', 'ダークモードへ切り替える']
+    };
+    for (const lang of ['zh', 'jp', 'en']) {
+      click(document.querySelector(`[data-language="${lang}"]`));
+      await until(() => !document.getElementById('content-root').hasAttribute('aria-busy'));
+      const copy = expected[lang];
+      assert.equal(document.querySelector('.meta-search').placeholder, copy[0]);
+      assert.equal(document.querySelector('.meta-sort').getAttribute('aria-label'), copy[1]);
+      assert.equal(panel.querySelector('#divine-submit').textContent, copy[2]);
+      assert.equal(document.getElementById('layout-mode-toggle').title, copy[3]);
+      assert.equal(document.getElementById('back-to-top').title, copy[4]);
+      assert.equal(document.getElementById('dark-mode-toggle-mobile').title, copy[5]);
+      assert.equal(document.getElementById('divine-window'), panel);
+      assert.equal(question.value, 'Keep my question');
+      assert.equal(panel.querySelector('#mode-Tarot').checked, true);
+      assert.equal(panel.querySelector('#divine-use-llm').checked, false);
+    }
   } finally { env.cleanup(); }
 });
